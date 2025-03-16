@@ -1,0 +1,30 @@
+project:
+  type: book
+
+book:
+  title: "Course notes for Agent-based Modeling"
+  author: "Matt Turner"
+  date: "3/14/2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - references.qmd
+
+bibliography: /Users/mt/workspace/Writing/library.bib
+
+format:
+  html:
+    include-in-header: header.html
+    theme: 
+      dark:
+        - darkly 
+        - theme-dark.scss
+      light:
+        - theme-light.scss
+    fontsize: 0.9em
+    linestretch: 1.2
+  pdf:
+    documentclass: scrreprt
+
+
+

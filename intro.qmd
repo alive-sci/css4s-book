@@ -1,0 +1,83 @@
+# Introduction
+
+*Sustainability* is difficult to attain because it requires the participation of many people. People need reasons to practice certain behaviors. Our relationships with other people shape our behaviors, which are influenced by our beliefs and opinions which themselves, too, are shaped by our relationships with others. Things like the development and uptake of sustainable practices emerge from an incessant buzz of social activity including observation and evaluation, learning and teaching, movement and migration, discussion and deliberation. The widespread uptake of sustainable practices depends on other forms of social emergence, including healthy political systems, equality, justice, good public health, and social movements to work together to remedy or develop institutions meant to promote these things, like citizen groups, governments, and non-profits.
+
+It would be great if we could scientifically design policies like architects design buildings. Architects first sketch buildings by hand, then computerize the design, where blueprints can then be evaluated for structural integrity, fire safety, ventilation, etc. We can rely on such computer-aided design systems because their calculations are scientific. Heating, ventilation, and air conditioning efficiency, for example, can be calculated using principles of thermodynamics, the branch of physics that describes the behavior of large collections of particles like the billions upon billions of oxygen, carbon dioxide, nitrogen, and other molecules and elements in air.
+
+Agent-based models of social behavior are in fact useful for exactly this, for creating and evaluating "blueprints" for interventions that simulate people as software *agents* who just intelligent enough to interact and make simple decisions. To make models interperetable and useful, we must identify and compartmentalize [@Cartwright1999] the most relevant parts of social systems for a particular policy problem. Social behavior is complex and highly sensitive to random changes. For example, maybe you get a dream job offer because you met someone on a train who had a friend visiting that works for an organization that does meaningful work and pays well.
+
+This social randomness means we can't expect to calculate exact outcomes given some initial social conditions. Instead we must calculate distributions of possible outcomes by running multiple trials of the same model to understand the range of possible outcomes. One then inspects the distribution of outcomes for each set of *explanatory variables* that get defined in the model initialization. Explanatory variables represent different cognitive and social factors including agent learning and decision making and how social networks structure agent interactions. This modeling procedure is more like how weather forecasters give hurricane predictions compared to, say, measuring the mass of an electron to greater and greater precision. In every simulation of real-world hurricanes, the simulated hurricanes take a different path. The individual outcomes can then be aggregated to estimate the probability the hurricane takes a path within a "forecast cone" that spreads laterally forward from its current location [@fig-dunce-cone]. of a hurricane environment around real-world hurricanes cannot be experimentally controlled, and myriad unpredictable random factors affect their paths. On the other hand, measurement such as the mass of subatomic particles can be done to increasing precision as more and more experimental control of non-relevant forces are included. One consequence of this is that an investment in careful framing and visual analysis of model outcomes will pay dividends in terms of reader comprehension and potential for policy impact.
+
+![Models of social behavior can only predict distributions of outcomes, just like how predictions of the path of hurricanes has a cone shape that expands over time representing greater variance and uncertainty.](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZm91cXZ1cnk5cnY3MWZjbDdqZmI4aWJpNW41Y28xb3VkYzV0a3lxMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/j3766xIPcI45luQNQs/giphy.gif){#fig-dunce-cone fig-align="center" width="380"}
+
+## The challenge of sustainable adaptation
+
+-   The UN Sustainable Development goals provide a
+
+## Agent-based models for designing sustainability interventions
+
+### Computational social science for sustainability
+
+### Why modeling social behavior needs agent-based models
+
+## Agent-based models and software
+
+Agent-based models can be thought of as a collection. In models of social behavior, agent-based models are defined by the several pieces of information they contain about the agents, the environment, and any other factors that might be relevant. Agents, too, represent a self-contained collection of features defining how these simulated people explore their environment, interact with others, choose behaviors, and tracking how many payoffs and neighbors they have.
+
+### Containers
+
+In software development a *collection* is a data structure, a blueprint for organizing data or algorithms.
+
+```{r}
+library(R6)
+StuffCollection <- R6Class(
+  classname = "stuff-collection", 
+  public = list(
+    
+    unique_stuff = TRUE,
+    stuff = c(),
+    
+    sample = function(n = 1, weights = NULL) {
+      return (sample(self$stuff, n, prob = weights))
+    },
+    add = function(new_stuff) {
+      # Only add new stuff that's not yet in the collection.
+      if (self$unique_stuff) {
+        # %in% can be vectorized, so within parentheses is Boolean vector.
+        new_stuff_to_add <- new_stuff[!(new_stuff %in% self$stuff)]
+      } else {
+        new_stuff_to_add <- new_stuff
+      }
+      self$stuff <- c(
+        self$stuff, 
+        new_stuff_to_add
+      )
+      invisible(self)
+    },
+    # Create a new StuffCollection with init_stuff.
+    initialize = function(init_stuff = c()) {
+      self$stuff <- init_stuff
+      return (self)
+    }
+))
+
+sc <- StuffCollection$new(c(1, "hello", "whatever", 96))
+for (. in 1:2) {
+  print(sc$sample())
+  print(sc$sample(weights = c(0, 1, 1, 0)))
+}
+```
+
+```{r}
+# Add some more stuff to the stuff collection and sample 
+# from the new full collection to make the new stuff more likely
+# to get and the old stuff less likely.
+new_stuff <- c("Justice", "Equality", "Food", "Clothing", "Shelter", "whatever")
+sc$add(new_stuff)
+# Note that 'whatever' is not repeated because the `unique_stuff` 
+print(sc$stuff)
+new_weights <- c(rep(0.1, 4), rep(1.0, 5))
+for (. in 1:2) {
+  print(sc$sample(5, weights = new_weights))
+}
+```
