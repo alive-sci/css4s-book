@@ -1,0 +1,37 @@
+# How to write a scientific (social behavior modeling) paper
+
+
+One of the most overwhelming challenges for me as a researcher is writing
+research papers. I've been lucky to learn from excellent teachers and currently
+have a network of mentors I can turn to for help. Still, writing is an
+inherently solitary endeavor that is in many ways an exploration, the building
+of a map of information. When we present our scientific work, much of 
+the information already exists in the form of previous work on which we build.
+In terms of information volume, the work we present in scientific papers 
+is relatively miniscule compared to the
+vast wealth of science amassed up to today. However, our work we want to write
+is new to the world, including ourselves even though we created it. This means
+that we need to take special care to explain 
+
+Good
+scientific writing (1) reviews previous work in the context of our project goals; 
+(2) notes the location of some dark, foggy corners of our current understanding to
+motivate new work we intend to present to the reader; (3) presents the model
+in sufficient detail so the reader can re-produce the model and analysis; (4) 
+presents results by contextualizing them in terms of our research questions 
+and explains _why_ the model outcomes emerged as they did; and finally, (5)
+reviews the findings, the model that produced them, the research questions that
+motivated the model, the impact of the findings for the research questions and
+more broadly for social behavior/sustainability, for social behavioral sciences,
+and even for our general understanding of the universe, as appropriate. 
+
+Scientific papers share a structure that we will use as a template so one need not
+start from scratch. The structure is known as either the IMAD or IMRaD
+structure, which stands for the major section headings of the papers
+indicating the major logical divisions of the presentation of social behavior
+modeling studies: either the Introduction, Model, Analysis, Discussion structure
+or the Introduction, Methods, Results, and Discussion structure. 
+
+Each of these
+major divisions contain standard types of information about the study. The
+Introduction... 

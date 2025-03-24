@@ -8,6 +8,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - writing.qmd
     - references.qmd
 
 bibliography: /Users/mt/workspace/Writing/library.bib
