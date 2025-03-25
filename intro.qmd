@@ -12,9 +12,13 @@ This social randomness means we can't expect to calculate exact outcomes given s
 
 ## The challenge of sustainable adaptation
 
--   The UN Sustainable Development goals provide a
+-   The UN Sustainable Development goals provide a framework for
+
+![United Nations Sustainable Development Goals help us organize critical dimensions of sustainability. Sustainability depends on some basic, minimal support for survival and education (Group B) that ensures the participation of all in institutions that develop interventions to promote sustainabile infrastructure and social capital (Group I). Healthy populations (Group B) combined with strong institutions (Group I) provide the necessary foundation for enforcing ecological and environmental protection (Group E).](images/clipboard-1689720362.png){#fig-sdg-organized fig-align="center" width="500"}
 
 ## Agent-based models for designing sustainability interventions
+
+-   *Collective sustainable adaptation* is difficult to attain because it requires individuals to change their expectations and behaviors.
 
 ### Computational social science for sustainability
 
