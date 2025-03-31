@@ -2,26 +2,41 @@ project:
   type: book
 
 book:
-  title: "Course notes for Agent-based Modeling"
+  title: "Agent-based modeling for sustainability"
   author: "Matt Turner"
   date: "3/14/2025"
   chapters:
     - index.qmd
     - intro.qmd
-    - writing.qmd
+    - programming-intro.qmd
+    - part: Notes
+      chapters:
+      - diffusion.qmd
+      - networks.qmd
+      - diffusion-structured.qmd
+      - cooperation.qmd
+      - coordination.qmd
+      - polarization.qmd
+      - uncertainty.qmd
+      - rl-agents.qmd
+    - part: Manual
+      - abm.qmd
+      - writing.qmd
     - references.qmd
+  
 
 bibliography: /Users/mt/workspace/Writing/library.bib
 
 format:
   html:
+    toc: true
     include-in-header: header.html
     theme: 
+      light:
+        - theme-light.scss
       dark:
         - darkly 
         - theme-dark.scss
-      light:
-        - theme-light.scss
     fontsize: 0.9em
     linestretch: 1.2
   pdf:
