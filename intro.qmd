@@ -1,197 +1,28 @@
 # Introduction
 
-Indigenous peoples of the South Pacific Islands have managed coastal mangrove 
-forest management to dissipate storm surges and prevent erosion, adaptations
-that have mitigated potential costs of climate change since long before
-human activity-driven (i.e., _anthropogenic_) climate change
-[@Nalau2018;@Pearson2020;@McNamara2020]. 
-First peoples of western North America have similarly practiced
-prescribed burns to prevent destructive wildfires during times of drought since
-long before anthropogenic climate change [@Eisenberg2019;@Kolden2019]. 
-Despite the wide availability of ancient climate change adaptation knowledge 
-and myriad modern innovations, maladaptive responses to climate change often 
-take their place. In the South Pacific,
-for example, some international aid groups promote sea wall construction instead
-of mangrove forests, but these are expensive to maintain and can even act like
-dams, keeping water in once it inevitably breaches [@Piggott-McKellar2020].
-Forest management that limits thinning misses an opportunity to prevent
-destructive wildfires, while clear-cutting can increase atmospheric carbon
-dioxide and increase the risk of mudslides, possibly due to the polarized nature
-of interests and opinions in public forest governance [@Swette2023]. 
+Indigenous peoples of the South Pacific Islands have managed coastal mangrove forest management to dissipate storm surges and prevent erosion, adaptations that have mitigated potential costs of climate change since long before human activity-driven (i.e., *anthropogenic*) climate change [@Nalau2018; @Pearson2020; @McNamara2020]. First peoples of western North America have similarly practiced prescribed burns to prevent destructive wildfires during times of drought since long before anthropogenic climate change [@Eisenberg2019; @Kolden2019]. Despite the wide availability of ancient climate change adaptation knowledge and myriad modern innovations, maladaptive responses to climate change often take their place. In the South Pacific, for example, some international aid groups promote sea wall construction instead of mangrove forests, but these are expensive to maintain and can even act like dams, keeping water in once it inevitably breaches [@Piggott-McKellar2020]. Forest management that limits thinning misses an opportunity to prevent destructive wildfires, while clear-cutting can increase atmospheric carbon dioxide and increase the risk of mudslides, possibly due to the polarized nature of interests and opinions in public forest governance [@Swette2023].
 
-The varied success of different sustainable practices to diffuse or not begs 
-several questions, which we will address in this course. Analyzing these will
-help us harness the positive factors promoting the spread
-of sustainable behaviors and so we can avoid the pitfalls that impede
-adaptation. First, what factors helped sustainable adaptations spread
-in successful cases? Second, what factors hinder success, leading to
-maladaptation? Finally, what patterns emerge when we 
-collect and consolidate different studies analyzing these questions? While there
-are many different cognitive, social, and environmental factors involved 
-in any given sustainability outcome, we focus here on an emerging consensus about a
-set of cognitive and social factors known to affect behavior choice in general,
-and sustainable practices more specifically. 
+The varied success of different sustainable practices to diffuse or not begs several questions, which we will address in this course. Analyzing these will help us harness the positive factors promoting the spread of sustainable behaviors and so we can avoid the pitfalls that impede adaptation. First, what factors helped sustainable adaptations spread in successful cases? Second, what factors hinder success, leading to maladaptation? Finally, what patterns emerge when we collect and consolidate different studies analyzing these questions? While there are many different cognitive, social, and environmental factors involved in any given sustainability outcome, we focus here on an emerging consensus about a set of cognitive and social factors known to affect behavior choice in general, and sustainable practices more specifically.
 
-The cognitive and social factors we
-identify are suitable for inclusion in _agent-based models_ of social behavior
-that we use to deduce the emergent social outcomes we can expect from different
-strategies for social interventions to promote sustainable practices.
-An agent-based model is a general type of model where people are represented as
-autonomous _agents_ who perform behaviors or processes based on their own
-localized, adaptive decisionmaking. In our models of social behavior, these
-agents learn from one another or influence one another's opinion, and use this
-information to make decisions about which behavior they should do. 
-A _social intervention_ (or just _intervention_) for promoting
-sustainability is any concerted effort where those promoting a sustainable
-practice introduces information about how to perform that practice to a
-population. We will analyze and draw on several real-world empirical studies of
-interventions to develop our agent-based models that we in turn will use to
-develop models of interventions in order to deduce which intervention
-strategies are most effective and why in idealized, cost-free settings
-(cost-free at least compared to the cost of real-world social interventions at
-scale). 
+### Agent-based models of sustainable interventions {.unnumbered}
 
-The [UN Sustainable Development Goals](https://sdgs.un.org/) help us focus and
-organize our work by providing concrete goals for evaluating progress 
-towards sustainable development for all. These goals include targets for
-institutional development that promotes justice and equality; 
-basic human survival and thriving necessary for people to care and pursue ecological
-protections; and climate action and ecological protections themselves. 
-Unfortunately, progress has been slower than necessary. Recent analyses of
-progress suggests accelerated transformations
-are required to reach goals necessary to avoid increasingly frequent and costly
-climate change disasters [@UnitedNations2023]. Unless things
-change, we can expect to "have 575 million people living in extreme poverty, 600
-million people facing hunger, and 84 million children and young people out of
-school. Humanity will overshoot the Paris climate agreement's 1.5°C 'safe'
-guardrail on...temperature rise. And, at the current rate, it will take 300
-years to attain gender equality" [@Malekpour2023, p. 250].  
+We will analyze and draw on several real-world empirical studies of interventions to develop our agent-based models that we in turn will use to simulate interventions in order to *deduce* which strategies are most effective for *social interventions* to promote sustainability, and why. A *social intervention* (or just *intervention*) for promoting sustainability is any concerted effort where those promoting a sustainable practice introduces information about how to perform that practice to a population. *Deductive* methods complement \_i strategies are most effective and why in idealized, cost-free settings (cost-free at least compared to the cost of real-world social interventions at scale). Our empirically-motivated models The cognitive and social factors we identify are suitable for inclusion in *agent-based models* of social behavior that we use to deduce the emergent social outcomes we can expect from different strategies for social interventions to promote sustainable practices.
 
-Sustainability, then, has several different dimensions, all of which contribute
-to climate action and environmental protection. 
-I have organized these goals into a coding system called the vIBE system, which
-stands for _vibrant Institutions_ support _Basic_ human needs of people who protect
-the _Environment_. All 17 goals and the organization system are illustrated in
-Figure X. Organizing and connecting our work to  has two benefits. First, it helps us identify which cognitive and social factors are at work in different sustainability foci.
-Second, it expands the corpus of existing research on which we draw to
-consolidate our social and cognitive theories of behavior change that we will
-apply to sustainability interventions. 
+Low-cost experimentation with simulated sustainability social interventions are critical because unless progress is accelerated towards we can expect to "have 575 million people living in extreme poverty, 600 million people facing hunger, and 84 million children and young people out of school. Humanity will overshoot the Paris climate agreement's 1.5°C 'safe' guardrail on...temperature rise. And, at the current rate, it will take 300 years to attain gender equality" [@Malekpour2023, p. 250]. Accelerated transformations are required to reach goals necessary to avoid increasingly frequent and costly climate change disasters [@UnitedNations2023].
 
-In the rest of this introductory chapter we expand on the real-world examples
-given above of sustainable adaptations by formally identifying, categorizing,
-and representing different social and cognitive processes at work when people
-learn from, observe, and teach one another, and integrate that with their own
-personal experience.  The urgent need to understand how sustainable behaviors
-spread in order to develop effective interventions forces us social scientists
-to radically rethink how we conceptualize social change to make it rigorous,
-reliable, and digestible by non-social scientists.
+The [UN Sustainable Development Goals](https://sdgs.un.org/) help us focus and organize our work by providing concrete goals for evaluating progress towards sustainable development for all [@fig-sdg-vibe]. These goals include targets for institutional development that promotes basic conditions for human thriving (justice, equality, education, public health, and no poverty) so as to assemble and enable a critical mass of people to participate bringing about sustainable development. People cannot participate in sustainability if they suffer in poverty, from illness, or subjugation by authoritarians–all but the most zealous environmental defenders will fight on when these basic needs are unmet. Since progress has been slower than necessary.
 
+Sustainability, then, has several different dimensions, all of which contribute to climate action and environmental protection. I have organized these goals into a coding system called the vIBE system, which stands for *vibrant Institutions* support *Basic* human needs of people who protect the *Environment*. All 17 goals and the organization system are illustrated in [@fig-sdg-vibe]. Organizing and connecting our work to has two benefits. First, it helps us identify which cognitive and social factors are at work in different sustainability foci. Second, it expands the corpus of existing research on which we draw to consolidate our social and cognitive theories of behavior change that we will apply to sustainability interventions.
 
-## Social and cognitive factors in agent-based models of sustainable adaptation
+![The 17 United Nations Sustainable Development Goals (SDGs) can be organized into groups for vibrant Institutions (Group I) that provide Basic needs (Group B) required for people to actively work towards Environmental and Ecological protection (Group E)–we dub this the vIBE coding of the sustainable development goals.](images/clipboard-3767214830.png){fig-align="center" width="400"}
 
+In the rest of this introductory chapter we expand on the real-world examples given above of sustainable adaptations by formally identifying, categorizing, and representing different social and cognitive processes at work when people learn from, observe, and teach one another, and integrate that with their own personal experience. The urgent need to understand how sustainable behaviors spread in order to develop effective interventions forces us social scientists to radically rethink how we conceptualize social change to make it rigorous, reliable, and digestible by non-social scientists.
 
+## Cognitive and social factors in agent-based models of sustainable adaptation
 
-** BEGIN OLD STUFF **
-_Sustainability_ is difficult to attain because it requires the participation of many people. People need reasons to practice certain behaviors. Our relationships with other people shape our behaviors, which are influenced by our beliefs and opinions which themselves, too, are shaped by our relationships with others. Things like the development and uptake of sustainable practices emerge from an incessant buzz of social activity including observation and evaluation, learning and teaching, movement and migration, discussion and deliberation. The widespread uptake of sustainable practices depends on other forms of social emergence, including healthy political systems, equality, justice, good public health, and social movements to work together to remedy or develop institutions meant to promote these things, like citizen groups, governments, and non-profits.
+Exceptional cognitive capacities, along with fine-motor-control fingers and adaptations for long-distance running, enabled the unprecedented explosion of the human population in its \~2 million years of existence. All the fancy things we have done and made with these skills now threatens our very existence since over our existence we have developed technologies that could kill us all. At this current inflection point we face large-scale suffering or even extinction if inaction reigns. Therefore we must harness and advance our collective knowledge of collective intelligence [@Centola2022] and adaptation [@GalesicEtAl2023] with a theoretical and computational framework capable of integrating diverse, non-linear processes of social interaction. We call our theoretical framework *Computational Social Science for Sustainability*. In this course we introduce students to *Agent-based Models* of social behavior in the context of sustainability.
 
-It would be great if we could scientifically design policies like architects design buildings. Architects first sketch buildings by hand, then computerize the design, where blueprints can then be evaluated for structural integrity, fire safety, ventilation, etc. We can rely on such computer-aided design systems because their calculations are scientific. Heating, ventilation, and air conditioning efficiency, for example, can be calculated using principles of thermodynamics, the branch of physics that describes the behavior of large collections of particles like the billions upon billions of oxygen, carbon dioxide, nitrogen, and other molecules and elements in air.
+### Cognitive factors
 
-Agent-based models of social behavior are in fact useful for exactly this, for creating and evaluating "blueprints" for interventions that simulate people as software *agents* who just intelligent enough to interact and make simple decisions. To make models interperetable and useful, we must identify and compartmentalize [@Cartwright1999] the most relevant parts of social systems for a particular policy problem. Social behavior is complex and highly sensitive to random changes. For example, maybe you get a dream job offer because you met someone on a train who had a friend visiting that works for an organization that does meaningful work and pays well.
-
-This social randomness means we can't expect to calculate exact outcomes given some initial social conditions. Instead we must calculate distributions of possible outcomes by running multiple trials of the same model to understand the range of possible outcomes. One then inspects the distribution of outcomes for each set of *explanatory variables* that get defined in the model initialization. Explanatory variables represent different cognitive and social factors including agent learning and decision making and how social networks structure agent interactions. This modeling procedure is more like how weather forecasters give hurricane predictions compared to, say, measuring the mass of an electron to greater and greater precision. In every simulation of real-world hurricanes, the simulated hurricanes take a different path. The individual outcomes can then be aggregated to estimate the probability the hurricane takes a path within a "forecast cone" that spreads laterally forward from its current location [@fig-dunce-cone]. of a hurricane environment around real-world hurricanes cannot be experimentally controlled, and myriad unpredictable random factors affect their paths. On the other hand, measurement such as the mass of subatomic particles can be done to increasing precision as more and more experimental control of non-relevant forces are included. One consequence of this is that an investment in careful framing and visual analysis of model outcomes will pay dividends in terms of reader comprehension and potential for policy impact.
-
-![Models of social behavior can only predict distributions of outcomes, just like how predictions of the path of hurricanes has a cone shape that expands over time representing greater variance and uncertainty.](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZm91cXZ1cnk5cnY3MWZjbDdqZmI4aWJpNW41Y28xb3VkYzV0a3lxMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/j3766xIPcI45luQNQs/giphy.gif){#fig-dunce-cone fig-align="center" width="380"}
-
-## The challenge of sustainable adaptation
-
--   The UN Sustainable Development goals provide a framework for
-
-![United Nations Sustainable Development Goals help us organize critical dimensions of sustainability. Sustainability depends on some basic, minimal support for survival and education (Group B) that ensures the participation of all in institutions that develop interventions to promote sustainabile infrastructure and social capital (Group I). Healthy populations (Group B) combined with strong institutions (Group I) provide the necessary foundation for enforcing ecological and environmental protection (Group E).](images/clipboard-1689720362.png){#fig-sdg-organized fig-align="center" width="500"}
-
-## Agent-based models for designing sustainability interventions and basic social science
-
--   *Collective sustainable adaptation* is difficult to attain because it requires individuals to change their expectations and behaviors. 
-
-### Science-, agent-based models of social behavior for intervention design
-
-- 
-
-### Basic social science also needs agent-based models
-
--   Big, unanswered questions abound in social science whose answers could contribute to the application of social science to promoting sustainable behavior. Examples we will study in this course include 
-
-1. How do different forms of uncertainty affect whether people prefer learning from others, trying new behaviors, or sticking with whatever behaviors are currently rewarding them the most.
-1. How do people cognitively integrate previously-learned information, observations of the behaviors of others, and personal experience to 
-1. What conditions tend to cause 
-
-
-## Agent-based models and software
-
-Agent-based models are a conceptual tool that represent individuals as *agents* whose behavior is governed by rules defined in software, as is their environment. In models of social behavior, agent-based models are defined by the several pieces of information they contain about the agents, the environment, and any other factors that might be relevant. Agents, too, represent a self-contained collection of features defining how these simulated people explore their environment, interact with others, choose behaviors, and tracking how many payoffs and neighbors they have.
-
-In this course we will program our agent-based models using the R programming language and the `socmod` library developed for this computational social science for sustainability sequence of courses. As such, some familiarity with programming in R is necessary to do the coursework. In the next chapter we introduce programming in R using the `socmod`, `igraph`, and `tidyverse` packages. 
-
-In the remainder of this chapter we introduce some basic R programming skills students will need to do problem sets and agent-based modeling generally. For this we  present an example of how to model the spread of an adaptive behavior in a core-periphery social network. These social networks are known to promote economic security.
-
-### Hello, Agents! A quick tutorial for `socmod` and R
-
-
-
-
-<!-- ### Containers -->
-
-<!-- In software development a *collection* is a data structure, a blueprint for organizing data or algorithms. -->
-
-<!-- ```{r} -->
-<!-- library(R6) -->
-<!-- StuffCollection <- R6Class( -->
-<!--   classname = "stuff-collection",  -->
-<!--   public = list( -->
-
-<!--     unique_stuff = TRUE, -->
-<!--     stuff = c(), -->
-
-<!--     sample = function(n = 1, weights = NULL) { -->
-<!--       return (sample(self$stuff, n, prob = weights)) -->
-<!--     }, -->
-<!--     add = function(new_stuff) { -->
-<!--       # Only add new stuff that's not yet in the collection. -->
-<!--       if (self$unique_stuff) { -->
-<!--         # %in% can be vectorized, so within parentheses is Boolean vector. -->
-<!--         new_stuff_to_add <- new_stuff[!(new_stuff %in% self$stuff)] -->
-<!--       } else { -->
-<!--         new_stuff_to_add <- new_stuff -->
-<!--       } -->
-<!--       self$stuff <- c( -->
-<!--         self$stuff,  -->
-<!--         new_stuff_to_add -->
-<!--       ) -->
-<!--       invisible(self) -->
-<!--     }, -->
-<!--     # Create a new StuffCollection with init_stuff. -->
-<!--     initialize = function(init_stuff = c()) { -->
-<!--       self$stuff <- init_stuff -->
-<!--       return (self) -->
-<!--     } -->
-<!-- )) -->
-
-<!-- sc <- StuffCollection$new(c(1, "hello", "whatever", 96)) -->
-<!-- for (. in 1:2) { -->
-<!--   print(sc$sample()) -->
-<!--   print(sc$sample(weights = c(0, 1, 1, 0))) -->
-<!-- } -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- # Add some more stuff to the stuff collection and sample  -->
-<!-- # from the new full collection to make the new stuff more likely -->
-<!-- # to get and the old stuff less likely. -->
-<!-- new_stuff <- c("Justice", "Equality", "Food", "Clothing", "Shelter", "whatever") -->
-<!-- sc$add(new_stuff) -->
-<!-- # Note that 'whatever' is not repeated because the `unique_stuff`  -->
-<!-- print(sc$stuff) -->
-<!-- new_weights <- c(rep(0.1, 4), rep(1.0, 5)) -->
-<!-- for (. in 1:2) { -->
-<!--   print(sc$sample(5, weights = new_weights)) -->
-<!-- } -->
-<!-- ``` -->
+-   The most basic cognitive capacity that we use for building our models of social behavior is the ability to learn from others. Humans have evolved the capacity to intergrate diverse individual experience and socially-acquired information [@Turner2023a]. Humans adaptively weight personal experience against socially-learned information depending on the amount of uncertainty present in one's environment [@Toyokawa2019; @Witt2024].
+-   Returning to the South Pacific Island example above, the observation that Indigenous solutions may outperform maladaptive imported solutions is possibly a manifestation of a more general phenomenon that *locally-led* interventions that include the very stakeholders who must participate in the adaptation effort tend to be more successful [@McNamara2020]. There may be many factors contributing to this, including the fact that locally-led interventions may tend to be more appropriate for the locale of interest. Cognitively, though, the fact may be

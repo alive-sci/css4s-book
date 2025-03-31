@@ -8,7 +8,9 @@ This website and associated course content is and will always be free, licensed 
 
 This online book is divided in two parts:
 
-1.  [Notes](notes.qmd) on the theory and application of agent-based modeling to promoting the social diffusion of sustainable practices through social learning and social influence.
+1.  Notes on the theory and application of agent-based modeling to promoting the
+   social diffusion of sustainable practices through social learning and social
+   influence. Continue on to the [Introduction](intro.qmd) to read the Notes.
 2.  [Technical manual](manual.qmd) that reviews the skills and techniques needed to develop agent-based models for sustainability and present the results in a scientific article.
 
 Please select a chapter from the list to the left or [continue to the Introduction](intro.qmd).
