@@ -1,5 +1,70 @@
 # Introduction
 
+Indigenous peoples of the South Pacific Islands have managed coastal mangrove 
+forest management to dissipate storm surges and prevent erosion, adaptations
+that have mitigated potential costs of climate change since long before
+human activity-driven (i.e., _anthropogenic_) climate change
+[@Nalau2018;@Pearson2020;@]. 
+First peoples of western North America have similarly practiced
+prescribed burns to prevent destructive wildfires during times of drought since
+long before anthropogenic climate change [@Eisenberg2019,@Kolden2019]. 
+Despite the wide availability of ancient climate change adaptation knowledge 
+and myriad modern innovations, maladaptive responses to climate change often 
+take their place. In the South Pacific,
+for example, some international aid groups promote sea wall construction instead
+of mangrove forests, but these are expensive to maintain and can even act like
+dams, keeping water in once it inevitably breaches [@Piggott-McKellar2020].
+Forest management that limits thinning misses an opportunity to prevent
+destructive wildfires, while clear-cutting can increase atmospheric carbon
+dioxide and increase the risk of mudslides, possibly due to the polarized nature
+of interests and opinions in public forest governance [@Swette2023]. 
+
+The varied success of different sustainable practices to diffuse or not begs 
+several questions, which we will address in this course. Analyzing these will
+help us harness the positive factors promoting the spread
+of sustainable behaviors and so we can avoid the pitfalls that impede
+adaptation. First, what factors helped sustainable adaptations spread
+in successful cases? Second, what factors hinder success, leading to
+maladaptation? Finally, what patterns emerge when we 
+collect and consolidate different studies analyzing these questions? While there
+are many different cognitive, social, and environmental factors involved 
+in any given sustainability outcome, we focus here on an emerging consensus about a
+set of cognitive and social factors known to affect behavior choice in general,
+and sustainable practices more specifically. 
+
+In fact, this urgent need to
+understand how sustainable behaviors spread in order to develop effective
+interventions forces us social scientists to radically rethink how we
+conceptualize social change to make it rigorous, reliable, and digestible by
+non-social scientists. To support this effort, it will benefit us to frame
+our work with the 17
+[UN Sustainable Development Goals](https://sdgs.un.org/) that provide metrics for
+evaluating progress towards a truly sustainable planetary ecology for all the
+world's people. Recent analyses of progress suggests accelerated transformations
+are required to reach goals necessary to avoid increasingly frequent and costly
+climate change disasters [@UnitedNations2023]. Unfortunately, unless things
+change, we can expect to "have 575 million people living in extreme poverty, 600
+million people facing hunger, and 84 million children and young people out of
+school. Humanity will overshoot the Paris climate agreement's 1.5°C 'safe'
+guardrail on...temperature rise. And, at the current rate, it will take 300
+years to attain gender equality" [@Malekpour2023, p. 250]. 
+
+Sustainability, then, has several different dimensions, all of which contribute
+to climate action and environmental protection. 
+I have organized these goals into a coding system called the vIBE system, which
+stands for _vibrant Institutions_ support _Basic_ human needs of people who protect
+the _Environment_. This has two benefits. First, it helps us identify which
+cognitive and social factors This organizes sustainable practices into those that 
+A _social intervention_ (or just _intervention_) for promoting
+sustainability is any concerted effort where those promoting a sustainable
+practice introduces information about how to perform that practice to a
+population. 
+
+
+
+
+
+** BEGIN OLD STUFF **
 _Sustainability_ is difficult to attain because it requires the participation of many people. People need reasons to practice certain behaviors. Our relationships with other people shape our behaviors, which are influenced by our beliefs and opinions which themselves, too, are shaped by our relationships with others. Things like the development and uptake of sustainable practices emerge from an incessant buzz of social activity including observation and evaluation, learning and teaching, movement and migration, discussion and deliberation. The widespread uptake of sustainable practices depends on other forms of social emergence, including healthy political systems, equality, justice, good public health, and social movements to work together to remedy or develop institutions meant to promote these things, like citizen groups, governments, and non-profits.
 
 It would be great if we could scientifically design policies like architects design buildings. Architects first sketch buildings by hand, then computerize the design, where blueprints can then be evaluated for structural integrity, fire safety, ventilation, etc. We can rely on such computer-aided design systems because their calculations are scientific. Heating, ventilation, and air conditioning efficiency, for example, can be calculated using principles of thermodynamics, the branch of physics that describes the behavior of large collections of particles like the billions upon billions of oxygen, carbon dioxide, nitrogen, and other molecules and elements in air.
