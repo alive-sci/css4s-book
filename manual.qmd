@@ -1,0 +1,3 @@
+# Manual
+
+Techniques for doing ABM for sustainability.

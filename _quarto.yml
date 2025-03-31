@@ -9,17 +9,16 @@ book:
     - index.qmd
     - intro.qmd
     - programming-intro.qmd
-    - part: Notes
+    - diffusion.qmd
+    - networks.qmd
+    - diffusion-structured.qmd
+    - cooperation.qmd
+    - coordination.qmd
+    - polarization.qmd
+    - uncertainty.qmd
+    - rl-agents.qmd
+    - part: manual.qmd
       chapters:
-      - diffusion.qmd
-      - networks.qmd
-      - diffusion-structured.qmd
-      - cooperation.qmd
-      - coordination.qmd
-      - polarization.qmd
-      - uncertainty.qmd
-      - rl-agents.qmd
-    - part: Manual
       - abm.qmd
       - writing.qmd
     - references.qmd

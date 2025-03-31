@@ -4,10 +4,10 @@ Indigenous peoples of the South Pacific Islands have managed coastal mangrove
 forest management to dissipate storm surges and prevent erosion, adaptations
 that have mitigated potential costs of climate change since long before
 human activity-driven (i.e., _anthropogenic_) climate change
-[@Nalau2018;@Pearson2020;@]. 
+[@Nalau2018;@Pearson2020;@McNamara2020]. 
 First peoples of western North America have similarly practiced
 prescribed burns to prevent destructive wildfires during times of drought since
-long before anthropogenic climate change [@Eisenberg2019,@Kolden2019]. 
+long before anthropogenic climate change [@Eisenberg2019;@Kolden2019]. 
 Despite the wide availability of ancient climate change adaptation knowledge 
 and myriad modern innovations, maladaptive responses to climate change often 
 take their place. In the South Pacific,
@@ -32,36 +32,62 @@ in any given sustainability outcome, we focus here on an emerging consensus abou
 set of cognitive and social factors known to affect behavior choice in general,
 and sustainable practices more specifically. 
 
-In fact, this urgent need to
-understand how sustainable behaviors spread in order to develop effective
-interventions forces us social scientists to radically rethink how we
-conceptualize social change to make it rigorous, reliable, and digestible by
-non-social scientists. To support this effort, it will benefit us to frame
-our work with the 17
-[UN Sustainable Development Goals](https://sdgs.un.org/) that provide metrics for
-evaluating progress towards a truly sustainable planetary ecology for all the
-world's people. Recent analyses of progress suggests accelerated transformations
+The cognitive and social factors we
+identify are suitable for inclusion in _agent-based models_ of social behavior
+that we use to deduce the emergent social outcomes we can expect from different
+strategies for social interventions to promote sustainable practices.
+An agent-based model is a general type of model where people are represented as
+autonomous _agents_ who perform behaviors or processes based on their own
+localized, adaptive decisionmaking. In our models of social behavior, these
+agents learn from one another or influence one another's opinion, and use this
+information to make decisions about which behavior they should do. 
+A _social intervention_ (or just _intervention_) for promoting
+sustainability is any concerted effort where those promoting a sustainable
+practice introduces information about how to perform that practice to a
+population. We will analyze and draw on several real-world empirical studies of
+interventions to develop our agent-based models that we in turn will use to
+develop models of interventions in order to deduce which intervention
+strategies are most effective and why in idealized, cost-free settings
+(cost-free at least compared to the cost of real-world social interventions at
+scale). 
+
+The [UN Sustainable Development Goals](https://sdgs.un.org/) help us focus and
+organize our work by providing concrete goals for evaluating progress 
+towards sustainable development for all. These goals include targets for
+institutional development that promotes justice and equality; 
+basic human survival and thriving necessary for people to care and pursue ecological
+protections; and climate action and ecological protections themselves. 
+Unfortunately, progress has been slower than necessary. Recent analyses of
+progress suggests accelerated transformations
 are required to reach goals necessary to avoid increasingly frequent and costly
-climate change disasters [@UnitedNations2023]. Unfortunately, unless things
+climate change disasters [@UnitedNations2023]. Unless things
 change, we can expect to "have 575 million people living in extreme poverty, 600
 million people facing hunger, and 84 million children and young people out of
 school. Humanity will overshoot the Paris climate agreement's 1.5°C 'safe'
 guardrail on...temperature rise. And, at the current rate, it will take 300
-years to attain gender equality" [@Malekpour2023, p. 250]. 
+years to attain gender equality" [@Malekpour2023, p. 250].  
 
 Sustainability, then, has several different dimensions, all of which contribute
 to climate action and environmental protection. 
 I have organized these goals into a coding system called the vIBE system, which
 stands for _vibrant Institutions_ support _Basic_ human needs of people who protect
-the _Environment_. This has two benefits. First, it helps us identify which
-cognitive and social factors are at work in different sustainability foci.
+the _Environment_. All 17 goals and the organization system are illustrated in
+Figure X. Organizing and connecting our work to  has two benefits. First, it helps us identify which cognitive and social factors are at work in different sustainability foci.
 Second, it expands the corpus of existing research on which we draw to
 consolidate our social and cognitive theories of behavior change that we will
 apply to sustainability interventions. 
-A _social intervention_ (or just _intervention_) for promoting
-sustainability is any concerted effort where those promoting a sustainable
-practice introduces information about how to perform that practice to a
-population. 
+
+In the rest of this introductory chapter we expand on the real-world examples
+given above of sustainable adaptations by formally identifying, categorizing,
+and representing different social and cognitive processes at work when people
+learn from, observe, and teach one another, and integrate that with their own
+personal experience.  The urgent need to understand how sustainable behaviors
+spread in order to develop effective interventions forces us social scientists
+to radically rethink how we conceptualize social change to make it rigorous,
+reliable, and digestible by non-social scientists.
+
+
+## Social and cognitive factors in agent-based models of sustainable adaptation
 
 
 
