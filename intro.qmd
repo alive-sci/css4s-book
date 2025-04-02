@@ -4,7 +4,7 @@ Indigenous, local peoples of the South Pacific Islands and other coastal habitat
 
 Here we introduce what we dub *the puzzle of diffusion*: why do some effective, sustainable practices like mangrove forest management fail to diffuse broadly, while other less effective or even maladaptive practices become widespread (@fig-puzzle-of-diffusion)? To answer this, we answer some more basic questions along the way. First, how do people decide what to do, i.e., how does learning work? Second, what is the effect of identity on how well or how likely we are to learn from people of the same or different identity? Third, what is the effect of social structure, i.e., who knows whom, represented as a social network? Agent-based models are useful because they provide a framework for creating rigorous, mechanistic, concrete models of social diffusion of adaptations. They help us deal with the complexity of causation in the real world through strategic selection of causal input variables and model details, which, over several model time steps, lead to social emergent phenomena like the diffusion of climate change adaptations.
 
-![Agent-based models can help us answer the puzzle of diffusion, i.e., why do certain adaptations widely diffuse socially and some do not, with maladaptations often taking their place?](images/clipboard-1606391171.png){#fig-puzzle-of-diffusion width="850"}
+![Agent-based models can help us answer the puzzle of diffusion, i.e., why do certain adaptations widely diffuse socially and some do not, with maladaptations often taking their place?](images/clipboard-1606391171.png){#fig-puzzle-of-diffusion width="950"}
 
 The focus of this course is developing agent-based models that can help us simplify complex combinations of cognitive and social factors to represent only the most relevant ones, and observe the effect of these on simulated outcomes such as the proportion of people adopting adaptive behaviors, or opinion extremism and polarization.
 
@@ -43,7 +43,7 @@ In the mangrove versus seawall example, success-biased learning might favor seaw
 
 To make this more concrete, we *formalize* (i.e., *give formulas for*) these three learning strategies as follows using the example in @fig-learning-illustration. In the example, there is one *focal agent* who is the one doing the observing/learning, labelled with the ID *1*, and three social network neighbors with IDs *2, 3,* and *4.* The focal agent is deciding whether or not to install residential solar. One of his neighbors has installed it, 2. Based on 1's perception, 2 is the wealthiest, represented by four dollar symbols. 3 is perceived to have one dollar and 4 has two dollars.
 
-![Agent 1, the focal agent, is considering whether to install residential solar. The probability agent 1 installs residential solar depends on its social learning strategy.](images/clipboard-1340594084.png){#fig-learning-illustration alt="Agent 1, the focal agent, is considering whether to install residential solar. The probability agent 1 installs residential solar depends on its social learning strategy." width="700"}
+![Agent 1, the focal agent, is considering whether to install residential solar. The probability agent 1 installs residential solar depends on its social learning strategy.](images/clipboard-1340594084.png){#fig-learning-illustration width="700"}
 
 #### Contagion learning
 
@@ -120,7 +120,7 @@ The [UN Sustainable Development Goals](https://sdgs.un.org/) help us focus and o
 
 Sustainability, then, has several different dimensions, all of which contribute to climate action and environmental protection. I have organized these goals into a coding system called the vIBE system: ***v**ibrant **I**nstitutions* support ***B**asic* human needs of people who protect the ***E**nvironment*. All 17 goals and the organization system are illustrated in [@fig-sdg-vibe]. Organizing and connecting our work to has two benefits. First, it helps us identify which cognitive and social factors are at work in different sustainability foci. Second, it expands the corpus of existing research on which we draw to consolidate our social and cognitive theories of behavior change that we will apply to sustainability interventions.
 
-![The 17 United Nations Sustainable Development Goals (SDGs) can be organized into groups for vibrant Institutions (Group I) that provide Basic needs (Group B) required for people to actively work towards Environmental and Ecological protection (Group E)–we dub this the vIBE coding of the sustainable development goals.](images/clipboard-3767214830.png){#fig-sdg-vibe fig-align="center" width="400"}
+![The 17 United Nations Sustainable Development Goals (SDGs) can be organized into groups for vibrant Institutions (Group I) that provide Basic needs (Group B) required for people to actively work towards Environmental and Ecological protection (Group E)–we dub this the vIBE coding of the sustainable development goals.](images/clipboard-3767214830.png){#fig-sdg-vibe fig-align="center" width="900"}
 
 ### Plan {#plan}
 
