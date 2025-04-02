@@ -1,5 +1,6 @@
 /.quarto/
-_book/
+/_book/
 .Rproj.user
 *.html
 *_files*
+/_site/
