@@ -1,4 +1,4 @@
-# How to write a scientific (social behavior modeling) paper
+# Writing
 
 
 One of the most overwhelming challenges for me as a researcher is writing

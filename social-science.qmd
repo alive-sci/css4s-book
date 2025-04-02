@@ -1,0 +1,3 @@
+# Social science for sustainability modeling
+
+With whom we interact and how we learn are essential components in explaining the puzzles of diffusion and belief change that underlie the transition to more sustainable practices. In this section we will review relevant topics in cognitive and social science and demonstrate their use in agent-based models to promote sustainability.

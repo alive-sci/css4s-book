@@ -1,28 +1,131 @@
 # Introduction
 
-Indigenous peoples of the South Pacific Islands have managed coastal mangrove forest management to dissipate storm surges and prevent erosion, adaptations that have mitigated potential costs of climate change since long before human activity-driven (i.e., *anthropogenic*) climate change [@Nalau2018; @Pearson2020; @McNamara2020]. First peoples of western North America have similarly practiced prescribed burns to prevent destructive wildfires during times of drought since long before anthropogenic climate change [@Eisenberg2019; @Kolden2019]. Despite the wide availability of ancient climate change adaptation knowledge and myriad modern innovations, maladaptive responses to climate change often take their place. In the South Pacific, for example, some international aid groups promote sea wall construction instead of mangrove forests, but these are expensive to maintain and can even act like dams, keeping water in once it inevitably breaches [@Piggott-McKellar2020]. Forest management that limits thinning misses an opportunity to prevent destructive wildfires, while clear-cutting can increase atmospheric carbon dioxide and increase the risk of mudslides, possibly due to the polarized nature of interests and opinions in public forest governance [@Swette2023].
+Indigenous, local peoples of the South Pacific Islands and other coastal habitats have sustainably managed mangrove forests to dissipate storm surges and prevent erosion, mitigating potential costs of climate change since long before the anthropocene [@Alongi2002; @Nalau2018; @Pearson2020; @McNamara2020]. First peoples of western North America have similarly practiced prescribed burns to prevent destructive wildfires during times of drought for millennia [@Eisenberg2019; @Kolden2019]. Despite their long-known effectiveness, adaptive practices like these often fail to spread widely. Instead, international development agencies frequently advocate for the construction of seawalls, for example, even though seawalls can exacerbate flooding once breached and incur high maintenance costs [@Piggott-McKellar2020]. Inland forest management is beset by polarization among stakeholders [@Swette2023], resulting in devastating wildfires burning a buildup of fuels or greenhouse gas-intensive clearcuts.
 
-The varied success of different sustainable practices to diffuse or not begs several questions, which we will address in this course. Analyzing these will help us harness the positive factors promoting the spread of sustainable behaviors and so we can avoid the pitfalls that impede adaptation. First, what factors helped sustainable adaptations spread in successful cases? Second, what factors hinder success, leading to maladaptation? Finally, what patterns emerge when we collect and consolidate different studies analyzing these questions? While there are many different cognitive, social, and environmental factors involved in any given sustainability outcome, we focus here on an emerging consensus about a set of cognitive and social factors known to affect behavior choice in general, and sustainable practices more specifically.
+Here we introduce what we dub *the puzzle of diffusion*: why do some effective, sustainable practices like mangrove forest management fail to diffuse broadly, while other less effective or even maladaptive practices become widespread (@fig-puzzle-of-diffusion)? To answer this, we answer some more basic questions along the way. First, how do people decide what to do, i.e., how does learning work? Second, what is the effect of identity on how well or how likely we are to learn from people of the same or different identity? Third, what is the effect of social structure, i.e., who knows whom, represented as a social network? Agent-based models are useful because they provide a framework for creating rigorous, mechanistic, concrete models of social diffusion of adaptations. They help us deal with the complexity of causation in the real world through strategic selection of causal input variables and model details, which, over several model time steps, lead to social emergent phenomena like the diffusion of climate change adaptations.
 
-### Agent-based models of sustainable interventions {.unnumbered}
+![Agent-based models can help us answer the puzzle of diffusion, i.e., why do certain adaptations widely diffuse socially and some do not, with maladaptations often taking their place?](images/clipboard-1606391171.png){#fig-puzzle-of-diffusion width="850"}
+
+The focus of this course is developing agent-based models that can help us simplify complex combinations of cognitive and social factors to represent only the most relevant ones, and observe the effect of these on simulated outcomes such as the proportion of people adopting adaptive behaviors, or opinion extremism and polarization.
+
+## Why agent-based models are useful
+
+Agent-based models (ABMs) provide a structured way to explore complex systems by simulating interactions between autonomous *agents*, i.e., simulated people. In sustainability contexts, ABMs offer a low-cost testbed for understanding how interventions might impact social dynamics and environmental outcomes. For example, @Airoldi2024 demonstrated through regression analysis across that one method for selecting individuals targeted in a public health education campaign resulted in In other worlds, we can use ABMs to deduce how different learning rules, group identities, and social structures shape sustainability outcomes.
+
+A typical ABM simulation cycle includes (@fig-abm-sketch):
+
+-   Initializing agent populations and environmental conditions
+-   Iterative steps where agents select partners, interact, and update behaviors based on outcomes and learning rules
+-   Repeating these steps until specific conditions or thresholds are met
+-   Generating output data for analysis
+
+![Agent-based modeling simulation cycle.](images/clipboard-2271438655.png){#fig-abm-sketch fig-align="center" width="850"}
 
 We will analyze and draw on several real-world empirical studies of interventions to develop our agent-based models that we in turn will use to simulate interventions in order to *deduce* which strategies are most effective for *social interventions* to promote sustainability, and why. A *social intervention* (or just *intervention*) for promoting sustainability is any concerted effort where those promoting a sustainable practice introduces information about how to perform that practice to a population. *Deductive* methods complement \_i strategies are most effective and why in idealized, cost-free settings (cost-free at least compared to the cost of real-world social interventions at scale). Our empirically-motivated models The cognitive and social factors we identify are suitable for inclusion in *agent-based models* of social behavior that we use to deduce the emergent social outcomes we can expect from different strategies for social interventions to promote sustainable practices.
 
-Low-cost experimentation with simulated sustainability social interventions are critical because unless progress is accelerated towards we can expect to "have 575 million people living in extreme poverty, 600 million people facing hunger, and 84 million children and young people out of school. Humanity will overshoot the Paris climate agreement's 1.5°C 'safe' guardrail on...temperature rise. And, at the current rate, it will take 300 years to attain gender equality" [@Malekpour2023, p. 250]. Accelerated transformations are required to reach goals necessary to avoid increasingly frequent and costly climate change disasters [@UnitedNations2023].
+Low-cost experimentation with simulated social interventions to promote sustainability are critical. Unless progress is accelerated towards we can expect to "have 575 million people living in extreme poverty, 600 million people facing hunger, and 84 million children and young people out of school. Humanity will overshoot the Paris climate agreement's 1.5°C 'safe' guardrail on...temperature rise. And, at the current rate, it will take 300 years to attain gender equality" [@Malekpour2023, p. 250]. Accelerated transformations are required to reach goals necessary to avoid increasingly frequent and costly climate change disasters [@UnitedNations2023]. It is not plausible to do real-world experiments at the global scale required to infer which strategies work best in which situations.
+
+In this course we will focus on deducing how between different cognitive and social factors, or other initial conditions, affect simulated sustainability intervention outcomes. We will frame our studies in terms of sustainable development goals, but we will never fit our models to observations. Nonetheless, we will strive to develop models that are amenable to real-world interventions against which the models could be fit and predictions could be compared. It seems this is not done too much in practice yet in sustainability. However, some of our colleagues focused on studying basic processes that underlie cultural transmission do exactly this to explain experimental data and archaeological observations [@Deffner2024], which thereby improves their theory, models, and understanding of cultural evolution in a theory-model-observation cycle. With more time and research effort, this cycle may become commonplace in sustainability.
+
+The urgent need to understand how sustainable behaviors spread in order to develop effective interventions pressures social scientists to make social science more rigorous, reliable, and digestible by non-social scientists. In the rest of this Introduction we review cognitive and social theories of social learning, identity and influence, homophily and core-periphery network structures, and preview the remainder of the course material. For an overview of the course feel free to skip ahead to the [Plan in table format](#plan).
+
+## Social learning strategies
+
+Human kind is set apart by powerful learning and reasoning capabilities [@Witt2024] that enable cultural transmission and accumulation of technologies and practices no other species matches [@Henrich2015]. For our sustainability models, we only need simple models of cognition and learning. It would never be practical to do psychological or cognitive tests in the context of sustainability interventions that targets large populations, for one thing, so we could never compare detailed cognitive assumptions or predictions with reality. For our purposes we will consider three general classes of learning strategy:
+
+1.  **Contagion**: Individuals copy behaviors simply by observing others performing them.
+2.  **Frequency-biased learning**: Individuals adopt behaviors because others are already doing them, creating a conformity effect.
+3.  **Success-biased learning**: Individuals are more likely to adopt behaviors perceived to be successful or beneficial.
+
+In the mangrove versus seawall example, success-biased learning might favor seawalls if influential external actors, who seem successful or wealthy, advocate for them, even if seawalls are ultimately less effective. Mangrove forests might become widely adopted if, on the other hand, frequency-biased learning predominates and many communities have adopted that method.
+
+### Formal social learning models with example
+
+To make this more concrete, we *formalize* (i.e., *give formulas for*) these three learning strategies as follows using the example in @fig-learning-illustration. In the example, there is one *focal agent* who is the one doing the observing/learning, labelled with the ID *1*, and three social network neighbors with IDs *2, 3,* and *4.* The focal agent is deciding whether or not to install residential solar. One of his neighbors has installed it, 2. Based on 1's perception, 2 is the wealthiest, represented by four dollar symbols. 3 is perceived to have one dollar and 4 has two dollars.
+
+![Agent 1, the focal agent, is considering whether to install residential solar. The probability agent 1 installs residential solar depends on its social learning strategy.](images/clipboard-1340594084.png){#fig-learning-illustration alt="Agent 1, the focal agent, is considering whether to install residential solar. The probability agent 1 installs residential solar depends on its social learning strategy." width="700"}
+
+#### Contagion learning
+
+In the contagion learning model, the focal agent's (i.e., the *learner*'s) *teacher* (i.e., interaction partner) is chosen at random. Then, the learner adopts the teacher's behavior with probability $\alpha$, the adoption rate. In this case, then, the probability that 1 adopts residential solar is
+
+$$
+\Pr(1 \text{ adopts solar}) = \alpha \Pr(1 \text{ selects 2 as teacher}) = \alpha \frac{1}{3}.
+$$
+
+More generally, for focal agent $i$ with the set of neighbors $n_i$ ($n_1 = \{2, 3, 4\}$ in the example), where $m_i$ is the set of neighbors who have adopted the adaptive behavior ($m_i = \{2\}$ in the example). We call the adaptive behavior $A$. The general probability of adoption in contagion learning is therefore
+
+$$
+\Pr(i \text{ adopts } A) = \frac{\alpha |m_i|}{|n_i|},
+$$
+
+where the $| \cdot |$ operator counts the number of elements in a set.
+
+#### Frequency-biased learning
+
+In frequency-biased learning there is no interaction partner or teacher chosen. The probability of adoption is only given by the relative frequency of each behavior. The general expression is
+
+$$
+\Pr(i \text{ adopts } A) = \frac{|m_i|}{|n_i|}.
+$$
+
+In our example, then, the probability of installing residential solar under frequency-biased learning is $\frac{1}{3}$.
+
+#### Success-biased learning
+
+In success-biased learning, learners first choose an interaction partner/teacher randomly weighted by observed fitness of their neighbors, which is a generic term for wealth, power, status, etc. In general for this case, the probability that learner $i$ chooses teacher $j$ is
+
+$$
+\Pr(i \text{ chooses } j) = \frac{f_j}{\sum_{k \in n_i} f_k}.
+$$
+
+The probability that $i$ adopts $A$ is then the sum of the probabilities of choosing each neighbor performing $A$ (contained in the set $m_i$),
+
+$$
+\Pr(i \text{ adopts } A) = \frac{\sum_{j \in m_i} f_j}{\sum_{k \in n_i} f_k}.
+$$
+
+In our example, only one neighbor installed residential solar with a fitness (i.e. *wealth* in this example) of 4, while the others have finess 1 and 2. Therefore, $\Pr(1 \text{ adopts } A) = \frac{4}{7}$.
+
+#### Combinations of learning models
+
+There is no reason different learning models cannot be combined. The software we will use in this class, `socmod`, provides flexibility to the user to define their own learning models. The simplest combination of the three learning models above is to add an adoption rate to either frequency- or success-biased learning. In this approach, one could call the behavior selected by the models above could be considered *prospective* or *candidate* behavior to learn, then is actually learned with probability $\alpha$.
+
+For another potentially useful modification, $\alpha$ could be defined at the individual level, say $\alpha_i$, or for *dyads* (i.e., a pair of interacting individuals) , $\alpha_{ij}$, where $i$ is still the focal agent learner, but we have added $j$, representing the selected teacher.
+
+## Identity and Influence
+
+Group identity critically influences social learning. Neuroscience research demonstrates that our brains distinctly respond to individuals identified as part of our group [@Cikara2014], as revealed through fMRI neural imaging (@fig-cikara-mri-image). This ability likely evolved because when humans first emerged about two million years ago, it was much more important for survival to be able to rapidly identify whether someone was a friend or foe based on group markers. Although group membership can affect how we respond to information learned from others, group membership itself is quite plastic, meaning who belongs to which group can be rapidly reconfigured. For example, neural signals of race-based group perception was observed to be suppressed and overridden when individuals were in mixed-race groups created by experimenters that competed against other mixed-race groups in an psychological experimental task [@VanBavel2008].
+
+![Figure 1 reorganized with original caption from Cikara and Van Bavel (2014)](images/clipboard-735263139.png){#fig-cikara-mri-image width="800"}
+
+Studies further show that group identity can strongly influence behavioral choices. For instance, experimental evidence reveals people resist adopting beneficial behaviors if associated with opposing political identities [@EhretConstantino2022], emphasizing how identity can create substantial barriers to sustainability. This general effect of group membership interfering with learning is called *outgroup aversion* [@Smaldino2017Adoption].
+
+## Social networks, homophily, and core-periphery structure
+
+Social structure can significantly impact behavioral diffusion, especially in core-periphery configurations. Core-periphery networks emerge as a response to risk and uncertainty, e.g., in food sharing networks [@Ready2018], so they are hypothesized to also be important in climate change adaptation transmission networks [@Jones2021]. Core-periphery networks can be created by setting appropriate group sizes and *homophily* levels in homophily network models [@Turner2023] or specifying certain connectivity probabilities to the *stochastic block matrix* algorithm for creating structured random graphs [@Rombach2014; @Milzman2023]. Homophily is the measure of how much more likely an individual is to socially connect within their own group versus with a member of a different group. Homophily can range from -1 to +1, where -1 represents no within-group connections and only between-group connections (i.e., *anti-homophily*); 0 represents an equal probability of within- and between-group connections, and +1 represents only within-group connections. We will define homophily as either a global or group-level variable, though homophily could vary individually as well. There are two types of homophily:
+
+-   **Choice Homophily**: Individuals actively prefer interacting with similar others.
+-   **Induced Homophily**: Social interactions limited by historical or external conditions like geography, profession, birthplace, etc.
+
+These structural elements can significantly limit the diffusion of sustainable practices from peripheries, like the mangrove management on smaller islands, to central cores. However, as colleagues and I have showed, this core-periphery structure, defined by moderately high majority-group homophily can actually *promote* the diffusion of adaptations, provided the adaptation is practiced by the minority group [@Turner2023], as is the case for mangrove forest management or prescribed burns. Formal definitions of homophily and core-peripheriness will be given in the networks chapter.
+
+## Course outline in the context of sustainable development
+
+The agent-based modeling approach developed in this course provides a structured way to test the effectiveness of social interventions aimed at promoting sustainable behavior. By formalizing and testing our assumptions about social dynamics, agent-based modeling supports better design and evaluation of policies and programs aimed at driving real-world change. This deductive, experimental approach allows us to explore how cooperation, coordination, identity, homophily, and influence affect the likelihood that beneficial behaviors will spread. In the coming chapters and associated problem sets we will analyze social learning of behaviors and social influence of opinions in various contexts.
+
+The goal is to build up a repertoire of agent-based modeling techniques for incorporating different assumptions about how social learning or influence work, whether group structure is important to these processes, and for modeling social network structure. This repertoire can then be applied to sustainability contexts of interest to understand how different sustainability intervention strategies, such as who should learn about sustainable adaptations first in an educational intervention or how best to assist stakeholder deliberations to reduce opinion polarization that can derail collective adaptation. To choose model components wisely requires an understanding of elements of sustainability, cognitive and social science, network science, and software engineering.
 
 The [UN Sustainable Development Goals](https://sdgs.un.org/) help us focus and organize our work by providing concrete goals for evaluating progress towards sustainable development for all [@fig-sdg-vibe]. These goals include targets for institutional development that promotes basic conditions for human thriving (justice, equality, education, public health, and no poverty) so as to assemble and enable a critical mass of people to participate bringing about sustainable development. People cannot participate in sustainability if they suffer in poverty, from illness, or subjugation by authoritarians–all but the most zealous environmental defenders will fight on when these basic needs are unmet. Since progress has been slower than necessary.
 
-Sustainability, then, has several different dimensions, all of which contribute to climate action and environmental protection. I have organized these goals into a coding system called the vIBE system, which stands for *vibrant Institutions* support *Basic* human needs of people who protect the *Environment*. All 17 goals and the organization system are illustrated in [@fig-sdg-vibe]. Organizing and connecting our work to has two benefits. First, it helps us identify which cognitive and social factors are at work in different sustainability foci. Second, it expands the corpus of existing research on which we draw to consolidate our social and cognitive theories of behavior change that we will apply to sustainability interventions.
+Sustainability, then, has several different dimensions, all of which contribute to climate action and environmental protection. I have organized these goals into a coding system called the vIBE system: ***v**ibrant **I**nstitutions* support ***B**asic* human needs of people who protect the ***E**nvironment*. All 17 goals and the organization system are illustrated in [@fig-sdg-vibe]. Organizing and connecting our work to has two benefits. First, it helps us identify which cognitive and social factors are at work in different sustainability foci. Second, it expands the corpus of existing research on which we draw to consolidate our social and cognitive theories of behavior change that we will apply to sustainability interventions.
 
-![The 17 United Nations Sustainable Development Goals (SDGs) can be organized into groups for vibrant Institutions (Group I) that provide Basic needs (Group B) required for people to actively work towards Environmental and Ecological protection (Group E)–we dub this the vIBE coding of the sustainable development goals.](images/clipboard-3767214830.png){fig-align="center" width="400"}
+![The 17 United Nations Sustainable Development Goals (SDGs) can be organized into groups for vibrant Institutions (Group I) that provide Basic needs (Group B) required for people to actively work towards Environmental and Ecological protection (Group E)–we dub this the vIBE coding of the sustainable development goals.](images/clipboard-3767214830.png){#fig-sdg-vibe fig-align="center" width="400"}
 
-In the rest of this introductory chapter we expand on the real-world examples given above of sustainable adaptations by formally identifying, categorizing, and representing different social and cognitive processes at work when people learn from, observe, and teach one another, and integrate that with their own personal experience. The urgent need to understand how sustainable behaviors spread in order to develop effective interventions forces us social scientists to radically rethink how we conceptualize social change to make it rigorous, reliable, and digestible by non-social scientists.
+### Plan {#plan}
 
-## Cognitive and social factors in agent-based models of sustainable adaptation
+In the rest of the course, we will develop our knowledge of computational social science and agent-based modeling techniques to enable you to pursue independent projects designing sustainability interventions or more general studies of how different cognitive and social factors affect the diffusion of adaptations.
 
-Exceptional cognitive capacities, along with fine-motor-control fingers and adaptations for long-distance running, enabled the unprecedented explosion of the human population in its \~2 million years of existence. All the fancy things we have done and made with these skills now threatens our very existence since over our existence we have developed technologies that could kill us all. At this current inflection point we face large-scale suffering or even extinction if inaction reigns. Therefore we must harness and advance our collective knowledge of collective intelligence [@Centola2022] and adaptation [@GalesicEtAl2023] with a theoretical and computational framework capable of integrating diverse, non-linear processes of social interaction. We call our theoretical framework *Computational Social Science for Sustainability*. In this course we introduce students to *Agent-based Models* of social behavior in the context of sustainability.
+Here is a plan for the following chapters (and the remaining ten-week course):
 
-### Cognitive factors
-
--   The most basic cognitive capacity that we use for building our models of social behavior is the ability to learn from others. Humans have evolved the capacity to intergrate diverse individual experience and socially-acquired information [@Turner2023a]. Humans adaptively weight personal experience against socially-learned information depending on the amount of uncertainty present in one's environment [@Toyokawa2019; @Witt2024].
--   Returning to the South Pacific Island example above, the observation that Indigenous solutions may outperform maladaptive imported solutions is possibly a manifestation of a more general phenomenon that *locally-led* interventions that include the very stakeholders who must participate in the adaptation effort tend to be more successful [@McNamara2020]. There may be many factors contributing to this, including the fact that locally-led interventions may tend to be more appropriate for the locale of interest. Cognitively, though, the fact may be
+{{< include includes/intro-plan-table.qmd >}}

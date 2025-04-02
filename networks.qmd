@@ -1,3 +1,23 @@
-# Social network essentials
+# Social networks
 
-Coming soon!
+
+
+### igraph {.unnumbered}
+
+
+
+
+## Regular networks
+
+
+## Random networks
+
+
+
+## Homophily
+
+
+
+## Core-periphery networks
+
+
