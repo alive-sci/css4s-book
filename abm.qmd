@@ -1,3 +1,35 @@
-# Agent-based models
+# Programming agent-based model analyses
 
-Coming soon!
+In this Manual chapter we will mostly ignore the theoretical motivations for
+doing agent-based modeling to focus on developing the technical skills and
+techniques required to efficiently develop analyses of agent-based model. This
+is the _development cycle_, i.e., the process for developing and analyzing agent-based models. 
+
+1. **Sketch it out:** Write a brief justification and documentation explaining the model. A simple
+"box and arrow" diagram or table of model variables can be a great help to stay
+focused when writing code to implement the model. Specify which learning
+strategies, social networks, initial conditions, stopping conditions, or
+anything else that will need to decide before you write the code to implement
+your model.
+1. **First code draft:** Program the model in computer code. Start small. Develop a simplified version
+of the model first if your idea seems complicated. Use a small population size
+and inspect whether the model dynamics . Prototype the analyses, too, creating
+time series plots for a range of one (or maybe two) of the
+hypothized-most-important, explanatory input 
+model parameters or initial conditions, holding other explanatory variables
+constant to one or a few spot-test values.
+1. **Code review and refactoring:** As you program you will likely 
+need to revise your code just as you would
+revise prose, writing multiple drafts to get the meaning right and clarify your
+ideas as much as possible. Professional software developers call this process
+_refactoring_. As you model the process you're interested in you get
+new insights about it, which will make you want to change the model from what
+you started with. This is fine! This is refactoring. At this point it is good to
+experiment, prototype,
+and tweak until you are sure the model address the problem of interest. Note
+that through the practice of modeling, the problem statement also gets sharpened
+since modeling forces us to specify and thereby clarify our theoretical
+explanations. Prototype all results by analyzing a relatively small number of trials
+(e.g., 5-20) for all (or nearly all) the input variable values to be tested in
+the full analysis.
+1. Write a draft results section with the preliminary results

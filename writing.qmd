@@ -35,3 +35,6 @@ or the Introduction, Methods, Results, and Discussion structure.
 Each of these
 major divisions contain standard types of information about the study. The
 Introduction... 
+
+
+

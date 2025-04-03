@@ -1,3 +1,15 @@
-# Introduction to R programming for agent-based modeling
+# Agent-based model programming in R
+
+To help design effective sustainability interventions we can deduce which 
+candidate intervention strategies are most effective in a
+stylized agent-based models implemented and analyzed _in silico_. To best design
+these models and understand how they work, it helps to understand our chosen
+programming language and leverage available software packages that provides
+useful tools. This includes some select software design concepts, most
+importantly object-oriented programming. All the interacting _agents_ in
+agent-based modeling are instances of one or a few _classes_, which define a
+certain type of object. In other words, agent-based models are inherently
+object-oriented, so we close this chapter on some relevant concpets from 
+the theory of object-oriented programming.
 
 
