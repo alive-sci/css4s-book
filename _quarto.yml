@@ -9,7 +9,6 @@ book:
     - index.qmd
     - intro.qmd
     - programming-intro.qmd
-    - networks.qmd
     - part: social-science.qmd
       chapters:
       - diffusion.qmd

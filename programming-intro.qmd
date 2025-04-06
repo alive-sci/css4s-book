@@ -13,3 +13,258 @@ object-oriented, so we close this chapter on some relevant concpets from
 the theory of object-oriented programming.
 
 
+## Getting Started with R and RStudio
+
+### Install the course package
+
+Before you begin, make sure you’ve installed R and RStudio. We’ll also use a GitHub-hosted package that includes code and templates for this course. This means we will need to have Git installed to enable our computer to access the code on the GitHub servers. Please navigate here to download the Git installer: <https://git-scm.com>.
+
+```{r}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+# install.packages("ggnetwork")
+# install.packages("pak")  # if you don’t already have it; comment out after installation
+# pak::pak("css4s/socmod")  # ditto
+```
+
+### Load the packages
+
+```{r}
+library(socmod)
+library(ggnetwork)
+library(ggplot2)
+```
+
+### Create and initialize agents using `socmod`
+
+Here we will do a quick-start example of how to use `socmod` to make sure everything installed as we expected, and to demonstrate the connection between some theory we covered Monday with the code we'll be working with in this class.
+
+We are going to consider the following situation where Agent 1 is considering installing residential solar (@fig-solar). Blue lines between agents indicates they are socially acquainted enough to learn from one another, i.e., they are socially connected in a social network.
+
+![](images/clipboard-756462474.png){#fig-solar width="800"}
+
+```{r}
+# Create agents...
+# Agent 1 is the focal agent, neighbors 2–4 have different wealth levels (fitness), indicated by the number of dollar symbols each agent has in the drawing.
+
+# We call solar panels here "Adaptive" and not using solar panels the "Legacy" behavior to emphasize the generality of our results.
+
+agent_1 <- Agent$new(behavior = "Legacy", fitness = 1, name = "1")  
+agent_2 <- Agent$new(behavior = "Adaptive", fitness = 4, name = "2")  
+agent_3 <- Agent$new(behavior = "Legacy", fitness = 1, name = "3")  
+agent_4 <- Agent$new(behavior = "Legacy", fitness = 2, name = "4")  
+```
+
+```{r}
+print(agent_2)
+```
+
+### Create a social network
+
+```{r}
+library(igraph)
+
+# Create graph with formula syntax: 1 connected to 2, 3, 4; 3 connected to 4
+socnet <- make_graph(~ 1-2, 1-3, 1-4, 3-2)
+# Vertex names are automatically assigned as character strings: "1", "2", etc.
+print(V(socnet)$name)
+
+```
+
+```{r}
+# Visualize network with base igraph plot.
+plot(socnet)
+```
+
+### Combine agents and network into a model
+
+```{r}
+agents <- list(agent_1, agent_2, agent_3, agent_4)
+abm <- AgentBasedModel$new(agents = agents, network = socnet)
+
+ggnetplot(abm$network) + 
+  geom_edges(linewidth=0.1) + 
+  geom_nodes(color = "#008566", size=4) + 
+  geom_nodelabel_repel(aes(label = name), size = 2) + 
+  theme_blank()   
+
+```
+
+### Success-biased learning
+
+Now that we've seen how to initialize an agent-based model, let's make a cell with all the initialization steps together, then run the model using success-biased learning.
+
+```{r}
+# Focal agent.
+agent_1 <- Agent$new(behavior = "Legacy", fitness = 1, name = "1")  
+# Focal agent neighbors.
+agent_2 <- Agent$new(behavior = "Adaptive", fitness = 4, name = "2")  
+agent_3 <- Agent$new(behavior = "Legacy", fitness = 1, name = "3")  
+agent_4 <- Agent$new(behavior = "Legacy", fitness = 2, name = "4")  
+
+agents <- list(agent_1, agent_2, agent_3, agent_4)
+
+socnet <- make_graph(~ 1-2, 1-3, 1-4, 3-2)
+abm <- AgentBasedModel$new(agents = agents, network = socnet)
+result <- run(abm, 10, success_bias_select_teacher,
+              success_bias_interact, iterate_learning_model)
+
+# Analyze outputs. socmod automatically adds a `t` and `A` column
+# to the output "tibble". 
+
+print(result$output)
+
+ggplot(result$output, aes(x=t, y=A)) + 
+  geom_line() + 
+  xlab("Time step") +
+  ylab("# Adaptive") +
+  theme_classic()
+```
+
+Wait, what's going on here? Where did `success_bias_select_teacher`, `success_bias_interact`, and `iterate_learning_model` come from? They are also provided by the `socmod` package. The documentation for `socmod` is here: <https://css4s.github.io/socmod>, with this example of success-biased learning here: <https://css4s.github.io/socmod/#success-biased-adaptive-learning>.
+
+### Frequency-biased learning
+
+In addition to providing functions for success-biased learning, `socmod` also provides frequency-biased learning functions.
+
+```{r}
+
+
+```
+
+------------------------------------------------------------------------
+
+## Quarto Notebooks and Rendering
+
+### How do Quarto Markdown notebooks work?
+
+-   Run individual code chunks with:
+    -   **Shift + Cmd + Enter** (Mac)\
+    -   **Shift + Ctrl + Enter** (Windows)
+-   These run in the *same R session* as your console. If you define a variable in a chunk, it will also be available in the console.
+-   Rendering the full document starts a **clean R session**.
+
+### Try this in a new `.qmd` file
+
+```{r}
+x <- 42
+```
+
+Now go to your console and type:
+
+```{r}
+x
+```
+
+Did it print 42?
+
+### Render the document and inspect variable persistence
+
+### Why does rendering in a clean session matter?
+
+------------------------------------------------------------------------
+
+## Understanding R Data Types and Functions
+
+### Values, Variables, Lists, and Vectors
+
+In R, everything is built on top of a few basic structures:
+
+-   **Values**: basic data like numbers (`1`, `3.14`), text (`"hello"`), or logicals (`TRUE`, `FALSE`).
+
+-   **Variables**: names you assign to values:
+
+    ```{r}
+    a <- 5
+    name <- "Alice"
+    ```
+
+-   **Vectors**: ordered collections of values of the same type:
+
+    ```{r}
+    v <- c(1, 2, 3)
+    names <- c("Alice", "Bob")
+    ```
+
+-   **Lists**: collections of elements that can be of mixed type:
+
+    ```{r}
+    mylist <- list(id = 1, name = "Alice", scores = c(10, 9, 8))
+    ```
+
+### From Vectors to Data Frames and Tibbles
+
+You can combine vectors into **data frames**, where each vector becomes a column. These are like spreadsheets in R.
+
+```{r}
+df <- data.frame(name = c("Alice", "Bob"), score = c(90, 85))
+```
+
+We often prefer **tibbles** (from the `tibble` package in the `tidyverse`) for modern workflows:
+
+```{r}
+library(tibble)
+tbl <- tibble(name = c("Alice", "Bob"), score = c(90, 85))
+```
+
+More on this in later lectures.
+
+## Encapsulation in agent-based modeling
+
+Our job as scientists and engineers here is to manage complexity in social systems to clarify mechanisms that support or inhibit adaptation. Encapsulation in computer code helps us avoid unnecessary complexity so we can focus on social behavioral complexity that complicates designing sustainability interventions and understanding social behavior. Encapsulation reduces repetition, makes code easier to debug and understand, and encourages modular, clean design. The primary focus of this course is to design interventions to facilitate the widespread adoption of sustainable behaviors using lessons and tools from cognitive and social science. But lessons from cognitive and social science can help us do our research and intervention design jobs better by guiding us to create more ergonomic tools, meaning tools that are easier to quickly pick up and use. We encapsulate computer code, then, because we know, from common sense supported by widely-replicated science, that humans tend to segment information into sets of ~2-8 items for relatively simple subjects, or perhaps ~2-5 things for more complex subjects like ours.  
+
+We'll focus here on two techniques for encapsulation: *functions* and *classes*, presented in that order in the following subsections. *Functions* are reusable chunks of code that perform a specific task. They take inputs (called *arguments*), perform operations on them, and return outputs. *Classes* are collections of *data* and *functions* (i.e., *fields* and *methods*, respectively) about some discrete entity. In `socmod`, we have the [`Agent`](https://css4s.github.io/socmod/reference/Agent.html) and [`AgentBasedModel`](https://css4s.github.io/socmod/reference/AgentBasedModel.html) classes. We create these and other objects in R using the `R6` package.
+
+
+### Functions
+
+Functions let us encapsulate *logic* and processes for their reuse.  
+You define them like this:
+
+```{r}
+square <- function(x) {
+  return(x^2)
+}
+
+square(3)  # returns 9
+```
+
+
+### Classes
+
+## Functional programming style
+
+## Social networks
+
+### igraph {.unnumbered}
+
+
+
+
+### Deterministic networks
+
+
+### Stochastic networks
+
+
+
+#### Homophily networks
+
+
+#### Core-periphery networks
+
+
+
+## Agent-based model analysis
+
+
+### Agents
+
+
+### Agent-based models
+
+
+### Computational experiments
+
+
+### Data analysis
+

@@ -32,9 +32,7 @@ indicating the major logical divisions of the presentation of social behavior
 modeling studies: either the Introduction, Model, Analysis, Discussion structure
 or the Introduction, Methods, Results, and Discussion structure. 
 
-Each of these
-major divisions contain standard types of information about the study. The
-Introduction... 
+More details on all this to come in the next few weeks.
 
 
 
