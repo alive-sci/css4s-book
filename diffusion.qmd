@@ -2,6 +2,7 @@
 
 In the context of sustainability and climate adaptation, behavior change often depends not only on individual decisions but also on the social networks through which information and behaviors spread. This chapter examines how the structure of social networks influences the diffusion of adaptations—behaviors or practices that help people adjust to new risks or environmental conditions.
 
+
 ## Primer on interventions (Lecture 3 10 minutes, Lecture 4 review 5 minutes)
 
 
@@ -58,9 +59,9 @@ This flexible framework will carry through the rest of the course. In the next s
 
 ## Network structure patterns that shape and constrain adaptation
 
-### Extending the model (10 minutes)
 
-Building on the framework above, we now incorporate more realistic structures: **homophily** and **core-periphery organization**. These patterns are common in social systems and can shape diffusion outcomes in ways that are not obvious.
+### The good and the bad of social structure and long-range ties
+
 
 ### Homophily: choice and induced (10 minutes)
 
