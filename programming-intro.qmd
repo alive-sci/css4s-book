@@ -33,19 +33,22 @@ options(repos = c(CRAN = "https://cloud.r-project.org"))
 # pak::pak("css4s/socmod")  # ditto
 ```
 
-### Load the packages
+Next we need to load packages that we use in this document.
 
 ```{r}
-library(socmod)
-library(ggnetwork)
+
+
+
+# tidyverse
 library(ggplot2)
+library(dplyr)
+library(purrr)
+
+# extended tidyverse
+library(ggnetwork)
+library(socmod)
 ```
 
-### A note on Quarto notebooks and rendering
-
-Here we will do a quick-start example of how to use `socmod` to make sure
-everything installed as we expected, and to demonstrate the connection between
-some theory we covered Monday with the code we'll be working with in this class.
 
 We are going to consider the following situation where Agent 1 is considering
 installing residential solar (@fig-solar). Blue lines between agents indicates
@@ -70,117 +73,9 @@ agent_4 <- Agent$new(4, behavior = "Legacy", fitness = 2, name = "4")
 print(agent_2)
 ```
 
-### Create a social network
 
-```{r}
-library(igraph)
+### Quarto Notebooks and Rendering
 
-# Create graph with formula syntax: 1 connected to 2, 3, 4; 3 connected to 4
-socnet <- make_graph(~ 1-2, 1-3, 1-4, 3-2)
-# Vertex names are automatically assigned as character strings: "1", "2", etc.
-print(V(socnet)$name)
-
-```
-
-```{r}
-# Visualize network with base igraph plot.
-plot(socnet)
-```
-
-### Combine agents and network into a model
-
-```{r}
-agents <- list(agent_1, agent_2, agent_3, agent_4)
-abm <- AgentBasedModel$new(agents = agents, graph = socnet)
-
-ggnetplot(abm$get_network()) + 
-  geom_edges(linewidth=0.1) + 
-  geom_nodes(color = "#008566", size=4) + 
-  geom_nodelabel_repel(aes(label = name), size = 2) + 
-  theme_blank()   
-
-```
-
-### Success-biased learning
-
-Now that we've seen how to initialize an agent-based model, let's make a cell
-with all the initialization steps together, then run the model using
-success-biased learning.
-
-```{r}
-# Focal agent.
-agent_1 <- Agent$new(1, behavior = "Legacy", fitness = 1, name = "1")  
-agent_2 <- Agent$new(2, behavior = "Adaptive", fitness = 4, name = "2")  
-agent_3 <- Agent$new(3, behavior = "Legacy", fitness = 1, name = "3")  
-agent_4 <- Agent$new(4, behavior = "Legacy", fitness = 2, name = "4")  
-
-library(igraph)
-
-# Create graph with formula syntax: 1 connected to 2, 3, 4; 3 connected to 4
-socnet <- make_graph(~ 1-2, 1-3, 1-4, 3-2)
-# Vertex names are automatically assigned as character strings: "1", "2", etc.
-print(V(socnet)$name)
-
-
-agents <- list(agent_1, agent_2, agent_3, agent_4)
-abm <- AgentBasedModel$new(agents = agents, graph = socnet)
-
-p <- ggnetplot(abm$get_network()) + 
-  geom_edges(linewidth=0.1) + 
-  geom_nodes(color = "#008566", size=4) + 
-  geom_nodelabel_repel(aes(label = name), size = 2) + 
-  theme_blank()   
-
-print(p)
-
-
-# Create and run trial
-trial <- Trial$new(
-  model = abm,
-  partner_selection = success_bias_select_teacher,
-  interaction = success_bias_interact,
-  iterate = iterate_learning_model
-)
-# trial$run(stop = 10)  # or stop = fixated
-trial$run(stop = fixated)
-
-print(trial$get_observations())
-
-print(trial$get_outcomes())
-
-# View observation data
-print(trial$get_observations())
-
-# Plot number of Adaptive agents over time
-trial$get_observations() %>%
-  dplyr::group_by(t) %>%
-  dplyr::summarise(A = sum(behavior == "Adaptive")) %>%
-  ggplot2::ggplot(aes(x = t, y = A)) +
-  ggplot2::geom_line() +
-  ggplot2::xlab("Time step") +
-  ggplot2::ylab("# Adaptive") +
-  ggplot2::theme_classic()
-```
-
-Wait, what's going on here? Where did `success_bias_select_teacher`,
-`success_bias_interact`, and `iterate_learning_model` come from? They are also
-provided by the `socmod` package. The documentation for `socmod` is here:
-<https://css4s.github.io/socmod>, with this example of success-biased learning
-here: <https://css4s.github.io/socmod/#success-biased-adaptive-learning>.
-
-### Frequency-biased learning
-
-In addition to providing functions for success-biased learning, `socmod` also
-provides frequency-biased learning functions.
-
-```{r}
-
-
-```
-
-## Quarto Notebooks and Rendering
-
-### How do Quarto Markdown notebooks work?
 
 -   Run individual code chunks with:
     -   **Shift + Cmd + Enter** (Mac)
@@ -189,11 +84,13 @@ provides frequency-biased learning functions.
     in a chunk, it will also be available in the console.
 -   Rendering the full document starts a **clean R session**.
 
-Try this in a new `.qmd` file:
+
+Try writing and running this in a new `.qmd` file:
 
 ```{r}
 x <- 42
 ```
+
 
 Now go to your console and type:
 
@@ -201,16 +98,16 @@ Now go to your console and type:
 x
 ```
 
-Did it print 42? If so, congrats, you saw the console-notebook connection in
-action.
+Did it print 42? If so, congrats, you saw the console-notebook connection in action.
 
-The other way to run code in code blocks and see the results is by *rendering*
-the
+The other way to see the results of code blocks is by *rendering* the document into .html and other formats. We can render the document by either clicking the "Render" button in RStudio or by checking "Render on Save" then saving (see @fig-render-options), or use hotkey 
+
+**NOTE:** The console and notebook share an *environment*, which is why code run in the notebook can affect code in the console and vice-versa. This environment is *not* shared with the rendering process, so when you render a document, none of the code run during rendering will affect the code  
 
 #### Web browser method for making PDF of the problem sets
 
-To submit problem sets to Canvas/Gradescope you'll need to create PDF versions
-of the Quarto problem set worksheets.
+To submit problem sets to Canvas/Gradescope you'll need to create PDF versions of the Quarto problem set worksheets. To do this, click the icon with an arrow in front of a little window in the Viewer pane in RStudio (@fig-open-in-browser). This will open the rendered document in your web browser. From there, you can print the document to PDF using the print function in your web browser.
+
 
 ## Quickstart using `socmod`
 
@@ -286,10 +183,9 @@ ggnetplot(abm$get_network()) +
 
 ### Object-oriented programming in R with R6
 
-### Data analysis and visualization in the *tidyverse*
-
--   The [*tidyverse*](https://www.tidyverse.org/) is an agglomeration of the
-    [`ggplot2`](https://ggplot2.tidyverse.org/) data visualization library and
+### A note on `socmod` and the *tidyverse*
+The [*tidyverse*](https://www.tidyverse.org/) is an agglomeration of the
+[`ggplot2`](https://ggplot2.tidyverse.org/) data visualization library and
     several other related data analysis libraries. \[**tidyverse links:** We
     make extensive use of the following
     [*tidyverse*](https://www.tidyverse.org/) libraries. One principle of the
@@ -523,6 +419,7 @@ arguments. Such functions are called higher-order functions.
 
 ### Stochastic networks
 
+
 #### Homophily networks
 
 #### Core-periphery networks
@@ -543,7 +440,7 @@ socmod like so:
 library(ggnetwork)
 library(tidyverse)
 library(purrr)
-
+library(dplyr)
 library(socmod)
 
 
@@ -582,8 +479,9 @@ width="1000"}
 ### Data analysis
 
 ```{r}
-library(socmod)
-library(igraph)
+#| fig-width: 4
+#| fig-asp: 0.5
+
 make_florentine_seed_model <- function(seed_families = c("Medici"),
                                        adaptive_fitness = 1.2,
                                        legacy_fitness = 1,
@@ -615,11 +513,11 @@ trials <- c(
 summary <- summarise_adoption(trials)
 summary_by_label <- summarise_by_label(summary)
 
-plot_summary(summary)
-summary_by_label
-
-library(ggplot2)
-library(dplyr)
+# plot_summary(summary)
+# summary_by_label
+# 
+# library(ggplot2)
+# library(dplyr)
 
 # 1. Summarize trial-level outcomes by label
 trial_summary <- summarise_by_label(summary)
@@ -633,16 +531,16 @@ summary_labeled <- summary %>%
 
 # 3. Compute mean curves for overlay
 mean_lines <- summary_labeled %>%
-  group_by(label_full, t, behavior) %>%
+  group_by(label_full, t, Behavior) %>%
   summarise(mean_count = mean(count), .groups = "drop")
 
 # 4. Build plot
-p <- ggplot(summary_labeled, aes(x = t, y = count, color = behavior)) +
+p <- ggplot(summary_labeled, aes(x = t, y = count, color = Behavior)) +
   # Light individual trial lines
-  geom_line(aes(group = interaction(trial, behavior)), alpha = 0.1) +
+  geom_line(aes(group = interaction(trial, Behavior)), alpha = 0.1) +
   
   # Add bold mean lines
-  geom_line(data = mean_lines, aes(x = t, y = mean_count, color = behavior),
+  geom_line(data = mean_lines, aes(x = t, y = mean_count, color = Behavior),
             linewidth = 1.2, inherit.aes = FALSE) +
   
   # # Add text for success rate in corner
@@ -659,4 +557,6 @@ p <- ggplot(summary_labeled, aes(x = t, y = count, color = behavior)) +
   ylab("Agent count") +
   scale_color_brewer(palette = "Set1") +
   theme_minimal(base_size = 14)
+
+print(p)
 ```
