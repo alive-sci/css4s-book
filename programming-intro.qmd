@@ -18,15 +18,13 @@ words, agent-based models are inherently object-oriented, so we close this
 chapter on some relevant concpets from the theory of object-oriented
 programming.
 
-## Getting started with R and RStudio
+## Getting Started with R and RStudio
 
 ### Install the course package
 
-Before you begin, make sure you’ve installed R and RStudio. We’ll also use a
-GitHub-hosted package that includes code and templates for this course. This
-means we will need to have Git installed to enable our computer to access the
-code on the GitHub servers. Please navigate here to download the Git installer:
-<https://git-scm.com>.
+Before you begin, make sure you’ve installed R and RStudio. The RStudio website
+provides instructions and download links to do both:
+https://posit.co/download/rstudio-desktop/.
 
 ```{r}
 options(repos = c(CRAN = "https://cloud.r-project.org"))
@@ -45,11 +43,144 @@ library(ggplot2)
 
 ### A note on Quarto notebooks and rendering
 
-We use Quarto notebooks as the medium for our problem sets. Quarto notebooks are
-a way to explain and present quantitative analyses in one place. The *code
-blocks* above
+Here we will do a quick-start example of how to use `socmod` to make sure
+everything installed as we expected, and to demonstrate the connection between
+some theory we covered Monday with the code we'll be working with in this class.
 
-#### How do Quarto notebooks work?
+We are going to consider the following situation where Agent 1 is considering
+installing residential solar (@fig-solar). Blue lines between agents indicates
+they are socially acquainted enough to learn from one another, i.e., they are
+socially connected in a social network.
+
+![](images/clipboard-756462474.png){#fig-solar width="800"}
+
+```{r}
+# Create agents...
+# Agent 1 is the focal agent, neighbors 2–4 have different wealth levels (fitness), indicated by the number of dollar symbols each agent has in the drawing.
+
+# We call solar panels here "Adaptive" and not using solar panels the "Legacy" behavior to emphasize the generality of our results.
+
+agent_1 <- Agent$new(1, behavior = "Legacy", fitness = 1, name = "1")  
+agent_2 <- Agent$new(2, behavior = "Adaptive", fitness = 4, name = "2")  
+agent_3 <- Agent$new(3, behavior = "Legacy", fitness = 1, name = "3")  
+agent_4 <- Agent$new(4, behavior = "Legacy", fitness = 2, name = "4") 
+```
+
+```{r}
+print(agent_2)
+```
+
+### Create a social network
+
+```{r}
+library(igraph)
+
+# Create graph with formula syntax: 1 connected to 2, 3, 4; 3 connected to 4
+socnet <- make_graph(~ 1-2, 1-3, 1-4, 3-2)
+# Vertex names are automatically assigned as character strings: "1", "2", etc.
+print(V(socnet)$name)
+
+```
+
+```{r}
+# Visualize network with base igraph plot.
+plot(socnet)
+```
+
+### Combine agents and network into a model
+
+```{r}
+agents <- list(agent_1, agent_2, agent_3, agent_4)
+abm <- AgentBasedModel$new(agents = agents, graph = socnet)
+
+ggnetplot(abm$get_network()) + 
+  geom_edges(linewidth=0.1) + 
+  geom_nodes(color = "#008566", size=4) + 
+  geom_nodelabel_repel(aes(label = name), size = 2) + 
+  theme_blank()   
+
+```
+
+### Success-biased learning
+
+Now that we've seen how to initialize an agent-based model, let's make a cell
+with all the initialization steps together, then run the model using
+success-biased learning.
+
+```{r}
+# Focal agent.
+agent_1 <- Agent$new(1, behavior = "Legacy", fitness = 1, name = "1")  
+agent_2 <- Agent$new(2, behavior = "Adaptive", fitness = 4, name = "2")  
+agent_3 <- Agent$new(3, behavior = "Legacy", fitness = 1, name = "3")  
+agent_4 <- Agent$new(4, behavior = "Legacy", fitness = 2, name = "4")  
+
+library(igraph)
+
+# Create graph with formula syntax: 1 connected to 2, 3, 4; 3 connected to 4
+socnet <- make_graph(~ 1-2, 1-3, 1-4, 3-2)
+# Vertex names are automatically assigned as character strings: "1", "2", etc.
+print(V(socnet)$name)
+
+
+agents <- list(agent_1, agent_2, agent_3, agent_4)
+abm <- AgentBasedModel$new(agents = agents, graph = socnet)
+
+p <- ggnetplot(abm$get_network()) + 
+  geom_edges(linewidth=0.1) + 
+  geom_nodes(color = "#008566", size=4) + 
+  geom_nodelabel_repel(aes(label = name), size = 2) + 
+  theme_blank()   
+
+print(p)
+
+
+# Create and run trial
+trial <- Trial$new(
+  model = abm,
+  partner_selection = success_bias_select_teacher,
+  interaction = success_bias_interact,
+  iterate = iterate_learning_model
+)
+# trial$run(stop = 10)  # or stop = fixated
+trial$run(stop = fixated)
+
+print(trial$get_observations())
+
+print(trial$get_outcomes())
+
+# View observation data
+print(trial$get_observations())
+
+# Plot number of Adaptive agents over time
+trial$get_observations() %>%
+  dplyr::group_by(t) %>%
+  dplyr::summarise(A = sum(behavior == "Adaptive")) %>%
+  ggplot2::ggplot(aes(x = t, y = A)) +
+  ggplot2::geom_line() +
+  ggplot2::xlab("Time step") +
+  ggplot2::ylab("# Adaptive") +
+  ggplot2::theme_classic()
+```
+
+Wait, what's going on here? Where did `success_bias_select_teacher`,
+`success_bias_interact`, and `iterate_learning_model` come from? They are also
+provided by the `socmod` package. The documentation for `socmod` is here:
+<https://css4s.github.io/socmod>, with this example of success-biased learning
+here: <https://css4s.github.io/socmod/#success-biased-adaptive-learning>.
+
+### Frequency-biased learning
+
+In addition to providing functions for success-biased learning, `socmod` also
+provides frequency-biased learning functions.
+
+```{r}
+
+
+```
+
+## Quarto Notebooks and Rendering
+
+### How do Quarto Markdown notebooks work?
 
 -   Run individual code chunks with:
     -   **Shift + Cmd + Enter** (Mac)
@@ -92,7 +223,7 @@ installing residential solar (@fig-solar). Blue lines between agents indicates
 they are socially acquainted enough to learn from one another, i.e., they are
 socially connected in a social network.
 
-![](images/clipboard-756462474.png){#fig-solar width="800"}
+![](images/clipboard-756462474.png){width="800"}
 
 ```{r}
 # Create agents...
@@ -116,10 +247,9 @@ print(agent_2)
 ### Create a social network
 
 To run agent-based models we often want to specify a social network to structure
-agent interactions. We use the [`igraph`](https://r.igraph.org/) 
-library to create social networks, or in some cases we use `socmod` code. 
-We can create networks directly as follows, using the `igraph::make_graph` function.
-
+agent interactions. We use the [`igraph`](https://r.igraph.org/) library to
+create social networks, or in some cases we use `socmod` code. We can create
+networks directly as follows, using the `igraph::make_graph` function.
 
 ```{r}
 library(igraph)
@@ -375,6 +505,11 @@ square(3)  # returns 9
 
 ## Functional programming style
 
+*Functional programming* is an approach to defining behavior and dealing with
+transformations of multidimensional data. In functional programming, functions
+are first-class objects, meaning they can be passed to other functions and
+arguments. Such functions are called higher-order functions.
+
 ## Social networks
 
 ### igraph {.unnumbered}
@@ -387,6 +522,50 @@ square(3)  # returns 9
 
 #### Core-periphery networks
 
+#### The friendship "paradox"
+
+@Feld1991 uses the example friendship network of girls in Marketville to
+demonstrate the friendship paradox. Because of the friendship paradox's
+potential powerful benefit for sustainability interventions, it is available via
+socmod like so:
+
+```{r}
+#| eval: false
+#| number-lines: true
+
+# Load Coleman/Feld network as a ggnetwork, converting from igraph.
+
+library(ggnetwork)
+library(tidyverse)
+library(purrr)
+
+library(socmod)
+
+
+fnet <- get_feld_1991_network()
+components_vec <- components(fnet)$membership
+
+# Convert igraph to ggnetwork...
+# ggfnet <- 
+  
+ggfnet <- ggnetwork(fnet, layout = layout_with_fr(fnet, niter = 200, area = 50)) %>% 
+  # add a column for component membership...
+  mutate(component = forcats::as_factor(components_vec[name]))
+  # and create network plot where nodes are colored by component.
+p <- ggplot(ggfnet, aes(x=x, y=y, xend=xend, yend=yend)) +
+    geom_edges(linewidth = 0.7, color="darkgrey") +
+    geom_nodes(aes(color = component), size = 6.5, alpha = 0.8) +
+    geom_nodetext(aes(label = name), color = "black", size = 3) +
+    theme_blank()
+
+print(p)
+```
+
+![Marketville girls social networks loaded from the \`socmod\` library (Figure 2
+of Feld, 1991, c.f. Coleman
+1961).](images/clipboard-3104143379.png){#fig-marketville
+width="1000"}
+
 ## Agent-based model analysis
 
 ### Agents
@@ -396,3 +575,83 @@ square(3)  # returns 9
 ### Computational experiments
 
 ### Data analysis
+
+```{r}
+library(socmod)
+library(igraph)
+make_florentine_seed_model <- function(seed_families = c("Medici"),
+                                       adaptive_fitness = 1.2,
+                                       legacy_fitness = 1,
+                                       graph = NULL) {
+  if (is.null(graph)) {
+    if (!requireNamespace("netrankr", quietly = TRUE)) {
+      stop("Please install the 'netrankr' package to access the Florentine families network.")
+    }
+    data("florentine_m", package = "netrankr", envir = environment())
+    graph <- igraph::delete_vertices(florentine_m, which(degree(florentine_m) == 0))
+  }
+  
+  nodes <- igraph::V(graph)$name
+  
+  agents <- purrr::map(nodes, function(family) {
+    behavior <- if (family %in% seed_families) "Adaptive" else "Legacy"
+    fitness <- if (behavior == "Adaptive") adaptive_fitness else legacy_fitness
+    Agent$new(id = family, name = family, behavior = behavior, fitness = fitness)
+  })
+  
+  AgentBasedModel$new(agents = agents, graph = graph)
+}
+
+trials <- c(
+  run_trials(50, function() make_florentine_seed_model(c("Medici", "Pazzi")), label = "Medici + Pazzi", stop = fixated),
+  run_trials(50, function() make_florentine_seed_model(c("Medici", "Strozzi")), label = "Medici + Strozzi", stop = fixated)
+)
+
+summary <- summarise_adoption(trials)
+summary_by_label <- summarise_by_label(summary)
+
+plot_summary(summary)
+summary_by_label
+
+library(ggplot2)
+library(dplyr)
+
+# 1. Summarize trial-level outcomes by label
+trial_summary <- summarise_by_label(summary)
+
+# 2. Join success rates into summary and update facet labels
+summary_labeled <- summary %>%
+  left_join(trial_summary, by = "label") %>%
+  mutate(
+    label_full = paste0(label, " (", round(100 * success_rate), "% success)")
+  )
+
+# 3. Compute mean curves for overlay
+mean_lines <- summary_labeled %>%
+  group_by(label_full, t, behavior) %>%
+  summarise(mean_count = mean(count), .groups = "drop")
+
+# 4. Build plot
+p <- ggplot(summary_labeled, aes(x = t, y = count, color = behavior)) +
+  # Light individual trial lines
+  geom_line(aes(group = interaction(trial, behavior)), alpha = 0.1) +
+  
+  # Add bold mean lines
+  geom_line(data = mean_lines, aes(x = t, y = mean_count, color = behavior),
+            linewidth = 1.2, inherit.aes = FALSE) +
+  
+  # # Add text for success rate in corner
+  # geom_text(
+  #   data = trial_summary,
+  #   aes(x = 0, y = max(summary$count), 
+  #       label = paste0(round(100 * success_rate), "% success")),
+  #   color = "black", hjust = 0, vjust = 1.5,
+  #   inherit.aes = FALSE
+  # ) +
+  # 
+  facet_wrap(~ label_full) +
+  xlab("Time step") +
+  ylab("Agent count") +
+  scale_color_brewer(palette = "Set1") +
+  theme_minimal(base_size = 14)
+```

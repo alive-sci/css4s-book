@@ -1,38 +1,41 @@
-# Writing
+---
+editor: 
+  markdown: 
+    wrap: 80
+---
 
+# Writing and project development
 
-One of the most overwhelming challenges for me as a researcher is writing
-research papers. I've been lucky to learn from excellent teachers and currently
-have a network of mentors I can turn to for help. Still, writing is an
-inherently solitary endeavor that is in many ways an exploration, the building
-of a map of information. When we present our scientific work, much of 
-the information already exists in the form of previous work on which we build.
-In terms of information volume, the work we present in scientific papers 
-is relatively miniscule compared to the
-vast wealth of science amassed up to today. However, our work we want to write
-is new to the world, including ourselves even though we created it. This means
-that we need to take special care to explain 
+It is a great feeling to close out one stage of a research project by writing in
+careful detail what we found, how we found it, and why it matters. But one of
+the most overwhelming challenges for me as a researcher, and I believe many
+others, is to write linear, logical, and likable research papers. One secret
+I've learned only recently is that the "writing" starts at the very beginning as
+one is developing a new project. This doesn't mean that the ideas, motivations,
+and plan for research projects don't change as the project goes from idea to
+finished product. But there must be sufficient justification and logic
+underlying a project's motivation and implementation plan. For a while I've been
+familiar with the saying "great writing means great editing", but until recently
+I didn't understand that that means one must constantly be producing content
+(code or prose, figures, tables, etc.) and revising, reworking, recombining, and
+reevaluating our research products.
 
-Good
-scientific writing (1) reviews previous work in the context of our project goals; 
-(2) notes the location of some dark, foggy corners of our current understanding to
-motivate new work we intend to present to the reader; (3) presents the model
-in sufficient detail so the reader can re-produce the model and analysis; (4) 
-presents results by contextualizing them in terms of our research questions 
-and explains _why_ the model outcomes emerged as they did; and finally, (5)
-reviews the findings, the model that produced them, the research questions that
-motivated the model, the impact of the findings for the research questions and
+Good scientific writing contextualizes our research questions and goals by
+introducing existing problems and solutions in a linear, logical way. The
+methods, results, and analyses are presented in sufficient detail so the reader
+can re-produce the model and analysis. Scientific results themselves must be
+contextualized them in terms of our research questions and explains *why* the
+model outcomes emerged as they did. Good writing finishes with a review of the
+findings, the model or methods that produced them, the research questions that
+motivated the study, the impact of the findings for the research questions and
 more broadly for social behavior/sustainability, for social behavioral sciences,
-and even for our general understanding of the universe, as appropriate. 
+and even for our general understanding of the universe, as appropriate.
 
-Scientific papers share a structure that we will use as a template so one need not
-start from scratch. The structure is known as either the IMAD or IMRaD
-structure, which stands for the major section headings of the papers
-indicating the major logical divisions of the presentation of social behavior
-modeling studies: either the Introduction, Model, Analysis, Discussion structure
-or the Introduction, Methods, Results, and Discussion structure. 
+Scientific papers share a structure that we will use as a template so one need
+not start from scratch, called the IMAD (or IMRaD) structure. These acronyms
+stand for the major section headings of research papers corresponding to the
+major logical divisions of the content. IMAD stands for Introduction, Model,
+Analysis, and Discussion, and IMRaD stands for *Introduction*, *Methods*,
+*Results*, *a*nd *Discussion*.
 
-More details on all this to come in the next few weeks.
-
-
-
+More details on all this soon.

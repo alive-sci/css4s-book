@@ -19,8 +19,8 @@ book:
       - rl-agents.qmd
     - part: manual.qmd
       chapters:
-      - abm.qmd
       - writing.qmd
+      - abm.qmd
       - hpc.qmd
     - references.qmd
   
