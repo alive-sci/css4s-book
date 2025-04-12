@@ -261,8 +261,13 @@ More on this in later lectures.
 
 ## Encapsulation in agent-based modeling
 
-Our job as scientists and engineers here is to manage complexity in social
-systems to clarify mechanisms that support or inhibit adaptation. Encapsulation
+Agent-based modeling depends on *encapsulation*, meaning 
+Serendipitously, such specification helps us do our job as scientists and engineers here is to manage complexity in social
+systems to clarify mechanisms that support or inhibit adaptation. 
+
+Agents are created as an *instance* of the [`socmod Agent *class*`](https://css4s.github.io/socmod/reference/Agent.html), which is a comptuer science term for a template for a collection of data and functions. When we create an instance of a class. In R, classes are defined using the `R6` package, which implements an *object-oriented  for R, R was not designed for object-oriented programming no built-in library R6 is an object-oriented system for R that allows for defining classes and methods in a way similar to Python. This gives you more explicit control over encapsulation and inheritance compared to R’s S3/S4 systems.
+
+Encapsulation
 in computer code helps us avoid unnecessary complexity so we can focus on social
 behavioral complexity that complicates designing sustainability interventions
 and understanding social behavior. Encapsulation reduces repetition, makes code
