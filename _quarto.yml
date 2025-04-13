@@ -4,16 +4,18 @@ project:
 book:
   title: "Agent-based modeling for sustainability"
   author: "Matt Turner"
-  date: "3/14/2025"
+  date: "4/13/2025"
   chapters:
     - index.qmd
     - intro.qmd
-    - programming-intro.qmd
-    - part: social-science.qmd
+    - technical-intro.qmd
+    - part: diffusion.qmd
       chapters:
-      - diffusion.qmd
+      - diffusion-intro.qmd
       - cooperation.qmd
       - coordination.qmd
+    - part: beyond-diffusion.qmd
+      chapters:
       - polarization.qmd
       - uncertainty.qmd
       - rl-agents.qmd
@@ -21,7 +23,7 @@ book:
       chapters:
       - writing.qmd
       - abm.qmd
-      - hpc.qmd
+      -  hpc.qmd
     - references.qmd
   
 
@@ -32,11 +34,11 @@ format:
     toc: true
     include-in-header: header.html
     theme: 
-      light:
-        - theme-light.scss
       dark:
         - darkly 
         - theme-dark.scss
+      light:
+        - theme-light.scss
     fontsize: 0.9em
     linestretch: 1.2
   pdf:

@@ -49,7 +49,6 @@ library(ggnetwork)
 library(socmod)
 ```
 
-
 We are going to consider the following situation where Agent 1 is considering
 installing residential solar (@fig-solar). Blue lines between agents indicates
 they are socially acquainted enough to learn from one another, i.e., they are
@@ -73,9 +72,7 @@ agent_4 <- Agent$new(4, behavior = "Legacy", fitness = 2, name = "4")
 print(agent_2)
 ```
 
-
 ### Quarto Notebooks and Rendering
-
 
 -   Run individual code chunks with:
     -   **Shift + Cmd + Enter** (Mac)
@@ -84,13 +81,11 @@ print(agent_2)
     in a chunk, it will also be available in the console.
 -   Rendering the full document starts a **clean R session**.
 
-
 Try writing and running this in a new `.qmd` file:
 
 ```{r}
 x <- 42
 ```
-
 
 Now go to your console and type:
 
@@ -98,16 +93,27 @@ Now go to your console and type:
 x
 ```
 
-Did it print 42? If so, congrats, you saw the console-notebook connection in action.
+Did it print 42? If so, congrats, you saw the console-notebook connection in
+action.
 
-The other way to see the results of code blocks is by *rendering* the document into .html and other formats. We can render the document by either clicking the "Render" button in RStudio or by checking "Render on Save" then saving (see @fig-render-options), or use hotkey 
+The other way to see the results of code blocks is by *rendering* the document
+into .html and other formats. We can render the document by either clicking the
+"Render" button in RStudio or by checking "Render on Save" then saving (see
+@fig-render-options), or use hotkey
 
-**NOTE:** The console and notebook share an *environment*, which is why code run in the notebook can affect code in the console and vice-versa. This environment is *not* shared with the rendering process, so when you render a document, none of the code run during rendering will affect the code  
+**NOTE:** The console and notebook share an *environment*, which is why code run
+in the notebook can affect code in the console and vice-versa. This environment
+is *not* shared with the rendering process, so when you render a document, none
+of the code run during rendering will affect the code
 
 #### Web browser method for making PDF of the problem sets
 
-To submit problem sets to Canvas/Gradescope you'll need to create PDF versions of the Quarto problem set worksheets. To do this, click the icon with an arrow in front of a little window in the Viewer pane in RStudio (@fig-open-in-browser). This will open the rendered document in your web browser. From there, you can print the document to PDF using the print function in your web browser.
-
+To submit problem sets to Canvas/Gradescope you'll need to create PDF versions
+of the Quarto problem set worksheets. To do this, click the icon with an arrow
+in front of a little window in the Viewer pane in RStudio
+(@fig-open-in-browser). This will open the rendered document in your web
+browser. From there, you can print the document to PDF using the print function
+in your web browser.
 
 ## Quickstart using `socmod`
 
@@ -144,9 +150,11 @@ print(agent_2)
 ### Create a social network
 
 To run agent-based models we often want to specify a social network to structure
-agent interactions. We use the [`igraph`](https://r.igraph.org/) library to
-create social networks, or in some cases we use `socmod` code. We can create
-networks directly as follows, using the `igraph::make_graph` function.
+agent interactions. We use the [`R/igraph`](https://r.igraph.org/) library to
+create social networks, or in some cases we use `socmod` code. `igraph` is also
+available for [Python](https://python.igraph.org/en/stable/) and
+[C](https://igraph.org/c/). We can create networks directly as follows, using
+the `igraph::make_graph` function.
 
 ```{r}
 library(igraph)
@@ -184,14 +192,14 @@ ggnetplot(abm$get_network()) +
 ### Object-oriented programming in R with R6
 
 ### A note on `socmod` and the *tidyverse*
+
 The [*tidyverse*](https://www.tidyverse.org/) is an agglomeration of the
 [`ggplot2`](https://ggplot2.tidyverse.org/) data visualization library and
-    several other related data analysis libraries. \[**tidyverse links:** We
-    make extensive use of the following
-    [*tidyverse*](https://www.tidyverse.org/) libraries. One principle of the
-    tidyverse is good documentation. Here are the libraries provided as
-    hyperlinks that can help for reference or to understand more about how they
-    work:
+several other related data analysis libraries. \[**tidyverse links:** We make
+extensive use of the following [*tidyverse*](https://www.tidyverse.org/)
+libraries. One principle of the tidyverse is good documentation. Here are the
+libraries provided as hyperlinks that can help for reference or to understand
+more about how they work:
 
 -   *yo*
 
@@ -358,26 +366,34 @@ More on this in later lectures.
 
 ## Encapsulation in agent-based modeling
 
-Agent-based modeling depends on *encapsulation*, meaning 
-Serendipitously, such specification helps us do our job as scientists and engineers here is to manage complexity in social
-systems to clarify mechanisms that support or inhibit adaptation. 
+Agent-based modeling depends on *encapsulation*, meaning Serendipitously, such
+specification helps us do our job as scientists and engineers here is to manage
+complexity in social systems to clarify mechanisms that support or inhibit
+adaptation.
 
-Agents are created as an *instance* of the [`socmod Agent *class*`](https://css4s.github.io/socmod/reference/Agent.html), which is a comptuer science term for a template for a collection of data and functions. When we create an instance of a class. In R, classes are defined using the `R6` package, which implements an *object-oriented  for R, R was not designed for object-oriented programming no built-in library R6 is an object-oriented system for R that allows for defining classes and methods in a way similar to Python. This gives you more explicit control over encapsulation and inheritance compared to R’s S3/S4 systems.
+Agents are created as an *instance* of the
+[`socmod Agent *class*`](https://css4s.github.io/socmod/reference/Agent.html),
+which is a comptuer science term for a template for a collection of data and
+functions. When we create an instance of a class. In R, classes are defined
+using the `R6` package, which implements an \*object-oriented for R, R was not
+designed for object-oriented programming no built-in library R6 is an
+object-oriented system for R that allows for defining classes and methods in a
+way similar to Python. This gives you more explicit control over encapsulation
+and inheritance compared to R’s S3/S4 systems.
 
-Encapsulation
-in computer code helps us avoid unnecessary complexity so we can focus on social
-behavioral complexity that complicates designing sustainability interventions
-and understanding social behavior. Encapsulation reduces repetition, makes code
-easier to debug and understand, and encourages modular, clean design. The
-primary focus of this course is to design interventions to facilitate the
-widespread adoption of sustainable behaviors using lessons and tools from
-cognitive and social science. But lessons from cognitive and social science can
-help us do our research and intervention design jobs better by guiding us to
-create more ergonomic tools, meaning tools that are easier to quickly pick up
-and use. We encapsulate computer code, then, because we know, from common sense
-supported by widely-replicated science, that humans tend to segment information
-into sets of \~2-8 items for relatively simple subjects, or perhaps \~2-5 things
-for more complex subjects like ours.
+Encapsulation in computer code helps us avoid unnecessary complexity so we can
+focus on social behavioral complexity that complicates designing sustainability
+interventions and understanding social behavior. Encapsulation reduces
+repetition, makes code easier to debug and understand, and encourages modular,
+clean design. The primary focus of this course is to design interventions to
+facilitate the widespread adoption of sustainable behaviors using lessons and
+tools from cognitive and social science. But lessons from cognitive and social
+science can help us do our research and intervention design jobs better by
+guiding us to create more ergonomic tools, meaning tools that are easier to
+quickly pick up and use. We encapsulate computer code, then, because we know,
+from common sense supported by widely-replicated science, that humans tend to
+segment information into sets of \~2-8 items for relatively simple subjects, or
+perhaps \~2-5 things for more complex subjects like ours.
 
 We'll focus here on two techniques for encapsulation: *functions* and *classes*,
 presented in that order in the following subsections. *Functions* are reusable
@@ -391,8 +407,8 @@ classes. We create these and other objects in R using the `R6` package.
 
 ### Functions
 
-Functions let us encapsulate *logic* and processes for their reuse.\
-You define them like this:
+Functions let us encapsulate *logic* and processes for their reuse. You define
+them like this:
 
 ```{r}
 square <- function(x) {
@@ -401,6 +417,11 @@ square <- function(x) {
 
 square(3)  # returns 9
 ```
+
+If you change something about how the function works, this means you are
+changing the function itself. If you simply change the arguments you provide you
+are changing the *function call*, i.e., you are changing how you call the
+function. For example, `square(2)`, `square(142)`, `square()`
 
 ### Classes
 
@@ -418,7 +439,6 @@ arguments. Such functions are called higher-order functions.
 ### Deterministic networks
 
 ### Stochastic networks
-
 
 #### Homophily networks
 
