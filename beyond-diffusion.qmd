@@ -1,15 +1,17 @@
-# Beyond diffusion: opinions, environmental variability, and reinforcement learning 
+# Beyond diffusion 
 
 
 Choosing what to do is not just defined by payoffs, social structure and
 a single social learning strategy, as we modeled it in the previous chapters on
 diffusion. In this part of the notes we expand the scope
-of our social behavior theory to include more features: opinions, uncertainty,
-and a more nuanced learning model called *reinforcement learning*. 
-*Opinions* (aka *beliefs*) shape our expectations about the benefits of 
+of our social behavior theory to include more features: opinions and polarization, uncertainty and its effect on social learning,
+and a more nuanced cognitive learning model called *reinforcement learning*. 
+
+**Opinions** (aka **beliefs**) shape our expectations about the benefits of 
 different behaviors and our openness to learn from others, which in some
 contexts depends on how similar interaction partners are to one another.
-Environmental uncertainty can reduce, remove, or even reverse the benefits of
+
+**Environmental uncertainty can reduce, remove, or even reverse the benefits of
 social learning if environmental variability is unpredictable. 
 If the environment is unpredictable, socially-learned information 
 could become outdated before it is learned, meaning a previously 
@@ -19,15 +21,14 @@ ground every season may be less economical and sustainable than it once was
 given that climate catastrophes occur more frequently, but with unpredictable
 timing. 
 
-Humans are no slaves to socially-learned information, of course. We have
-an extensive repertoire of *genetic* cognitive adaptations for dealing with 
-this sort of uncertainty. We humans
-update our expectations behavioral benefits based on the stream of information
-we experience in the form of learning from others and ,
-accounting for discrepencies between their personal contexts and ours that may
-change whether I benefit more or less than someone else I'm learning from or
-otherwise observing [@Witt2024]. Models that flexibly integrate information
+Models that flexibly integrate information
 to update behavioral outcome expectations that guide behavior are called
-*reinforcement learning* models. 
+*reinforcement learning* models. We humans have
+an extensive repertoire of *genetic* cognitive adaptations for dealing with 
+this sort of uncertainty. We 
+update our expectations behavioral benefits based on the stream of information
+we experience in the form of learning from others while
+accounting for discrepencies between their personal contexts and ours [@Witt2024].
+Humans are no slaves to socially-learned information, of course, so these models get us one step closer to more realistic social learning.
 
 
