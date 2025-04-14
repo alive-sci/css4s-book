@@ -296,7 +296,7 @@ print(trial$get_observations())
 print(trial$get_outcomes())
 
 # Plot adoption of the Adaptive and Legacy behaviors over time.
-socmod::plot_adoption(trial, behaviors = c("Adaptive", "Legacy"))
+socmod::plot_adoption(trial, tracked_behaviors = c("Adaptive", "Legacy"))
 ```
 
 Wait, what's going on here? Where did `success_bias_select_teacher`,
