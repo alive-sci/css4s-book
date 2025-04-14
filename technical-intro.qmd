@@ -499,46 +499,31 @@ width="1000"}
 ### Data analysis
 
 ```{r}
-#| fig-width: 4
-#| fig-asp: 0.5
-
-make_florentine_seed_model <- function(seed_families = c("Medici"),
-                                       adaptive_fitness = 1.2,
-                                       legacy_fitness = 1,
-                                       graph = NULL) {
-  if (is.null(graph)) {
-    if (!requireNamespace("netrankr", quietly = TRUE)) {
-      stop("Please install the 'netrankr' package to access the Florentine families network.")
-    }
-    data("florentine_m", package = "netrankr", envir = environment())
-    graph <- igraph::delete_vertices(florentine_m, which(degree(florentine_m) == 0))
-  }
-  
-  nodes <- igraph::V(graph)$name
-  
-  agents <- purrr::map(nodes, function(family) {
-    behavior <- if (family %in% seed_families) "Adaptive" else "Legacy"
-    fitness <- if (behavior == "Adaptive") adaptive_fitness else legacy_fitness
-    Agent$new(id = family, name = family, behavior = behavior, fitness = fitness)
-  })
-  
-  AgentBasedModel$new(agents = agents, graph = graph)
-}
-
+# Or equivalently.....
 trials <- c(
-  run_trials(50, function() make_florentine_seed_model(c("Medici", "Pazzi")), label = "Medici + Pazzi", stop = fixated),
-  run_trials(50, function() make_florentine_seed_model(c("Medici", "Strozzi")), label = "Medici + Strozzi", stop = fixated)
+  run_trials(
+    10, \() make_florentine_seed_model(c("Medici", "Pazzi")), 
+    label = "Medici + Pazzi, f_A = 1.2", stop = fixated
+  ),
+  run_trials(
+    10, \() make_florentine_seed_model(c("Medici", "Strozzi")), 
+    label = "Medici + Strozzi, f_A = 1.2", stop = fixated
+  )
 )
 
 summary <- summarise_adoption(trials)
 summary_by_label <- summarise_by_label(summary)
 
-# plot_summary(summary)
-# summary_by_label
-# 
-# library(ggplot2)
-# library(dplyr)
+print(summary)
+print(summary_by_label)
+```
 
+
+
+
+
+
+```{r}
 # 1. Summarize trial-level outcomes by label
 trial_summary <- summarise_by_label(summary)
 
@@ -557,21 +542,11 @@ mean_lines <- summary_labeled %>%
 # 4. Build plot
 p <- ggplot(summary_labeled, aes(x = t, y = count, color = Behavior)) +
   # Light individual trial lines
-  geom_line(aes(group = interaction(trial, Behavior)), alpha = 0.1) +
+  geom_line(aes(group = interaction(trial, Behavior)), alpha = 0.05) +
   
   # Add bold mean lines
   geom_line(data = mean_lines, aes(x = t, y = mean_count, color = Behavior),
             linewidth = 1.2, inherit.aes = FALSE) +
-  
-  # # Add text for success rate in corner
-  # geom_text(
-  #   data = trial_summary,
-  #   aes(x = 0, y = max(summary$count), 
-  #       label = paste0(round(100 * success_rate), "% success")),
-  #   color = "black", hjust = 0, vjust = 1.5,
-  #   inherit.aes = FALSE
-  # ) +
-  # 
   facet_wrap(~ label_full) +
   xlab("Time step") +
   ylab("Agent count") +
@@ -580,3 +555,87 @@ p <- ggplot(summary_labeled, aes(x = t, y = count, color = Behavior)) +
 
 print(p)
 ```
+
+
+<!-- ```{r} -->
+<!-- #| fig-width: 4 -->
+<!-- #| fig-asp: 0.5 -->
+
+<!-- make_florentine_seed_model <- function(seed_families = c("Medici"), -->
+<!--                                        adaptive_fitness = 1.2, -->
+<!--                                        legacy_fitness = 1, -->
+<!--                                        graph = NULL) { -->
+<!--   if (is.null(graph)) { -->
+<!--     if (!requireNamespace("netrankr", quietly = TRUE)) { -->
+<!--       stop("Please install the 'netrankr' package to access the Florentine families network.") -->
+<!--     } -->
+<!--     data("florentine_m", package = "netrankr", envir = environment()) -->
+<!--     graph <- igraph::delete_vertices(florentine_m, which(degree(florentine_m) == 0)) -->
+<!--   } -->
+
+<!--   nodes <- igraph::V(graph)$name -->
+
+<!--   agents <- purrr::map(nodes, function(family) { -->
+<!--     behavior <- if (family %in% seed_families) "Adaptive" else "Legacy" -->
+<!--     fitness <- if (behavior == "Adaptive") adaptive_fitness else legacy_fitness -->
+<!--     Agent$new(id = family, name = family, behavior = behavior, fitness = fitness) -->
+<!--   }) -->
+
+<!--   AgentBasedModel$new(agents = agents, graph = graph) -->
+<!-- } -->
+
+<!-- trials <- c( -->
+<!--   run_trials(50, function() make_florentine_seed_model(c("Medici", "Pazzi")), label = "Medici + Pazzi", stop = fixated), -->
+<!--   run_trials(50, function() make_florentine_seed_model(c("Medici", "Strozzi")), label = "Medici + Strozzi", stop = fixated) -->
+<!-- ) -->
+
+<!-- summary <- summarise_adoption(trials) -->
+<!-- summary_by_label <- summarise_by_label(summary) -->
+
+<!-- # plot_summary(summary) -->
+<!-- # summary_by_label -->
+<!-- #  -->
+<!-- # library(ggplot2) -->
+<!-- # library(dplyr) -->
+
+<!-- # 1. Summarize trial-level outcomes by label -->
+<!-- trial_summary <- summarise_by_label(summary) -->
+
+<!-- # 2. Join success rates into summary and update facet labels -->
+<!-- summary_labeled <- summary %>% -->
+<!--   left_join(trial_summary, by = "label") %>% -->
+<!--   mutate( -->
+<!--     label_full = paste0(label, " (", round(100 * success_rate), "% success)") -->
+<!--   ) -->
+
+<!-- # 3. Compute mean curves for overlay -->
+<!-- mean_lines <- summary_labeled %>% -->
+<!--   group_by(label_full, t, Behavior) %>% -->
+<!--   summarise(mean_count = mean(count), .groups = "drop") -->
+
+<!-- # 4. Build plot -->
+<!-- p <- ggplot(summary_labeled, aes(x = t, y = count, color = Behavior)) + -->
+<!--   # Light individual trial lines -->
+<!--   geom_line(aes(group = interaction(trial, Behavior)), alpha = 0.1) + -->
+
+<!--   # Add bold mean lines -->
+<!--   geom_line(data = mean_lines, aes(x = t, y = mean_count, color = Behavior), -->
+<!--             linewidth = 1.2, inherit.aes = FALSE) + -->
+
+<!--   # # Add text for success rate in corner -->
+<!--   # geom_text( -->
+<!--   #   data = trial_summary, -->
+<!--   #   aes(x = 0, y = max(summary$count),  -->
+<!--   #       label = paste0(round(100 * success_rate), "% success")), -->
+<!--   #   color = "black", hjust = 0, vjust = 1.5, -->
+<!--   #   inherit.aes = FALSE -->
+<!--   # ) + -->
+<!--   #  -->
+<!--   facet_wrap(~ label_full) + -->
+<!--   xlab("Time step") + -->
+<!--   ylab("Agent count") + -->
+<!--   scale_color_brewer(palette = "Set1") + -->
+<!--   theme_minimal(base_size = 14) -->
+
+<!-- print(p) -->
+<!-- ``` -->
