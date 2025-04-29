@@ -1,0 +1,13 @@
+adaptive_fitness,seed_set,success_rate,mean_fixation_steps
+1,Medici + Pazzi,0.15,16.91
+1,Medici + Strozzi,0.28,19.679999999999996
+1.2,Medici + Pazzi,0.5,22.660000000000004
+1.2,Medici + Strozzi,0.64,21.89
+1.4,Medici + Pazzi,0.7,18.130000000000003
+1.4,Medici + Strozzi,0.88,17.380000000000003
+1.6,Medici + Pazzi,0.81,17.229999999999997
+1.6,Medici + Strozzi,0.91,14.36
+1.8,Medici + Pazzi,0.92,15.07
+1.8,Medici + Strozzi,0.95,12.58
+2,Medici + Pazzi,0.94,12.47
+2,Medici + Strozzi,0.98,11.94

@@ -33,9 +33,9 @@ The urgent need to understand how sustainable behaviors spread in order to devel
 
 Human kind is set apart by powerful learning and reasoning capabilities [@Witt2024] that enable cultural transmission and accumulation of technologies and practices no other species matches [@Henrich2015]. For our sustainability models, we only need simple models of cognition and learning. It would never be practical to do psychological or cognitive tests in the context of sustainability interventions that targets large populations, for one thing, so we could never compare detailed cognitive assumptions or predictions with reality. For our purposes we will consider three general classes of learning strategy:
 
-1.  **Contagion**: Individuals copy behaviors simply by observing others performing them.
+1.  **Success-biased learning**: Individuals are more likely to adopt behaviors perceived to be successful or beneficial.
 2.  **Frequency-biased learning**: Individuals adopt behaviors because others are already doing them, creating a conformity effect.
-3.  **Success-biased learning**: Individuals are more likely to adopt behaviors perceived to be successful or beneficial.
+3.  **Contagion**: Individuals copy behaviors simply by observing others performing them.
 
 In the mangrove versus seawall example, success-biased learning might favor seawalls if influential external actors, who seem successful or wealthy, advocate for them, even if seawalls are ultimately less effective. Mangrove forests might become widely adopted if, on the other hand, frequency-biased learning predominates and many communities have adopted that method.
 
@@ -44,32 +44,6 @@ In the mangrove versus seawall example, success-biased learning might favor seaw
 To make this more concrete, we *formalize* (i.e., *give formulas for*) these three learning strategies as follows using the example in @fig-learning-illustration. In the example, there is one *focal agent* who is the one doing the observing/learning, labelled with the ID *1*, and three social network neighbors with IDs *2, 3,* and *4.* The focal agent is deciding whether or not to install residential solar. One of his neighbors has installed it, 2. Based on 1's perception, 2 is the wealthiest, represented by four dollar symbols. 3 is perceived to have one dollar and 4 has two dollars.
 
 ![Agent 1, the focal agent, is considering whether to install residential solar. The probability agent 1 installs residential solar depends on its social learning strategy.](images/clipboard-1340594084.png){#fig-learning-illustration width="700"}
-
-#### Contagion learning
-
-In the contagion learning model, the focal agent's (i.e., the *learner*'s) *teacher* (i.e., interaction partner) is chosen at random. Then, the learner adopts the teacher's behavior with probability $\alpha$, the adoption rate. In this case, then, the probability that 1 adopts residential solar is
-
-$$
-\Pr(1 \text{ adopts solar}) = \alpha \Pr(1 \text{ selects 2 as teacher}) = \alpha \frac{1}{3}.
-$$
-
-More generally, for focal agent $i$ with the set of neighbors $n_i$ ($n_1 = \{2, 3, 4\}$ in the example), where $m_i$ is the set of neighbors who have adopted the adaptive behavior ($m_i = \{2\}$ in the example). We call the adaptive behavior $A$. The general probability of adoption in contagion learning is therefore
-
-$$
-\Pr(i \text{ adopts } A) = \frac{\alpha |m_i|}{|n_i|},
-$$
-
-where the $| \cdot |$ operator counts the number of elements in a set.
-
-#### Frequency-biased learning
-
-In frequency-biased learning there is no interaction partner or teacher chosen. The probability of adoption is only given by the relative frequency of each behavior. The general expression is
-
-$$
-\Pr(i \text{ adopts } A) = \frac{|m_i|}{|n_i|}.
-$$
-
-In our example, then, the probability of installing residential solar under frequency-biased learning is $\frac{1}{3}$.
 
 #### Success-biased learning
 
@@ -86,6 +60,32 @@ $$
 $$
 
 In our example, only one neighbor installed residential solar with a fitness (i.e. *wealth* in this example) of 4, while the others have finess 1 and 2. Therefore, $\Pr(1 \text{ adopts } A) = \frac{4}{7}$.
+
+#### Frequency-biased learning
+
+In frequency-biased learning there is no interaction partner or teacher chosen. The probability of adoption is only given by the relative frequency of each behavior. The general expression is
+
+$$
+\Pr(i \text{ adopts } A) = \frac{|m_i|}{|n_i|}.
+$$
+
+In our example, then, the probability of installing residential solar under frequency-biased learning is $\frac{1}{3}$.
+
+#### Contagion learning
+
+In the contagion learning model, the focal agent's (i.e., the *learner*'s) *teacher* (i.e., interaction partner) is chosen at random. Then, the learner adopts the teacher's behavior with probability $\alpha$, the adoption rate. In this case, then, the probability that 1 adopts residential solar is
+
+$$
+\Pr(1 \text{ adopts solar}) = \alpha \Pr(1 \text{ selects 2 as teacher}) = \alpha \frac{1}{3}.
+$$
+
+More generally, for focal agent $i$ with the set of neighbors $n_i$ ($n_1 = \{2, 3, 4\}$ in the example), where $m_i$ is the set of neighbors who have adopted the adaptive behavior ($m_i = \{2\}$ in the example). We call the adaptive behavior $A$. The general probability of adoption in contagion learning is therefore
+
+$$
+\Pr(i \text{ adopts } A) = \frac{\alpha |m_i|}{|n_i|},
+$$
+
+where the $| \cdot |$ operator counts the number of elements in a set.
 
 #### Combinations of learning models
 
@@ -122,10 +122,113 @@ Sustainability, then, has several different dimensions, all of which contribute 
 
 ![The 17 United Nations Sustainable Development Goals (SDGs) can be organized into groups for vibrant Institutions (Group I) that provide Basic needs (Group B) required for people to actively work towards Environmental and Ecological protection (Group E)–we dub this the vIBE coding of the sustainable development goals.](images/clipboard-3767214830.png){#fig-sdg-vibe fig-align="center" width="950"}
 
-### Plan {#plan}
+## Computational social science roots
 
-In the rest of the course, we will develop our knowledge of computational social science and agent-based modeling techniques to enable you to pursue independent projects designing sustainability interventions or more general studies of how different cognitive and social factors affect the diffusion of adaptations.
+One goal and theme of `socmod` is to avoid unneccesary theoretical commitments to either **epidemiological forcing**-style assumptions (e.g., using SI/SIS/SIR) or to **population genetics** (e.g., Kimura--Crow models) analyses that represent social learning as evolutionary selection. The **agent-based social learning** framework provided by socmod accommodates these or other various social behavior models. In the case of diffusion of adaptations, these formalisms share a common mathematical structure of **birth–death processes**.
 
-Here is a plan for the following chapters (and the remaining ten-week course):
+We compare these modeling approaches in two ways: first, through their fixation dynamics under weak selection or forcing, and second, through how they each map to a birth–death framework. This is meant to situate users who think in either formalism to how they can map their domain knowledge onto socmod's framework for agent-based models of social behavior.
 
-{{< include includes/intro-plan-table.qmd >}}
+### Contagion, selection, and social learning
+
+Fixation dynamics arise when a type, trait, or state spreads through a finite population until it completely replaces alternatives. Across epidemiology, population genetics, and social learning, this process can often be formalized using **birth–death models**, where individuals probabilistically transition between types.
+
+The general structure is:
+
+$$
+\frac{dp}{dt} = \text{birth rate} \times (1 - p) - \text{death rate} \times p
+$$
+
+where $p(t)$ is the frequency of the type of interest at time $t$.
+
+- **Birth rate** describes how often new instances of the type arise (e.g., infections, successful adoptions, reproductions).
+- **Death rate** describes how often the type is lost (e.g., recoveries, abandonment, replacement by competitors).
+
+In biological contexts, these are referred to as **birth–death processes**. However, for social learning of adaptive sustainable behaviors, a more accurate description would be **learning–unlearning processes**: individuals can adopt and later abandon behaviors depending on social influences, network structure, and environmental feedback.
+
+Belief dynamics, which govern the spread and change of *internal* mental states rather than *observable* behaviors, differ substantially in mathematical structure. Nonetheless, belief dynamics can also exhibit **asymptotic, closed-form approximations** under appropriate assumptions.
+
+We focus first on behavioral diffusion processes grounded in social learning. Belief dynamics and their distinct formal properties will be introduced and analyzed in the second part of this book.
+
+In this section, we compare how fixation arises under weak selection or weak forcing in three domains: forcing models from epidemiology, population genetics models, and agent-based social learning models.
+
+### Formal Models: Forcing, Genetic Drift, and Success Bias
+
+In epidemiology, the spread of an infectious disease through a population can be captured by systems of ordinary differential equations (ODEs). For a simple SIS (Susceptible–Infected–Susceptible) model, the equations are:
+
+$$
+\frac{dS}{dt} = -\beta S I + \gamma I
+$$
+$$
+\frac{dI}{dt} = \beta S I - \gamma I
+$$
+
+where:
+- $S(t)$ and $I(t)$ are the proportions of susceptible and infected individuals at time $t$,
+- $\beta$ is the transmission rate,
+- $\gamma$ is the recovery rate.
+
+Fixation of the infection (i.e., the infected state reaching $I=1$) occurs when transmission outpaces recovery, roughly when $\beta S > \gamma$. In small populations, stochastic drift also matters, especially when $I$ is small.
+
+In population genetics, the probability of fixation of a new mutant allele can be approximated using Kimura and Crow's theory. In the simplest form under weak selection:
+
+$$
+\text{Fixation probability} \approx p_0 + s(1 - p_0)
+$$
+
+where:
+- $p_0$ is the initial frequency of the mutant allele,
+- $s$ is the selection coefficient (small positive or negative).
+
+In neutral drift ($s=0$), the fixation probability equals $p_0$. When selection is weak but nonzero, the probability is shifted slightly toward the fitter allele.
+
+In social learning models, especially those employing **success-biased learning**, the analogy to selection is direct. Agents are more likely to copy behaviors that have produced higher payoffs or success in the recent past. This introduces a **selection-like bias** in the replication of behaviors:
+
+- **Drift** corresponds to random copying without regard to success.
+- **Selection** corresponds to biased copying favoring higher-payoff behaviors.
+
+Thus, success-biased social learning is mathematically analogous to weak selection in evolutionary models: both introduce a systematic force that, over time, increases the frequency of advantageous types.
+
+
+
+### Fixation with Weak Selection or Forcing
+
+| Concept | Forcing Models (Epidemiology) | Population Genetics (Kimura--Crow) | Social Learning (socmod) |
+|:--|:--|:--|:--|
+| **Entities** | Susceptible/infected states | Alleles at genetic loci | Behaviors or traits in agents |
+| **Dynamics** | Infection spread vs. recovery | Reproduction with drift and weak selection | Social learning with drift and weak biases |
+| **Fixation driver** | Transmission $\beta$ overcoming recovery $\gamma$ | Drift plus selection (fitness differences) | Drift plus learning biases (e.g., success or frequency bias) |
+| **Fixation probability (neutral)** | Equals initial infection fraction | Equals initial allele frequency $p_0$ | Equals initial behavior frequency |
+| **Fixation probability (with weak selection)** | Infection fixates if $\beta > \gamma$ | Approx. $p_0 + s(1-p_0)$ for small selection $s$ | Behavior slightly favored by payoff advantage |
+| **Time to fixation** | Rapid if $\beta \gg \gamma$; stochastic early otherwise | Slow if drift dominates; scales with $N$ | Faster with strong bias; scales with network size |
+| **Role of stochasticity** | Important early, less so later | Dominant under weak selection | Dominant under weak learning biases |
+| **Modeling framework** | Stochastic/deterministic ODEs (SIS, SIR) [@keeling_rohani_2008; @anderson_may_1991] | Wright--Fisher, Moran, diffusion approximations [@crow_kimura_1970; @kimura_1962] | Agent-based simulations with probabilistic rules [@boyd_richerson_1985; @rogers_2003] |
+
+
+- **Forcing models** focus on infection and recovery dynamics.
+- **Population genetics** tracks allele frequency changes via drift and selection.
+- **Social learning** models behavioral adoption via social influence and drift.
+
+### Birth–Death Process Mapping
+
+| System | Birth event | Death event |
+|:--|:--|:--|
+| **Forcing Models (epidemiology, SIS/SIR)** | Infection (Susceptible $\to$ Infected) | Recovery (Infected $\to$ Susceptible) |
+| **Population Genetics (Kimura--Crow)** | Allele reproduction (fitness-dependent) | Allele loss (death or replacement) |
+| **Social Learning (socmod)** | Behavior adoption (social copying or bias) | Behavior loss or switching |
+
+
+All three systems feature:
+- **Birth**: growth of a type or trait.
+- **Death**: loss or replacement.
+- **Drift and bias**: stochastic fluctuations and directional forces.
+
+### socmod framework for many models
+
+**socmod** models, by tuning parameters such as success bias, frequency bias, transmission, and dropout rates, can replicate the core behaviors of both **population genetics** and **epidemiology**.
+
+Key parallels:
+- Strong success bias $\leftrightarrow$ strong selection.
+- Random copying $\leftrightarrow$ neutral drift.
+- Contagion learning $\leftrightarrow$ stochastic infection.
+
+Thus, socmod models offer a flexible platform bridging epidemiology, evolutionary biology, and social dynamics.

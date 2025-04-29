@@ -1,0 +1,108 @@
+## Function that takes another function as an argument
+
+```{r}
+repeat_2_higher_order_func <- function(data, f) {
+  return (c(f(data), f(data)))
+  # c(f(data), f(data))
+}
+
+# \(x) {...} is equivalent to function(x) { ... }; these are 
+# anonymous functions.
+# Expecting to return c(4, 4)
+repeat_2_higher_order_func(data = 2, f = \(x) { return (x * 2) }) 
+```
+
+The above is the representation of a vector printed to screen, so we see that our expectations were matched.
+
+```{r}
+c(4, 4)
+```
+
+### Example of the map (higher-order) function
+
+```{r}
+library(purrr)
+
+# Now get we use map_vec that applies .f to every element of .x,
+# expecting the following to return a vector with elements 3*2 
+# and 3*8, i.e., c(6, 24).
+purrr::map_vec(.x = c(2, 8), .f = \(x) { return(3 * x)})
+```
+
+## Custom objects: R6 classes in socmod
+
+Classes are ways to *encapsulate* diverse distinct, but related, processes, behaviors, data, attributes, and other types of information in a single *object*, i.e., a software representation of an *instance* of that entity. R6 is a library for creating our own custom classes that serve as an abstract template that specifies what distinguishes different types of objects/entities. Below we show first how to create a new agent, i.e., a new instance of the `Agent` class that is provided by `socmod`. After that is the example `SoccerPlayer` class that we developed together in class. 
+
+#### Example R6 class in `socmod` : `Agent`
+
+Below we create a new instance of the `Agent` class using the class *constructor*, the function written `socmod::Agent$new()` below that creates a new instance of the class.
+
+```{r}
+a1 <- socmod::Agent$new(1, name = "Matt", behavior = "Adaptive", fitness=1e6)
+```
+
+We can use the *access operator*, `$` in R, to access the *fields* (i.e., *attributes*) of agent `a1` like so:
+
+```{r}
+print(a1$get_fitness())
+print(a1$get_name())
+print(a1$get_id())
+print(a1$get_behavior())
+```
+
+We will all soon be able to set the neighbors of `a1` and `map` a function over every neighbor, e.g., 
+for use implementing success- or frequency-biased social learning strategies. I tried doing that below before I realized that it's new functionality. It was not in the `refactor` branch of `socmod` that you installed with `pak::pak("CSS4S/socmod@refactor")` when you first compiled/ran the problem set. 
+We'll be able to use this on the second problem set.
+
+```{r}
+# This isn't working as expected, need to follow up.
+print(a1$set_neighbors(c(socmod::Agent$new(id = 2, name = "n1"))))
+
+# neighbors <- a1$get_neighbors()
+# typeof(neighbors)
+# print(neighbors)
+# print(neighbors$agents)
+# print(neighbors)
+# print(neighbors$map(\(a) { print(a) }))
+```
+
+#### Exercise: design and define our own class
+
+In class we started creating our model of a soccer player agent called `SoccerPlayer`,
+defined below. We ran out of time at the end of class to write *methods* for `SoccerPlayer`,
+i.e., ways that a soccer player could interact with the world, or that the world could act upon a soccer player. However we only had time to create a *stub* for two methods. A stub is a minimal chunk of code that does very little to nothing, but doesn't get in the way by causing errors or anything like that. It enables us to document our plans for future development in the exact place where it would happen in the code. 
+
+Below we have stubs for `score_goal` and `get_penalty` methods for in-game behaviors. Other possibilities could include `get_traded` that would change its team and perhaps `get_signed` for cases where a player is a free agent.
+
+
+```{r}
+library(R6)
+
+SoccerPlayer <- R6Class("SoccerPlayer",
+                        
+  public = list(
+    # Listing attributes as fields and setting to zero for their definition.
+    speed = 0.0,  # measured in units of max km/h
+    accuracy = 0.0, # goals per match
+    market_value = 0.0, 
+    aggressiveness = 0.0, # in arbitrary units from 0 (passive) to 1 (furious)
+    team = "",
+    
+    initialize = function(speed = 10, accuracy = 0.5, market_value = 1e6, 
+                          aggressiveness = 0.5, team = "Free agent") {
+      self$speed = speed
+      self$accuracy = accuracy
+    },
+    
+    # Stub two SoccerPlayer class methods...
+    # ...one for scoring a goal in a game...
+    score_goal = function() {},
+    # ...and one for getting a penalty in a game.
+    get_penalty = function() {}
+  )
+)
+
+player <- SoccerPlayer$new()
+
+player
+```

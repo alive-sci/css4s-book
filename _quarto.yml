@@ -27,7 +27,9 @@ book:
     - references.qmd
   
 
-bibliography: /Users/mt/workspace/Writing/library.bib
+bibliography: 
+  - /Users/mt/workspace/Writing/library.bib
+  - references.bib
 
 format:
   html:
