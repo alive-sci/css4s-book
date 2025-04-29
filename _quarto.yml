@@ -36,11 +36,11 @@ format:
     toc: true
     include-in-header: header.html
     theme: 
+      light:
+        - theme-light.scss
       dark:
         - darkly 
         - theme-dark.scss
-      light:
-        - theme-light.scss
     fontsize: 0.9em
     linestretch: 1.2
   pdf:
