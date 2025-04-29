@@ -5,7 +5,7 @@ library(socmod)
 library(magrittr)
 ```
 
-This vignette introduces agent-based modeling in `socmod` starting with basic functional and object-oriented programming in R. It therefore builds on an assumed knowledge of R basics which can be gained by studying, for example, [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/index.html) or other basic R tutorial introductions.
+This chapte introduces agent-based modeling in `socmod` starting with basic functional and object-oriented programming in R. It therefore builds on an assumed knowledge of R basics which can be gained by studying, for example, [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/index.html) or other basic R tutorial introductions.
 
 To model social behavior it helps to have intuitive software tools grounded in an empirically-motivated, self-consistent scientific theory. `socmod` provides those tools, but to put it to best use it's helpful to know how it works, especially for people used to using R in a data science context. Many of the same tools are transferable, especially declarative/functional programming, as is used and encouraged by the [tidy approach in R for Data Science](https://r4ds.hadley.nz/).
 
@@ -17,7 +17,7 @@ To summarize, objects are a way to track and modify the state of different softw
 
 In `socmod`, we define custom R objects for agent-based models of social behavior using the `R6Class` method that creates a new object type, i.e., a new *class*. We use tidy-style functional programming where helpful to represent model features and dynamics.
 
-In the remainder of this vignette, I will first review variable assignment and data structures in R including vectors, lists, data.frames, and tibbles. We then review relevant topics in functional programming, then demonstrate how to create custom classes in R with the library [R6](https://r6.r-lib.org/). This tutorial then closes with a demonstration of a simple four-agent agent-based model of social behavior, kept simple to highlight the functional and object-oriented design patterns in `socmod`, representing `Agent`, an `AgentBasedModel`, and `Trial`classes defined using the [`R6Class` function](https://r6.r-lib.org/reference/is.R6.html?q=r6class#ref-usage).
+In the remainder of this chapter, I will first review variable assignment and data structures in R including vectors, lists, data.frames, and tibbles. We then review relevant topics in functional programming, then demonstrate how to create custom classes in R with the library [R6](https://r6.r-lib.org/). This tutorial then closes with a demonstration of a simple four-agent agent-based model of social behavior, kept simple to highlight the functional and object-oriented design patterns in `socmod`, representing `Agent`, an `AgentBasedModel`, and `Trial`classes defined using the [`R6Class` function](https://r6.r-lib.org/reference/is.R6.html?q=r6class#ref-usage).
 
 ## Data collection types in R
 
@@ -525,7 +525,7 @@ p <- ggplot(trials_success_rate,
   guides(color = guide_legend(title = "Learning strategy")) +
   ggtitle("Adoption rate = 0.6, drop rate = 0.2")
 
-ggsave("vignettes/resources/adaptive_fitness_experiment.png", p, 
+ggsave("adaptive_fitness_experiment.png", p, 
        width = 5, height = 3)
 ```
 
@@ -574,7 +574,7 @@ p <- ggplot(trials_success_rate,
   guides(color = guide_legend(title = "Learning strategy")) +
   ggtitle("Adaptive fitness = 1.4, drop rate = 0.2")
 
-ggsave("vignettes/resources/adoption_rate_experiment.png", 
+ggsave("adoption_rate_experiment.png", 
        p, width=5, height=3)
 ```
 
