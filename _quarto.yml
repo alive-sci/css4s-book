@@ -9,6 +9,7 @@ book:
     - index.qmd
     - intro.qmd
     - technical-intro.qmd
+    # - networks.qmd
     - part: diffusion.qmd
       chapters:
       - diffusion-intro.qmd
