@@ -5,7 +5,7 @@ library(socmod)
 library(magrittr)
 ```
 
-This chapte introduces agent-based modeling in `socmod` starting with basic functional and object-oriented programming in R. It therefore builds on an assumed knowledge of R basics which can be gained by studying, for example, [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/index.html) or other basic R tutorial introductions.
+This chapter introduces agent-based modeling in `socmod` starting with basic functional and object-oriented programming in R. It therefore builds on an assumed knowledge of R basics which can be gained by studying, for example, [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/index.html) or other basic R tutorial introductions.
 
 To model social behavior it helps to have intuitive software tools grounded in an empirically-motivated, self-consistent scientific theory. `socmod` provides those tools, but to put it to best use it's helpful to know how it works, especially for people used to using R in a data science context. Many of the same tools are transferable, especially declarative/functional programming, as is used and encouraged by the [tidy approach in R for Data Science](https://r4ds.hadley.nz/).
 

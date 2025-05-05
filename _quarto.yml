@@ -4,17 +4,19 @@ project:
 book:
   title: "Agent-based modeling for sustainability"
   author: "Matt Turner"
-  date: "4/28/2025"
+  date: "4/29/2025"
   chapters:
     - index.qmd
     - intro.qmd
     - technical-intro.qmd
-    # - networks.qmd
     - part: diffusion.qmd
       chapters:
       - diffusion-intro.qmd
-      - cooperation.qmd
-      - coordination.qmd
+      - dyad_dependent.qmd
+      # - cooperation.qmd
+      - correlative-coordination.qmd
+      # - coordination.qmd
+      - complementary-coordination.qmd
     - part: beyond-diffusion.qmd
       chapters:
       - polarization.qmd

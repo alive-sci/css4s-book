@@ -1,0 +1,47 @@
+# Diffusion of dyad-dependent coordination behavior
+
+> In this section, we introduce coordination problems, where an individual's success depends not just on their own behavior but also on their partner's behavior. We distinguish two types: *correlative coordination*, where matching behaviors are beneficial (with *cooperation* as a key example), and *complementary coordination*, where different but complementary behaviors are needed. Both require social norms to stabilize successful outcomes.
+
+Coordination problems involve *dyad-dependent payoffs*, unlike the *dyad-independent payoffs* discussed in the previous chapter.  
+In the diffusion of sustainable, dyad-independent adaptations, only an individual's behavior determined their payoff.  
+For example, sustainable mangrove forest management provides climate change adaptation benefits regardless of whether nearby communities also adopt the practice.
+
+When the benefits of a behavior depend on others' behaviors, we have *dyad-dependent* payoffs.  
+An individual's success depends on both their own behavior and their partner's behavior.  
+We can still use the social learning–interaction–behavior update loop to model diffusion, with one key adjustment: the *interaction* block must now compute payoffs based on pairs of behaviors, not individuals alone.
+
+We distinguish two broad types of dyad-dependent behavior:
+
+- **Correlative coordination**  
+- **Complementary coordination**
+
+In **correlative coordination**, payoffs are maximized when partners match behaviors.  
+**Cooperation is one type of correlative coordination**, where mutual cooperation yields the best outcomes but individuals are tempted to defect for short-term gain.  
+However, not all correlative coordination problems involve temptation: sometimes simply matching behaviors is sufficient for success.
+
+A classic example of a cooperation problem is the *Prisoner's Dilemma*.  
+Two individuals must each decide whether to cooperate or defect.  
+If both cooperate, they receive moderate benefits.  
+If one defects while the other cooperates, the defector gains more while the cooperator loses.  
+If both defect, both suffer relative losses.  
+Although mutual cooperation would be best, the temptation to defect creates tension between individual and collective interests.
+
+In **complementary coordination**, payoffs are maximized when partners perform *different but complementary* behaviors.  
+For example, in ballroom dance, without a shared convention, partners might both step forward and collide or both step back and lose contact.  
+Social norms, such as men stepping forward first and women stepping back, solve the coordination problem by prescribing complementary roles.
+
+Norms play critical roles in both types of coordination:
+- In cooperation, norms suppress defection and sustain mutual cooperation.
+- In complementary coordination, norms establish role expectations and prevent chaos.
+
+Both cooperation and complementary coordination involve dyad-dependent payoffs, but differ in the behaviors required for success:  
+cooperation favors matching actions, while complementary coordination favors complementary but distinct actions.
+
+## Summary
+
+| Type | Best outcome | Risk/problem | Role of norms |
+|:---|:---|:---|:---|
+| Correlative coordination | Matching behaviors | Miscoordination if individuals choose differently | Establish expectations for matching behaviors |
+| Cooperation (a type of correlative coordination) | Mutual cooperation (matching behaviors) | Temptation to defect for personal gain | Suppress defection, reinforce cooperation |
+| Complementary coordination | Complementary but different behaviors | Confusion over role assignment | Establish who performs which complementary role |
+
