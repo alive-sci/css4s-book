@@ -380,6 +380,23 @@ cat("\nAfter three games...", "\nThe Whales have won",
     whales$wins, "games and the Squirrels have won", squirrels$wins)
 ```
 
+## An aside on copy vs reference semantics in R: assignment and mutation
+
+When you change something in R, sometimes R makes a copy of the object so the original stays the same, and sometimes it changes the object by reference, meaning it updates the original directly. Understanding whether an operation creates a new copy or modifies an object in place (called mutation) is important because it affects whether you need to assign the result back to a variable or not. Even though this idea is usually taught in more advanced programming, it’s useful for beginners working with modeling and simulation because different parts of R (like data frames vs. agent-based models) follow different rules, and knowing which is which can help avoid confusing bugs.
+
+### 1. The underlying tension: how R handles object copying and modification
+
+At the heart of R’s behavior lies a subtle technical distinction: whether an object is *copied* or *modified in place* when you change it. By default, R uses **copy-on-modify semantics**, meaning that if you change an object, R creates a new copy behind the scenes and leaves the original unchanged. This protects your data from unintended side effects and reflects R’s origins as a functional programming language for statistics. But as R evolved to support more object-oriented programming and to interface with other languages like C and C++, it introduced types of objects—such as environments, external pointers, and R6 classes—that instead use **reference semantics**. With these objects, changes happen directly to the object itself without making a copy. Internally, R’s i nterpreter keeps track of when it needs to copy or reuse memory, but these mechanics aren’t always visible, which can lead to surprises when working with more complex objects.
+
+### 2. A practical guide for navigating copy and reference semantics
+
+For most core R data types—vectors, lists, data frames—you can assume that R makes a copy whenever you modify an object. But for certain kinds of objects, especially environments, **R6 classes** (used in `socmod`), and graphs from the **igraph** package, the behavior is different: these follow **reference semantics**, meaning they’re modified directly. In `socmod`, all models and agents are implemented using R6 classes, so when you call something like `model$set_parameter("n_agents", 100)`, the model’s state is updated directly and immediately—no need to reassign `model <- ...`. This makes working with simulations feel more natural, but it also means that habits from working with regular R objects don’t fully apply. A simple rule of thumb: if it’s an R6 object or a special object like an igraph graph, expect it to behave by reference; otherwise, expect copy-on-modify.
+
+### 3. How igraph fits in: working with C-backed graphs in R
+
+Much of **igraph** isn’t written in R itself, but in another programming language called **C**. C allows developers to write code that’s much faster and more efficient than what’s possible in R alone. This efficiency is great for users—igraph can handle large networks quickly—but it also introduces a subtle complication to how we work with graphs in R. When you modify an igraph object, you’re actually asking C code to change the graph behind the scenes. But instead of directly changing the graph you already have, igraph’s functions usually return a **new graph object** with the changes applied. This means that even though igraph mostly follows **reference semantics** (where an object can be updated without copying everything), you still need to **explicitly reassign the result of a modification** to keep the updated graph. It’s different from how `socmod`’s models and agents work: those are built with R6 classes, which really do modify objects “in place” without needing reassignment.
+
+
 ## Agent-based models of social behavior
 
 Here we develop our first agent-based models of social behavior. We'll start small, with the following four-household network of solar panel electrification using only success-biased learning (@fig-four-agent-example). Then we'll do a detailed comparison of different social learning strategies with different parameterizations.
