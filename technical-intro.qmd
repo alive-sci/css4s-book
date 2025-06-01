@@ -1,4 +1,4 @@
-# Techniques for socmod ABM development
+# Computational techniques for agent-based modeling
 
 ```{r setup, include=FALSE}
 library(socmod)
@@ -422,7 +422,7 @@ mps <- make_model_parameters(
 cabm <- make_abm(mps); 
 cabm$get_agent(2)$set_behavior("Adaptive"); 
 trial <- run_trial(cabm, stop = fixated)
-plot_adoption(trial, tracked_behaviors = c("Legacy", "Adaptive"))
+plot_prevalence(trial, tracked_behaviors = c("Legacy", "Adaptive"))
 
 ```
 
@@ -439,7 +439,7 @@ cabm <- make_abm(mps)
 cabm$get_agent(2)$set_behavior("Baglowie"); 
 
 trial <- run_trial(cabm, stop = fixated, adaptive_behavior = "Baglowie")
-plot_adoption(trial, tracked_behaviors = c("Legacy", "Baglowie"))
+plot_prevalence(trial, tracked_behaviors = c("Legacy", "Baglowie"))
 ```
 
 ### Example: comparison of learning strategies and parameters

@@ -38,4 +38,81 @@ major logical divisions of the content. IMAD stands for Introduction, Model,
 Analysis, and Discussion, and IMRaD stands for *Introduction*, *Methods*,
 *Results*, *a*nd *Discussion*.
 
-More details on all this soon.
+Below is a potentially useful strategy for initiating a new article on a
+computational model of social behavior. The cheat sheet guide in
+@fig-paper-sections serves as a checklist and template for the abstract and each
+section. Follow these guidelines to take the guesswork out of article
+development and stay focused on the most important creative work: developing a
+computational analysis of an important social behavior system important for
+promoting sustainability, and communicating it clearly to your audience to
+maximize the impact of your work.
+
+![**Follow these steps to efficiently structure, outline, and write the first draft of a scientific or practical article.**](images/writing-fig-paper-sections.png){#fig-paper-sections
+width="1000" .lightbox}
+
+## Steps to an article
+
+You can follow this guide as a checklist to planning, developing, and publishing
+scientific or policy articles that harness computational models of social
+behavior, perhaps transferable to related computational studies:
+
+1.  Write the very first "draft" of the paper in the form of an *Abstract +
+    Outline*. The abstract should be about 200 words or less. The Outline should
+    be divided into the major IMAD/IMRaD sections. See @fig-paper-sections for a
+    summary.
+2.  Develop a *model prototype*, i.e., a first draft of software implementation.
+    Then perform a *preliminary analysis*, i.e., some minimal visualization
+    comparing outcomes over a set of systematically varied model parameters,
+    i.e., input explanatory variables that affect social diffusion of
+    adaptations or other emergent social phenomena.
+3.  Write a complete first draft of the paper that includes about one paragraph
+    for every bullet point in @fig-paper-sections. The bullet points are
+    intentionally unordered: in this framework, the presentation order of
+    information is flexible and should be tailored specifically for each
+    project. The Model section should contain tables that summarize model
+    parameters and output measures, and describe the computational experiment
+    design. The Analysis section should be based on the preliminary analysis,
+    with clearly annotated scientific figures and minimal captions for each
+    figure.
+4.  Revise paper over several readings and small, iterative changes. Experiment
+    with alternative visualizations. Ensure all technical terms are introduced
+    first as prose in the Introduction, then formally in the Model section. Make
+    sure the system is specified in sufficient detail in the Introduction so the
+    sustainability context is clear for the reader. Make sure the reader could
+    implement the model on their own if all they did was read the Model section.
+5.  Publish the paper. Before sending a journal article to a journal, post code
+    to GitHub. Write a README.md to be displayed to visitors to your GitHub
+    project repo. The README can serve to connect the paper's presentation of
+    the model and analysis with the code that implemented the model analysis. If
+    you need to anonymize your repository, for example to anonymize a paper
+    submission, try the free tool [Anonymous
+    Github](https://anonymous.4open.science/). For publishing in journals,
+    [prepare a cover
+    letter](https://www.google.com/search?q=how+to+write+a+journal+cover+letter&rlz=1C5GCEM_en&oq=how+to+write+a+journal+cover+letter&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIGCAUQRRhAMgYIBhBFGEAyBggHEEUYQNIBCDM0MDdqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+    that explains to the editors what the paper says, why it is a good fit for
+    the journal, and suggest potential reviewers.
+
+## Appendix
+
+Below we include the CSS4S authorship and acknowledgement policy. One thing I
+love about this work is working with other scientists. In situations where work
+is co-produced, it's important to understand how our work will be recognized
+either in authorship or other explicit acknowledgement in published materials.
+In general my colleagues and I operate on the following authorship and
+acknowledgement policy. It states "two hours contributing to discussions" or
+other efforts are sufficient for authorship, plus editing of the final draft
+before submission. This is based on participation in roughly two brainstorming
+sessions.
+
+### Authorship and Acknowledgement Policy
+
+For collaborative projects such as course notes, preprints, or research papers,
+authorship is offered to all participants who spend at least two hours
+contributing to discussions about the paper or chapter, and who review or edit
+at least one paragraph of the final submission. Students, research assistants,
+and teaching assistants who meet these criteria will be listed as co-authors or
+credited appropriately. For any formal book or published work developed from
+these materials, authorship will be limited to those who contribute
+substantially to the conception, writing, and organization of the book as a
+whole. Other contributors to related projects, class notes, or supporting
+materials may be recognized in the acknowledgments.

@@ -9,24 +9,10 @@ book:
     - index.qmd
     - intro.qmd
     - technical-intro.qmd
-    - part: diffusion.qmd
-      chapters:
-      - diffusion-intro.qmd
-      - dyad_dependent.qmd
-      # - cooperation.qmd
-      - correlative-coordination.qmd
-      # - coordination.qmd
-      - complementary-coordination.qmd
-    - part: beyond-diffusion.qmd
-      chapters:
-      - polarization.qmd
-      - uncertainty.qmd
-      - rl-agents.qmd
-    - part: manual.qmd
-      chapters:
-      - writing.qmd
-      - abm.qmd
-      -  hpc.qmd
+    - writing.qmd
+    - diffusion.qmd
+    - cooperation.qmd
+    - unfairness.qmd
     - references.qmd
   
 
