@@ -1,12 +1,201 @@
 # Modeling the origins of persistent gender inequality
 
-todo: abstract + outline
+In the United States, the gender pay gap has narrowed, but even highly-trained
+female professionals continue to shoulder more household and childcare
+demands than their husbands. This follows an unfortunate general trend in the
+United States elsewhere: gender equality has proceeded in fits and starts. 
+Women could not vote until the 19th Amendment
+became law in the United States
+([history](https://www.brennancenter.org/our-work/research-reports/19th-amendment-explained),
+[timeline](https://www.americanbar.org/groups/public_education/programs/19th-amendment-centennial/toolkit/suffrage-timeline/)); 
+in Brazil, the other large democracy of the
+Americas, [women could not vote until
+1932](https://en.wikipedia.org/wiki/Women%27s_rights_in_Brazil). 
+Here I introduce a
+agent-based social behavior model of bargaining for 
+the division of household labor. Simulated people (i.e., *agents*) 
+have one of two genders and different employment levels. 
+This model generates the emergence of
+social norms with different amounts of social "inertia" that 
+maintain gender inequality in household chore demands. 
+We can use this model to predict 
+how various social factors affect the efficacy of interventions
+to promote equality in the division of household chores. 
+We show here how the model can be used to
+calculate the relative difference in effort required to change household chore
+norms depending on, e.g., the initial strength of the norm, the underlying 
+social network that structures male-female partner selection, and
+individual-level variation in stubbornness or other cognitive traits. This
+approach is important because it provides a mechanistic explanation of how
+these, and other norms for inequality, emerge and persist, and provides a
+testbed strategy to help identify the most theoretically effective 
+strategies to achieve real-world progress.
 
 ## Introduction
 
+Despite progress towards equal pay for equal work and equal opportunities for
+women, even high-achieving women find themselves disproportionately
+shouldering cleaning, organizational, and childrearing chores: "I am the mom
+who does all the things. I do a majority of parenting, a majority of household
+management...I pay our bills on time, I deal with our car, I deal with sh*t
+when it breaks...I pick up his laundry, I pick up his prescriptions, I remind
+him about doc appointments," says a professor on a "Facebok page dedicated to
+mothers in academia." This post comes from a popular article on this subject by 
+Cailin O'Connor, Chancellor’s Professor in the Department of Logic and
+Philosophy of Science at UC Irvine, "Gendered Division of Labor Served a
+Purpose.  To Make Progress, Don’t Erase It. Replace It." Prof. O'Connor is also
+a computational scientist who has applied her training in logic and philosophy
+to address a number of pressing issues: here we focus on presenting the model
+and analysis presented in her book
+on the *Origins of Unfairness* [@OConnor2019Origins], framed in terms of the UN
+Sustainable Development Goals with the models developed in `socmod`. We
+summarize selections of the book to distill it for our purposes in promoting
+sustainable outcomes, which necessarily are equitable, just, and *fair* outcomes
+across gender or any other social categories. 
+
+Theoretically, division of labor exists to multiply efforts contributed by two
+or more people working together, whether division is based on gender or other
+group marker (e.g., certifications indicating expertise in skilled labor, job
+title, company, etc.). However, if the bonus spoils gained from dividing labor
+are shared unequally in a majority of couples in a population, that population
+may develop a *social norm*, i.e., a heuristic "cognitive shortcut" for deciding
+how labor should be divided that can be difficult to change due to cognitive
+effects like biased assimilation or belief repulsion that can cause individuals
+to ignore or retreat from new ways of doing things, even if they can somehow be
+shown to be objectively better. Deciding who does which type of labor and how
+much they receive from different divisions of labor is a type of *coordination
+problem*, just as cooperation was in the previous chapter. Extra value can be
+gained when behaviors complement one another, unlike cooperation, where extra
+value can be gained when people do the same behavior as one another. We
+therefore call it a *complementary* coordination problem. We therefore can apply
+the same evolutionary game theory approach to *household division of labor* as
+we used in our spatial model of sustainable groundwater cooperation in the
+previous chapter. 
+
+In mixed-gender household bargaining, we assume that
+domestic partners divide labor along two dimensions: how much effort each partner
+should put towards working a job outside the home and how much effort to 
+devote to household chores. Let's start with a simpler example of gendered
+complementary coordination to illustrate the model: partner dance. 
+When women and men partner up for a dance, they need not deliberate and decide
+who will lead and follow before the music starts [@OConnor2019Origins]. 
+The cultural norm that "women follow" is 
+a heuristic that does the thinking for them. We can develop a computational
+model of this as a coordination problem and watch social norms emerge as we did
+for cooperation. However, in our model where two genders serve as group markers,
+it will be equally likely for a cultural norm to emerge where women lead as
+for men. Something extra is required to break the symmetry, which we will add in
+two ways in our model. First, in a partner dance, even today a man may face some
+ridicule or would at least feel uncomfortable if they were to repetitiously
+assume the role of follower in a dance. Men learning from the experience of
+other men would be loathe to change their behavior if they observe other men
+suffering from such a choice. The other way we will vary the game is to assign
+some likelihood that men would at least sometimes choose to not
+dance at all if a potential female partner insisted on leading, which is also
+not difficult to imagine in the real world.
+
+"Nearly every society uses gender as a tool to divide household labor,"
+explains Prof. O'Connor in her popular magazine article [@OConnor2019-magazine], 
+though "there are different rules for how it works." In addition to 
+norms for who leads a dance, some similar norms "\[i\]n recent Western history"
+include that "women clean
+clothes, men hunt, women cook, men plough, women take care of young children,
+men build houses, and so on," writes O'Connor. Norms for specialization
+facilitate greater family efficiency when "\[l\]ittle girls could learn to do
+the labor expected of women, and little boys the labor expected of men."
+O'Connor notes that in a more subsistence form of existence where, for 
+example, clothes and furniture must be made at home, it is not reasonable to
+expect one person to know how "to change wool into a sweater or to build a bed
+using just whittling tools and wood." It seems that even hetero 
+couples who agree they'd like to buck traditional norms find it difficult to
+achieve in practice, especially when stress piles up, and people's brains
+default to culturally-specified norms without concerted effort. 
+
+Sadly, historically and up to today in too many situations, men make more than
+women from working a job and men regularly use threats of domestic violence or
+divorce that are not available to women in the same way, especially if a woman
+must arrange and pay for childcare in households with children. This is a
+darker version of the dance partner game, but the structure is the same. 
+If a man works a well-paying job, this may seem preferable to both partners.
+However, men may use threats to control and benefit more from extra earnings,
+while doing little to no housework. Even if new legal remedies exist to protect
+women, such as no-fault divorce, child support laws, restraining orders, and
+taking guns away from domestic violence perpetrators, when men and women look to
+others to who does what in a household, the effects of past inequity, abuse, and
+coercion can live on. This is true even if women also attain gender pay equity,
+a testament to the hidden power of cultural inheritance.
+
+### Model and analysis outline
+
+To understand how wage freedom can be improved for women, we will develop a coordination game model of household bargaining. The economic behavior of women and men agents in domestic partnerships is represented by the effort *level* for working a *Job*, which we'll call $l_J$ and effort level for 
+domestic *Chores*, which we'll call $l_C$. Altogether this model will be a steep increase in model complexity compared to the groundwater cooperation model. Therefore we begin with a simpler toy model of the Partner Dance game that has a similar vibe in that it analyzes how social norms affect , but only adds the complexity of gender group identities. In this model of the gendered division of labor, payoffs are gained through between-gender interaction. However women learn from women and men from men, i.e., social learning proceeds within gender groups and not between.
+
+#### Deviance sanctions for men who follow
+
+In partner dancing between men and women, men typically lead by taking the first step forward and initiating other moves. Why is this? One reason is that this social norm saves dance partners from having to deliberate and decide who will lead the dance. Of course, if two women or two men partner dance, they would have to decide who would lead since the social norm does not apply, unless they have some alternative pre-arranged norm or agreement between themselves. 
+A satisfying partner dance, then, only depends on one partner leading and one following. 
+
+- We ask in this toy analysis: how likely is it that men agree to *Follow* in a simulated population of agents, given the level of social sanctioning levied against men who *Follow*?
+- We will develop a representation of the payoff matrix that is given with two values in each entry, with the first corresponding to a Woman focal agent and the second corresponding to a Man.
+- We will systematically vary the deviance penalty representing the magnitude of sanction received by men who *Follow* in populations with different initial prevalence of male followers to answer our toy research question.
+
+
+#### Achieving fairness
+
+- In our household bargaining model, we again represent payoffs in matrix form where genders interact to gain payoffs. Their payoffs are stylized as resulting from successful household bargaining that maintains a sufficient levels of both Job and Chore effort, representing work within and outside the home, which has resulted in men having more household *wage freedom*, meaning they benefited more from Job-Chore divisions of labor than women, even though the couple have worked equally hard to provide a nurturing home with enough money.
+- We propose that it is possible women have their own personal bonus if they have high Job effort and partner with a man with high Chores effort, which we call $\omega$. We could investigate how different values of $\omega$
+affect the probability of escaping met. Perhaps if women organize together to somehow increase $\omega$, this could convince more Men to accept equal wage freedom. As Cailin O'Connor quotes Frederick Douglas, "Power concedes nothing without a demand". This analysis, then, could tell us how great a demand is required for that concession.
+
 ## Model
 
+### Model dynamics overview
+
+#### Initialization
+
+- Complete social network to start
+- genders randomly set, so agents won't have the same number of same- and opposite-gender neighbors as one another
+- In the Partner Dance game, set the deviance penalty $\delta$ and an initial fraction of men as followers to see what initial support for bucking the norm can overcome what penalty.
+- In the Wage Freedom game, set some initial machismo, $m$, that represents the machismo multiple that scales the prevalence of Men agents with $l_J$ = High compared to its value if it levels were set  We will similarly disproportionately set the initial prevalence of Women agents with $l_C$ = High to be $m$ times what it would be at random. There are $N/2$ agents of each gender, and three effort levels for Job or Chore. If agents were randomly assigned then the number of agents of either gender putting forth each effort level would be $\frac{N}{2}\frac{1}{3} = \frac{N}{6}$.
+
+### Gendered payoff matrices
+
+Payoff matrices are more complicated in gendered division of labor problems compared to the spatial cooperation problem of the previous chapter. They are read as follows: the row labels indicate the behavior of the focal agent. If the focal agent is a woman, her payoff can be read from the matrix by finding her behavior among the row labels, e.g., *Lead* or *Follow* in the Partner Dance game, then finding her man partner's behavior among the column labels
+
+### Partner dance
+
+- If there is no social sanction for men this means there is no deviance penalty, i.e., $\delta = 0$. When $\delta \geq 0$, then men suffer some judgement for choosing to follow a woman. 
+
+#### Payoff matrix
+
+{{< include tables/malefollow-sanction.html >}}
+
+#### Computational experiment
+
+- Try a few values of $\delta \in {0.0, 0.1, 0.4}$ and track the fraction of Men who Follow at equilibrium. The key variable is $I \in [0, 1]$, the initial proportion of people who invert the social norm that "men lead in partner dance." That means $I$ sets both the starting fraction of Men who Follow and Women who Lead — a tidy way to dial in the level of role inversion.
+- Observe the prevalence dynamics and $t=50$ prevalence outcomes prevalence of Men who Follow and Women who Lead at $t=50$ model time steps.
+
+
+### Achieving fairness
+
+#### Payoff matrix
+
+{{< include tables/wage-freedom.html >}}
+
+#### Computational experiment 1: Escape from Unfairness 
+
+- To simplify things to start, set $\mu = \omega = 0.0$ and only allow women to 
+have a Job effort level $l_J =$ Scant or Medium and men to have a Job effort level of Medium or High. Vary the equality bonus over $\varepsilon\in\{0.0,0.1,\ldots,0.8\}$, or something like that. This represents the case where Women are allowed Scant, if any, opportunities to work outside the home if their Men partners have a High effort level for a Job outside the home. This approach allows us to explore how much greater the personal benefit of an equitable arrangement must be for some level of societal *machismo*, which we represent by $m$, a number that scales the initial prevalence beyond chance of Men with High effort level in a Job and the initial prevalence of Women with High effort level in Chores. 
+- We will observe the Success Rate of guiding the simulated population towards equilibrium in the equitable, symmetric effort state where both Woman and Man put Medium effort levels in to a Job and household Chores.
+
+
+#### Experiment 2: Long-term fairness means stochastic short-term unfairness
+
+- In this experiment, we implement a test of whether 
+
 ## Analysis
+
+
+
 
 ## Discussion
 

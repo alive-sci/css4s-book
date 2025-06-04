@@ -15,7 +15,6 @@ book:
     - unfairness.qmd
     - references.qmd
   
-
 bibliography: 
   - /Users/mt/workspace/Writing/library.bib
   - references.bib
@@ -27,9 +26,11 @@ format:
     theme: 
       light:
         - theme-light.scss
+        - styles.scss
       dark:
         - darkly 
         - theme-dark.scss
+        - styles.scss
     fontsize: 0.9em
     linestretch: 1.2
   pdf:

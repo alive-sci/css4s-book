@@ -1,0 +1,115 @@
+---
+author: Matt Turner
+format:
+  html:
+    toc: true
+    include-in-header: header.html
+    theme: 
+      light:
+        - theme-light.scss
+        - styles.scss
+      dark:
+        - darkly 
+        - theme-dark.scss
+        - styles.scss
+    fontsize: 0.9em
+    linestretch: 1.2
+  pdf:
+    documentclass: scrreprt
+---
+
+# Title: *A punchy one-line summary of the problem, research questions, modeling approach, findings, and importance.*
+
+## Abstract
+
+1.  Illustrative, specific problem statement
+
+2.  Locate problem within more general sustainability problem
+
+3.  Explain your approach to solving the problem
+
+4.  Review the results of the computational analysis
+
+5.  State the impact of this work for motivating problems in (1) and (2)
+
+------------------------------------------------------------------------
+
+## 1. Introduction
+
+-   **Problem statement:** explain why the problem remains unsolved
+
+-   **Context and background:** illustrate real-world problem addressed
+
+-   **Literature review:** expand introduction to empirical/practical motivation
+
+-   **Research objectives:** state research questions, hypotheses, and approach
+
+-   **Significance & impact:** summarize study's real-world and theoretical impact
+
+## 2. Model
+
+-   **Model structure and explanatory variables:** social networks, learning dynamics
+
+-   **Model dynamics:** how do partner selection, interaction, payoffs, and updates work?
+
+-   **Outcome measures:** specify, e.g., success rate, time to fixation, prevalence at large \$t\$
+
+-   **Computational experiment:** model parameter settings, fixed or varied, and why
+
+-   **Analysis plan:** review section, how parameter variation will induce different outcomes
+
+### Example payoff matrix (2x2)
+
+<table class="normal-form-table" style="border-collapse: collapse;">
+  <tr>
+    <th></th>
+    <th colspan="2">Partner</th>
+  </tr>
+  <tr>
+    <th>Focal</th>
+    <td>A</td>
+    <td>B</td>
+  </tr>
+  <tr class="top-border">
+    <td>A</td>
+    <td>$1, 1$</td>
+    <td>$0, 0$</td>
+  </tr>
+  <tr>
+    <td>B</td>
+    <td>$0, 0$</td>
+    <td>$0.5, 0.5$</td>
+  </tr>
+</table>
+
+
+
+## 3. Analysis
+
+-   **Summarize findings:** remind reader of analysis and preview results
+
+-   **Data analysis:** quantitative prose summary of findings
+
+-   **Visual aids:** visualizations support prose; ensure readable annotations
+
+Use `socmod` helpers or recipes like you can find on the 
+`socmod` package documentation
+```{r}
+
+```
+
+-   **Explain observations:** *why* do we see different dynamics/outcomes?
+
+-   **Sensitivity analyses:** confirm results obtain for different parameters
+
+## 4. Discussion
+
+-   **Review analysis:** start by reviewing motivation, model, and results
+
+-   **Relation to existing work:** how could this help with motivating problems
+
+-   **Broader implications:** e.g., translate lessons for similar systems/problems
+
+-   **Acknowledgement of limitations:** what if we made different assumptions?
+
+-   **Conclusion:** summarize the work, its motivation and impact, and future

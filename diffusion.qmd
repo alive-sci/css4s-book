@@ -126,6 +126,7 @@ Using the same agent-based model, we simulate diffusion on homophilous and core-
 
 These outcomes underscore the importance of network design in policy, development, and sustainability work.
 
+<!--
 ## Computational social science roots
 
 One goal and theme of `socmod` is to avoid unneccesary theoretical commitments to either **epidemiological forcing**-style assumptions (e.g., using SI/SIS/SIR) or to **population genetics** (e.g., Kimura--Crow models) analyses that represent social learning as evolutionary selection. The **agent-based social learning** framework provided by socmod accommodates these or other various social behavior models. In the case of diffusion of adaptations, these formalisms share a common mathematical structure of **birth–death processes**.
@@ -240,6 +241,8 @@ There are
 
 
 Thus, socmod models offer a flexible platform bridging epidemiology, evolutionary biology, and social dynamics.
+
+-->
 
 ### Conclusion 
 
