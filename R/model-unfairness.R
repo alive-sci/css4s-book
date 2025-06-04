@@ -116,6 +116,35 @@ initialize_dancers <- function(model, inversion_prevalence = 0.2) {
 }
 
 
+assign_gendered_partners <- function(model) {
+  agents <- model$agents
+  
+  purrr::walk(
+    agents,
+    \(agent) {
+      gender <- agent$get_attribute("gender")
+      
+      # Get neighbors (assumed to return agent objects)
+      neighbors <- agent$get_neighbors()$agents
+      
+      # Separate same- and other-gender neighbors
+      
+      
+      # Build list of potential teachers of same gender, including agent itself
+      same_gender_neighbors <- purrr::keep(neighbors, \(n) n$get_attribute("gender") == gender)
+      teachers <- c(same_gender_neighbors, list(agent))
+      agent$set_attribute("teachers", teachers)
+      
+      # Build list of potential domestic partners, neighbors of opposite gender
+      agent$set_attribute(
+        "domestic_partners", 
+        purrr::keep(neighbors, \(n) n$get_attribute("gender") != gender)
+      )
+    }
+  )
+}
+
+
 
 #--------- TESTING INITIALIZE_DANCERS -----------
 abm <- make_abm(n_agents = 40); 
@@ -149,3 +178,31 @@ print(
     )
   )
 )
+
+
+#--------- TESTING ASSIGN_TEACHERS
+
+cat("\n\nTesting potential teacher and domestic partner assignment success\n")
+assign_gendered_partners(abm)
+a1 <- abm$agents[[1]]
+a1_gender <- abm$agents[[1]]$get_attribute("gender")
+cat("\na1 gender: ", a1_gender)
+a1_teachers <- a1$get_attribute("teachers")
+
+cat("\na1 teachers: ", purrr::map_vec(a1_teachers, ~ .x$get_name()))
+cat("\nAll a1 teachers same gender?\n")
+teacher_genders <- map_vec(a1_teachers, ~ .x$get_attribute("gender"))
+print(all(teacher_genders == a1_gender))
+
+cat("\nAll a1 potential partners opposite gender?\n")
+domestic_partners <- a1$get_attribute("domestic_partners")
+domestic_partner_genders <- purrr::map_vec(domestic_partners, ~ .x$get_attribute("gender"))
+print(all(domestic_partner_genders != a1_gender))
+
+cat("\n\n*** Checking genders explicitly: ***\n")
+cat("\nAgent gender:\n")
+print(a1_gender)
+cat("\nTeacher genders:\n")
+print(teacher_genders)
+cat("\nDomestic partner genders:\n")
+print(domestic_partner_genders)
