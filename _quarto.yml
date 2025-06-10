@@ -4,7 +4,7 @@ project:
 book:
   title: "Agent-based modeling for sustainability"
   author: "Matt Turner"
-  date: "4/29/2025"
+  date: "6/9/2025"
   chapters:
     - index.qmd
     - intro.qmd
