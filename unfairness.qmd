@@ -169,7 +169,7 @@ Payoff matrices are more complicated in gendered division of labor problems comp
 
 {{< include tables/malefollow-sanction.html >}}
 
-#### Computational experiment
+#### Computational experiment: Gender Norm Inversion
 
 - Try a few values of $\delta \in {0.0, 0.1, 0.4}$ and track the fraction of Men who Follow at equilibrium. The key variable is $I \in [0, 1]$, the initial proportion of people who invert the social norm that "men lead in partner dance." That means $I$ sets both the starting fraction of Men who Follow and Women who Lead — a tidy way to dial in the level of role inversion.
 - Observe the prevalence dynamics and $t=50$ prevalence outcomes prevalence of Men who Follow and Women who Lead at $t=50$ model time steps.
@@ -177,20 +177,18 @@ Payoff matrices are more complicated in gendered division of labor problems comp
 
 ### Achieving fairness
 
+
 #### Payoff matrix
 
 {{< include tables/wage-freedom.html >}}
 
-#### Computational experiment 1: Escape from Unfairness 
+#### Computational experiment: Escape from Unfairness 
 
 - To simplify things to start, set $\mu = \omega = 0.0$ and only allow women to 
 have a Job effort level $l_J =$ Scant or Medium and men to have a Job effort level of Medium or High. Vary the equality bonus over $\varepsilon\in\{0.0,0.1,\ldots,0.8\}$, or something like that. This represents the case where Women are allowed Scant, if any, opportunities to work outside the home if their Men partners have a High effort level for a Job outside the home. This approach allows us to explore how much greater the personal benefit of an equitable arrangement must be for some level of societal *machismo*, which we represent by $m$, a number that scales the initial prevalence beyond chance of Men with High effort level in a Job and the initial prevalence of Women with High effort level in Chores. 
 - We will observe the Success Rate of guiding the simulated population towards equilibrium in the equitable, symmetric effort state where both Woman and Man put Medium effort levels in to a Job and household Chores.
 
 
-#### Experiment 2: Long-term fairness means stochastic short-term unfairness
-
-- In this experiment, we implement a test of whether 
 
 ## Analysis
 
