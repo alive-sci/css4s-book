@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Modeling the origins of persistent gender inequality – Agent-based modeling for sustainability</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./cooperation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-461959a8d42c1557bf4d45ac26041a3a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b2ac4f073dc9ae3e7c4033d9166d02d9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-461959a8d42c1557bf4d45ac26041a3a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-547fb970f9e047296efeb96080bd9f79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-0d55bb5093a29b6ce49ba0fc2ed9a1c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-547fb970f9e047296efeb96080bd9f79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- header.html -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&amp;family=Source+Code+Pro:wght@400;500;600;700&amp;display=swap">
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    window.setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      window.setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    window.hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(darkModeDefault) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const darkModeDefault = false;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !window.hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+    };
+    // Switch to dark mode if need be
+    if (window.hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unfairness.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modeling the origins of persistent gender inequality</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Agent-based modeling for sustainability</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Computational techniques for agent-based modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Writing and project development</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Diffusion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cooperation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cooperation by example of sustainable groundwater management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unfairness.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modeling the origins of persistent gender inequality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#model-and-analysis-outline" id="toc-model-and-analysis-outline" class="nav-link" data-scroll-target="#model-and-analysis-outline"><span class="header-section-number">6.1.1</span> Model and analysis outline</a></li>
+  </ul></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">6.2</span> Model</a>
+  <ul class="collapse">
+  <li><a href="#model-dynamics-overview" id="toc-model-dynamics-overview" class="nav-link" data-scroll-target="#model-dynamics-overview"><span class="header-section-number">6.2.1</span> Model dynamics overview</a></li>
+  <li><a href="#gendered-payoff-matrices" id="toc-gendered-payoff-matrices" class="nav-link" data-scroll-target="#gendered-payoff-matrices"><span class="header-section-number">6.2.2</span> Gendered payoff matrices</a></li>
+  <li><a href="#partner-dance" id="toc-partner-dance" class="nav-link" data-scroll-target="#partner-dance"><span class="header-section-number">6.2.3</span> Partner dance</a></li>
+  <li><a href="#achieving-fairness-1" id="toc-achieving-fairness-1" class="nav-link" data-scroll-target="#achieving-fairness-1"><span class="header-section-number">6.2.4</span> Achieving fairness</a></li>
+  </ul></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">6.3</span> Analysis</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">6.4</span> Discussion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.5</span> References</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix"><span class="header-section-number">6.6</span> Appendix</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modeling the origins of persistent gender inequality</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In the United States, the gender pay gap has narrowed, but even highly-trained female professionals continue to shoulder more household and childcare demands than their husbands. This follows an unfortunate general trend in the United States elsewhere: gender equality has proceeded in fits and starts. Women could not vote until the 19th Amendment became law in the United States (<a href="https://www.brennancenter.org/our-work/research-reports/19th-amendment-explained">history</a>, <a href="https://www.americanbar.org/groups/public_education/programs/19th-amendment-centennial/toolkit/suffrage-timeline/">timeline</a>); in Brazil, the other large democracy of the Americas, <a href="https://en.wikipedia.org/wiki/Women%27s_rights_in_Brazil">women could not vote until 1932</a>. Here I introduce a agent-based social behavior model of bargaining for the division of household labor. Simulated people (i.e., <em>agents</em>) have one of two genders and different employment levels. This model generates the emergence of social norms with different amounts of social “inertia” that maintain gender inequality in household chore demands. We can use this model to predict how various social factors affect the efficacy of interventions to promote equality in the division of household chores. We show here how the model can be used to calculate the relative difference in effort required to change household chore norms depending on, e.g., the initial strength of the norm, the underlying social network that structures male-female partner selection, and individual-level variation in stubbornness or other cognitive traits. This approach is important because it provides a mechanistic explanation of how these, and other norms for inequality, emerge and persist, and provides a testbed strategy to help identify the most theoretically effective strategies to achieve real-world progress.</p>
+<section id="introduction" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
+<p>Despite progress towards equal pay for equal work and equal opportunities for women, even high-achieving women find themselves disproportionately shouldering cleaning, organizational, and childrearing chores: “I am the mom who does all the things. I do a majority of parenting, a majority of household management…I pay our bills on time, I deal with our car, I deal with sh<em>t when it breaks…I pick up his laundry, I pick up his prescriptions, I remind him about doc appointments,” says a professor on a “Facebok page dedicated to mothers in academia.” This post comes from a popular article on this subject by Cailin O’Connor, Chancellor’s Professor in the Department of Logic and Philosophy of Science at UC Irvine, “Gendered Division of Labor Served a Purpose. To Make Progress, Don’t Erase It. Replace It.” Prof.&nbsp;O’Connor is also a computational scientist who has applied her training in logic and philosophy to address a number of pressing issues: here we focus on presenting the model and analysis presented in her book on the </em>Origins of Unfairness* <span class="citation" data-cites="OConnor2019Origins">(<a href="references.html#ref-OConnor2019Origins" role="doc-biblioref">O’Connor 2019a</a>)</span>, framed in terms of the UN Sustainable Development Goals with the models developed in <code>socmod</code>. We summarize selections of the book to distill it for our purposes in promoting sustainable outcomes, which necessarily are equitable, just, and <em>fair</em> outcomes across gender or any other social categories.</p>
+<p>Theoretically, division of labor exists to multiply efforts contributed by two or more people working together, whether division is based on gender or other group marker (e.g., certifications indicating expertise in skilled labor, job title, company, etc.). However, if the bonus spoils gained from dividing labor are shared unequally in a majority of couples in a population, that population may develop a <em>social norm</em>, i.e., a heuristic “cognitive shortcut” for deciding how labor should be divided that can be difficult to change due to cognitive effects like biased assimilation or belief repulsion that can cause individuals to ignore or retreat from new ways of doing things, even if they can somehow be shown to be objectively better. Deciding who does which type of labor and how much they receive from different divisions of labor is a type of <em>coordination problem</em>, just as cooperation was in the previous chapter. Extra value can be gained when behaviors complement one another, unlike cooperation, where extra value can be gained when people do the same behavior as one another. We therefore call it a <em>complementary</em> coordination problem. We therefore can apply the same evolutionary game theory approach to <em>household division of labor</em> as we used in our spatial model of sustainable groundwater cooperation in the previous chapter.</p>
+<p>In mixed-gender household bargaining, we assume that domestic partners divide labor along two dimensions: how much effort each partner should put towards working a job outside the home and how much effort to devote to household chores. Let’s start with a simpler example of gendered complementary coordination to illustrate the model: partner dance. When women and men partner up for a dance, they need not deliberate and decide who will lead and follow before the music starts <span class="citation" data-cites="OConnor2019Origins">(<a href="references.html#ref-OConnor2019Origins" role="doc-biblioref">O’Connor 2019a</a>)</span>. The cultural norm that “women follow” is a heuristic that does the thinking for them. We can develop a computational model of this as a coordination problem and watch social norms emerge as we did for cooperation. However, in our model where two genders serve as group markers, it will be equally likely for a cultural norm to emerge where women lead as for men. Something extra is required to break the symmetry, which we will add in two ways in our model. First, in a partner dance, even today a man may face some ridicule or would at least feel uncomfortable if they were to repetitiously assume the role of follower in a dance. Men learning from the experience of other men would be loathe to change their behavior if they observe other men suffering from such a choice. The other way we will vary the game is to assign some likelihood that men would at least sometimes choose to not dance at all if a potential female partner insisted on leading, which is also not difficult to imagine in the real world.</p>
+<p>“Nearly every society uses gender as a tool to divide household labor,” explains Prof.&nbsp;O’Connor in her popular magazine article <span class="citation" data-cites="OConnor2019-magazine">(<a href="references.html#ref-OConnor2019-magazine" role="doc-biblioref">O’Connor 2019b</a>)</span>, though “there are different rules for how it works.” In addition to norms for who leads a dance, some similar norms “[i]n recent Western history” include that “women clean clothes, men hunt, women cook, men plough, women take care of young children, men build houses, and so on,” writes O’Connor. Norms for specialization facilitate greater family efficiency when “[l]ittle girls could learn to do the labor expected of women, and little boys the labor expected of men.” O’Connor notes that in a more subsistence form of existence where, for example, clothes and furniture must be made at home, it is not reasonable to expect one person to know how “to change wool into a sweater or to build a bed using just whittling tools and wood.” It seems that even hetero couples who agree they’d like to buck traditional norms find it difficult to achieve in practice, especially when stress piles up, and people’s brains default to culturally-specified norms without concerted effort.</p>
+<p>Sadly, historically and up to today in too many situations, men make more than women from working a job and men regularly use threats of domestic violence or divorce that are not available to women in the same way, especially if a woman must arrange and pay for childcare in households with children. This is a darker version of the dance partner game, but the structure is the same. If a man works a well-paying job, this may seem preferable to both partners. However, men may use threats to control and benefit more from extra earnings, while doing little to no housework. Even if new legal remedies exist to protect women, such as no-fault divorce, child support laws, restraining orders, and taking guns away from domestic violence perpetrators, when men and women look to others to who does what in a household, the effects of past inequity, abuse, and coercion can live on. This is true even if women also attain gender pay equity, a testament to the hidden power of cultural inheritance.</p>
+<section id="model-and-analysis-outline" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="model-and-analysis-outline"><span class="header-section-number">6.1.1</span> Model and analysis outline</h3>
+<p>To understand how wage freedom can be improved for women, we will develop a coordination game model of household bargaining. The economic behavior of women and men agents in domestic partnerships is represented by the effort <em>level</em> for working a <em>Job</em>, which we’ll call <span class="math inline">\(l_J\)</span> and effort level for domestic <em>Chores</em>, which we’ll call <span class="math inline">\(l_C\)</span>. Altogether this model will be a steep increase in model complexity compared to the groundwater cooperation model. Therefore we begin with a simpler toy model of the Partner Dance game that has a similar vibe in that it analyzes how social norms affect , but only adds the complexity of gender group identities. In this model of the gendered division of labor, payoffs are gained through between-gender interaction. However women learn from women and men from men, i.e., social learning proceeds within gender groups and not between.</p>
+<section id="deviance-sanctions-for-men-who-follow" class="level4" data-number="6.1.1.1">
+<h4 data-number="6.1.1.1" class="anchored" data-anchor-id="deviance-sanctions-for-men-who-follow"><span class="header-section-number">6.1.1.1</span> Deviance sanctions for men who follow</h4>
+<p>In partner dancing between men and women, men typically lead by taking the first step forward and initiating other moves. Why is this? One reason is that this social norm saves dance partners from having to deliberate and decide who will lead the dance. Of course, if two women or two men partner dance, they would have to decide who would lead since the social norm does not apply, unless they have some alternative pre-arranged norm or agreement between themselves. A satisfying partner dance, then, only depends on one partner leading and one following.</p>
+<ul>
+<li>We ask in this toy analysis: how likely is it that men agree to <em>Follow</em> in a simulated population of agents, given the level of social sanctioning levied against men who <em>Follow</em>?</li>
+<li>We will develop a representation of the payoff matrix that is given with two values in each entry, with the first corresponding to a Woman focal agent and the second corresponding to a Man.</li>
+<li>We will systematically vary the deviance penalty representing the magnitude of sanction received by men who <em>Follow</em> in populations with different initial prevalence of male followers to answer our toy research question.</li>
+</ul>
+</section>
+<section id="achieving-fairness" class="level4" data-number="6.1.1.2">
+<h4 data-number="6.1.1.2" class="anchored" data-anchor-id="achieving-fairness"><span class="header-section-number">6.1.1.2</span> Achieving fairness</h4>
+<ul>
+<li>In our household bargaining model, we again represent payoffs in matrix form where genders interact to gain payoffs. Their payoffs are stylized as resulting from successful household bargaining that maintains a sufficient levels of both Job and Chore effort, representing work within and outside the home, which has resulted in men having more household <em>wage freedom</em>, meaning they benefited more from Job-Chore divisions of labor than women, even though the couple have worked equally hard to provide a nurturing home with enough money.</li>
+<li>We propose that it is possible women have their own personal bonus if they have high Job effort and partner with a man with high Chores effort, which we call <span class="math inline">\(\omega\)</span>. We could investigate how different values of <span class="math inline">\(\omega\)</span> affect the probability of escaping met. Perhaps if women organize together to somehow increase <span class="math inline">\(\omega\)</span>, this could convince more Men to accept equal wage freedom. As Cailin O’Connor quotes Frederick Douglas, “Power concedes nothing without a demand”. This analysis, then, could tell us how great a demand is required for that concession.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="model" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="model"><span class="header-section-number">6.2</span> Model</h2>
+<section id="model-dynamics-overview" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="model-dynamics-overview"><span class="header-section-number">6.2.1</span> Model dynamics overview</h3>
+<section id="initialization" class="level4" data-number="6.2.1.1">
+<h4 data-number="6.2.1.1" class="anchored" data-anchor-id="initialization"><span class="header-section-number">6.2.1.1</span> Initialization</h4>
+<ul>
+<li>Complete social network to start</li>
+<li>genders randomly set, so agents won’t have the same number of same- and opposite-gender neighbors as one another</li>
+<li>In the Partner Dance game, set the deviance penalty <span class="math inline">\(\delta\)</span> and an initial fraction of men as followers to see what initial support for bucking the norm can overcome what penalty.</li>
+<li>In the Wage Freedom game, set some initial machismo, <span class="math inline">\(m\)</span>, that represents the machismo multiple that scales the prevalence of Men agents with <span class="math inline">\(l_J\)</span> = High compared to its value if it levels were set We will similarly disproportionately set the initial prevalence of Women agents with <span class="math inline">\(l_C\)</span> = High to be <span class="math inline">\(m\)</span> times what it would be at random. There are <span class="math inline">\(N/2\)</span> agents of each gender, and three effort levels for Job or Chore. If agents were randomly assigned then the number of agents of either gender putting forth each effort level would be <span class="math inline">\(\frac{N}{2}\frac{1}{3} = \frac{N}{6}\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="gendered-payoff-matrices" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="gendered-payoff-matrices"><span class="header-section-number">6.2.2</span> Gendered payoff matrices</h3>
+<p>Payoff matrices are more complicated in gendered division of labor problems compared to the spatial cooperation problem of the previous chapter. They are read as follows: the row labels indicate the behavior of the focal agent. If the focal agent is a woman, her payoff can be read from the matrix by finding her behavior among the row labels, e.g., <em>Lead</em> or <em>Follow</em> in the Partner Dance game, then finding her man partner’s behavior among the column labels</p>
+</section>
+<section id="partner-dance" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="partner-dance"><span class="header-section-number">6.2.3</span> Partner dance</h3>
+<ul>
+<li>If there is no social sanction for men this means there is no deviance penalty, i.e., <span class="math inline">\(\delta = 0\)</span>. When <span class="math inline">\(\delta \geq 0\)</span>, then men suffer some judgement for choosing to follow a woman.</li>
+</ul>
+<section id="payoff-matrix" class="level4" data-number="6.2.3.1">
+<h4 data-number="6.2.3.1" class="anchored" data-anchor-id="payoff-matrix"><span class="header-section-number">6.2.3.1</span> Payoff matrix</h4>
+<div id="tbl-example" class="table table-striped table-hover table-captioned quarto-float anchored quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1
+</figcaption>
+<div aria-describedby="tbl-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<b>Partner Dance payoff matrix.</b> Women enjoy dancing equally whether they lead or follow. Men who follow are sanctioned, however, paying a penalty <span class="math inline">\(-\delta\)</span> when they follow.
+<table class="normal-form-table" id="malefollow-sanction">
+<tbody><tr>
+<th>
+</th>
+<th colspan="2">
+Partner (Man, Woman)
+</th>
+</tr>
+<tr>
+<th>
+Focal (Woman, Man)
+</th>
+<td>
+Lead
+</td>
+<td>
+Follow
+</td>
+</tr>
+<tr class="top-border">
+<td>
+Lead
+</td>
+<td>
+<span class="math inline">\(0, 0\)</span>
+</td>
+<td>
+<span class="math inline">\(1, 1\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Follow
+</td>
+<td>
+<span class="math inline">\(1, 1 - \delta\)</span>
+</td>
+<td>
+<span class="math inline">\(0, 0\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+</figure>
+</div>
+</section>
+<section id="computational-experiment-gender-norm-inversion" class="level4" data-number="6.2.3.2">
+<h4 data-number="6.2.3.2" class="anchored" data-anchor-id="computational-experiment-gender-norm-inversion"><span class="header-section-number">6.2.3.2</span> Computational experiment: Gender Norm Inversion</h4>
+<ul>
+<li>Try a few values of <span class="math inline">\(\delta \in {0.0, 0.1, 0.4}\)</span> and track the fraction of Men who Follow at equilibrium. The key variable is <span class="math inline">\(I \in [0, 1]\)</span>, the initial proportion of people who invert the social norm that “men lead in partner dance.” That means <span class="math inline">\(I\)</span> sets both the starting fraction of Men who Follow and Women who Lead — a tidy way to dial in the level of role inversion.</li>
+<li>Observe the prevalence dynamics and <span class="math inline">\(t=50\)</span> prevalence outcomes prevalence of Men who Follow and Women who Lead at <span class="math inline">\(t=50\)</span> model time steps.</li>
+</ul>
+</section>
+</section>
+<section id="achieving-fairness-1" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="achieving-fairness-1"><span class="header-section-number">6.2.4</span> Achieving fairness</h3>
+<section id="payoff-matrix-1" class="level4" data-number="6.2.4.1">
+<h4 data-number="6.2.4.1" class="anchored" data-anchor-id="payoff-matrix-1"><span class="header-section-number">6.2.4.1</span> Payoff matrix</h4>
+<div id="tbl-example" class="table table-striped table-hover table-captioned quarto-float anchored quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.2
+</figcaption>
+<div aria-describedby="tbl-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<b>Wage Freedom payoff matrix.</b> In the upper left, households are unstable (payoffs all zero) because together they have a low combined Job effort. The bottom right are unstable because of low combined Chores effort level.
+<table class="normal-form-table" id="wage-freedom">
+<tbody><tr>
+<th>
+</th>
+<th colspan="3">
+Partner (Woman, Man)
+</th>
+</tr>
+<tr>
+<th>
+Focal (Woman, Man)
+</th>
+<td>
+<span class="math inline">\(l_J =\)</span> Scant,<br><span class="math inline">\(l_C =\)</span> High
+</td>
+<td>
+Med, Med
+</td>
+<td>
+High, Scant
+</td>
+</tr>
+<tr class="top-border">
+<td>
+Scant, High
+</td>
+<td>
+<span class="math inline">\(0, 0\)</span>
+</td>
+<td>
+<span class="math inline">\(0, 0\)</span>
+</td>
+<td>
+<span class="math inline">\(1, 1 + \mu\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Med, Med
+</td>
+<td>
+<span class="math inline">\(0, 0\)</span>
+</td>
+<td>
+<span class="math inline">\(1 + \varepsilon, 1 + \varepsilon\)</span>
+</td>
+<td>
+<span class="math inline">\(0, 0\)</span>
+</td>
+</tr>
+<tr>
+<td>
+High, Scant
+</td>
+<td>
+<span class="math inline">\(1 + \omega, 1\)</span>
+</td>
+<td>
+<span class="math inline">\(0, 0\)</span>
+</td>
+<td>
+<span class="math inline">\(0, 0\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+</figure>
+</div>
+</section>
+<section id="computational-experiment-escape-from-unfairness" class="level4" data-number="6.2.4.2">
+<h4 data-number="6.2.4.2" class="anchored" data-anchor-id="computational-experiment-escape-from-unfairness"><span class="header-section-number">6.2.4.2</span> Computational experiment: Escape from Unfairness</h4>
+<ul>
+<li>To simplify things to start, set <span class="math inline">\(\mu = \omega = 0.0\)</span> and only allow women to have a Job effort level <span class="math inline">\(l_J =\)</span> Scant or Medium and men to have a Job effort level of Medium or High. Vary the equality bonus over <span class="math inline">\(\varepsilon\in\{0.0,0.1,\ldots,0.8\}\)</span>, or something like that. This represents the case where Women are allowed Scant, if any, opportunities to work outside the home if their Men partners have a High effort level for a Job outside the home. This approach allows us to explore how much greater the personal benefit of an equitable arrangement must be for some level of societal <em>machismo</em>, which we represent by <span class="math inline">\(m\)</span>, a number that scales the initial prevalence beyond chance of Men with High effort level in a Job and the initial prevalence of Women with High effort level in Chores.</li>
+<li>We will observe the Success Rate of guiding the simulated population towards equilibrium in the equitable, symmetric effort state where both Woman and Man put Medium effort levels in to a Job and household Chores.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="analysis" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="analysis"><span class="header-section-number">6.3</span> Analysis</h2>
+</section>
+<section id="discussion" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="discussion"><span class="header-section-number">6.4</span> Discussion</h2>
+</section>
+<section id="references" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="references"><span class="header-section-number">6.5</span> References</h2>
+</section>
+<section id="appendix" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="appendix"><span class="header-section-number">6.6</span> Appendix</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-OConnor2019Origins" class="csl-entry" role="listitem">
+O’Connor, Cailin. 2019a. <em><span class="nocase">The Origins of Unfairness</span></em>. Oxford: Oxford University Press.
+</div>
+<div id="ref-OConnor2019-magazine" class="csl-entry" role="listitem">
+———. 2019b. <span>“<span class="nocase">Gendered Division of Labor Served a Purpose. To Make Progress, Don’t Erase It. Replace It.</span>”</span> <em>Behavioral Scientist</em>, December. <a href="https://behavioralscientist.org/gendered-division-of-labor-served-a-purpose-to-make-progress-dont-erase-it-replace-it/">https://behavioralscientist.org/gendered-division-of-labor-served-a-purpose-to-make-progress-dont-erase-it-replace-it/</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    window.setColorSchemeToggle(window.hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./cooperation.html" class="pagination-link" aria-label="Cooperation by example of sustainable groundwater management">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cooperation by example of sustainable groundwater management</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
