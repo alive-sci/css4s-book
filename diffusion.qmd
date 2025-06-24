@@ -264,8 +264,26 @@ We design our simulations to evaluate different intervention strategies based on
   that the learner adopts (i.e., begins doing) $S$. $\alpha$ is therefore called
   the *adoption rate*.
 
-### Guided virality: adaptive social learning
+### Guided virality: cultural evolution via social learning
 
+- Culture truly evolves when people preferentially select teachers who seem
+  more successful than alternatives or are better socially connected, 
+  or when people preferentially adopt behaviors that seem to
+  be practiced more widely than others, or any similar social learning strategy.
+  Being able to flexibly probe, sample, and integrate different sources of social and
+  asocial information is a fundamental part of what it means to be human
+  [@Witt2024]. Over time, stable cultural practices become established as
+  various social learning strategies exercised flexibly by individuals weed out 
+  less desirable Behavioral norms serve as heuristics for
+  individual decision-making contingencies, such as how much to share 
+  of a publicly-visible and shareable gift, or gendered division of labor from
+  the relatively harmless decision of which gender leads in a social partner
+  dance to who is responsible for more household chores and has freer access to
+  liquid household resources or credit [@OConnor2019]. 
+  We know because different cultures have different norms encoding different
+  motivations for behavior in economic decisions and reasoning in general,
+  self-concept, and reasoning in general, that systematically affect behavior in
+  similar ways within, but not between, cultures in general [@Henrich2010].
 - Of the many foundations of humanity is the unrivaled capacity to learn from
   others, with adaptations that help us decide from whom to learn, such as
   preferentially from the most apparently fit social network neighbors, or what
@@ -290,7 +308,7 @@ We design our simulations to evaluate different intervention strategies based on
 
 #### Frequency-biased social learning
 
-### How social networks constrain diffusion
+### Viral friends: how 
 
 
 #### The good and the bad of social structure and long-range ties
