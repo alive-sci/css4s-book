@@ -66,69 +66,237 @@ it goes, respectively.
 ## Representing interventions as math and code
 
 
-- Recall that a _sustainability intervention_ is an effort to promote some sustainable behavior or set of behaviors through education, training, or other means.
-- In order to simulate interventions, we must develop a sub-model for interventions, starting with classification. 
-  - Our models of interventions will not be totally disconnected from models of the social systems themselves. Intervention models will specify the expected mode of transmission hypothesized to be most important for the design of the intervention.
-  - Intervention models should specify the outcome variable. For now, we will use the simplest version of outcomes included by default in `socmod` agent-based model output.
+- Recall that a _sustainability intervention_ is an effort to promote some
+  sustainable behavior or set of behaviors through education, training, or other
+  means. This framing is a consequence of our guiding motivation to identify
+  real-world mechanisms to harness in promoting sustainable practices conforming
+  to one or more of the United Nation's Sustainable Development Goals. The
+  models and conclusions are general, however, since this framing is only used
+  for efficient development and comprehension of the computational findings.
+- To model the diffusion of a sustainable practice we separate the social world
+  and social processes into distinct, interacting parts. We model social
+  dynamics with a general framework that is systematically filled out, and on
+  which the `socmod` social behavior modeling library is based. (Explain the
+  general abstract model...previews the subsection below)
+- Any intervention must decide who should be the first people to receive 
+  instruction on how to do some adaptive, sustainable behavior practice, including how
+  beneficial an adaptation is. This subset of the population is called the *seed
+  set*. One popular approach to optimizing interventions is the *seeding
+  strategy* used to intelligently select which indivuals will comprise the seed
+  set. For example, the *friendship nomination* strategy led to more effective
+  diffusion of public health information compared to random seeding across about
+  one hundred villages in rural Honduras [@Airoldi2024]. In
+  friendship nomination, $N_S$ seed members are chosen by selecting one 
+  acquaintance of $N_S$ randomly-selected individuals, as opposed to the random
+  strategy being just selecting $N_S$ seeds at random directly. In another
+  example, @Efferson2020 studied simulations of a public health intervention to
+  help end female genital cutting in Sudan, inspired by field studies of
+  real-world interventions [@Vogt2016].
+- We use our models to calculate the *prevalence dynamics* and *outcome
+  measures* both within and across simulation trials. *Prevalence dynamics* 
 
-## Comparing seeding strategies for interventions 
 
-### Motivation
+### The general diffusion model
 
-We begin with a concrete example: health behavior interventions in rural Honduran villages. In a study by Aral and Christakis, the researchers used detailed network data to test whether targeting well-connected individuals could increase the spread of health-promoting behaviors. The intervention succeeded not because it directly reached everyone, but because the network structure amplified its effects.
+1. **Population and social network structure:** who interacts with whom.
+1. **Social transmission/learning:** how agents learn from others and adopt
+   behaviors.
+1. **Equilibrium/stopping conditions:** stop the simulation at equilibrium
 
-This example also serves as the foundation for an agent-based modeling assignment in which we will explain how _computational experiments_ help us understand and predict the effect of different seeding and other intervention strategies.
+This flexible framework will carry through the rest of the course. In the next section, we extend this model to explore how homophily, asymmetry, and structural inequality affect adaptation outcomes.
 
-We will close by contrasting seeding strategies that ignore social structure, as in @Airoldi2024, with those that leverage social structure, like @Turner2023.
+### Techniques for creating simulations from box-and-arrow diagrams
 
-### Network models and structure
+Box and arrow diagrams are a great start, but we'll need either mathematics or
+simulation to help us make predictions about how different social factors,
+processes, and behaviors affect long-term outcomes in terms of the adoption
+prevalence of sustainable practices.
 
-To understand why structure matters, we explore a series of increasingly complex network models. We begin with **deterministic models**:
+- Mathematics
+- Programming
+- A note on complimentarity
 
--   **Ring networks**, where each node is connected to a fixed number of neighbors.
--   **Complete networks**, where every node is connected to every other node.
+<div class="table-responsive">
+<table class="table table-sm table-borderless" style="width:100%">
+  <thead style="border-bottom: 2px solid #000;">
+    <tr>
+      <th style="text-align:left;">Growth Type</th>
+      <th style="text-align:left;">Population</th>
+      <th style="text-align:left;">Mechanism</th>
+      <th style="text-align:left;">Dynamics</th>
+      <th style="text-align:left;">Modeling</th>
+      <th style="text-align:left;">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Unconstrained Growth</strong></td>
+      <td>No limit to learners, N → ∞</td>
+      <td>Analytical, computational, recursion</td>
+      <td>Stochastic / non-adaptive</td>
+      <td>Exponential</td>
+      <td>Summarized in intro for now</td>
+    </tr>
+    <tr>
+      <td><strong>Constrained Growth I</strong></td>
+      <td>Finite, complete population</td>
+      <td>Analytical, computational, recursion</td>
+      <td>Stochastic / non-adaptive</td>
+      <td>Logistic (contagion)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>Constrained Growth II</strong></td>
+      <td>Finite, complete</td>
+      <td>Analytical, simulation (e.g., Kimura-Crow)</td>
+      <td>Adaptive / guided randomness</td>
+      <td>Logistic</td>
+      <td>Social learning</td>
+    </tr>
+    <tr>
+      <td><strong></strong></td>
+      <td>Finite, varies</td>
+      <td>Simulation</td>
+      <td>Any</td>
+      <td>Varies</td>
+      <td></td>
+    </tr>
+    <tr>
+    <td><strong>Constrained Growth III</strong></td>
+      <td>Structured social networks</td>
+      <td>Simulation</td>
+      <td>Depends on structure</td>
+      <td>Geometric, e.g., spatial grids, SWN</td>
+      <td>Can be calibrated; cf. small-worlds</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  
 
-These help us isolate basic features like clustering and distance. We then turn to **stochastic models**:
 
--   **Erdős–Rényi random networks**, where links are created with fixed probability.
--   **Watts–Strogatz small-world networks**, which combine high local clustering with occasional long-range ties.
+### Discrete- and continuous-time formalism
 
-The small-world model captures key features of real-world social networks: short average path lengths and local clustering. Examples from the original Watts and Strogatz paper—such as the U.S. power grid and the C. elegans neural network—illustrate how widespread these features are.
+Mathematics helps us be specific in a way prose cannot. A mathematical
+*formalism* is a system of symbols, relationships, and equations that specify
+a model of a real-world system. In the social diffusion of sustainable practices, 
+we develop mathematical symbols and 
+equations that describe how the *prevalence* of different behaviors changes over
+time. We will need to describe how likely it is that one person learns a
+behavior from another person, and how likely it is for any one person to stop
+doing the sustainable behavior, reverting to some exhaustive behavior. 
 
-An unintuitive feature of many social networks is the **friendship paradox**: on average, your friends have more friends than you do. This emerges because well-connected individuals are more likely to appear in others’ networks. It affects who sees new behaviors early, who is most influential, and how we interpret network data. We include a visualization to illustrate this dynamic and emphasize the importance of precise language.
+<div class="table-responsive" id="tbl-formal-symbols">
+  <b>Important symbols for the formal math model of diffusion.</b> 
+<table class="table table-sm table-borderless" style="width:100%">
+  <thead style="border-bottom: 2px solid #000;">
+    <tr>
+      <th style="text-align:left;">Symbol</th>
+      <th style="text-align:left;">Description</th>
+      <th style="text-align:left;">Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$p_S(t)$</td>
+      <td>Prevalence of the *Sustainable* practice</td>
+      <td>$[0, 1]$</td>
+    </tr>
+    <tr>
+      <td>$f_S$</td>
+      <td>Fitness of the *Sustainable* practice</td>
+      <td>$[0, \infty)$</td>
+    </tr>
+    <tr>
+      <td>$\alpha$</td>
+      <td>Adoption rate for contagion transmission</td>
+      <td>$[0, 1]$</td>
+    </tr>
+    <tr>
+      <td>$\delta$</td>
+      <td>Drop rate for contagion transmission</td>
+      <td>$[0, 1]$</td>
+    </tr>
+    <tr>
+      <td>$S$</td>
+      <td>Success rate: frequency of successful simulated interventions</td>
+      <td>$[0, 1]$</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-### From structure to simulation 
 
+### Simulation
 
 Agent-based models help us represent complexity by formalizing how _cognition_ and _social structure_ interact. Each component is modeled separately. _Cognition_ refers to the processes agents use to evaluate and adopt behaviors—drawing on existing knowledge, experience, and social feedback. _Social structure_ refers to constraints on who interacts with whom, shaped by acquaintanceship, geography, institutions, and chance. We model social structure as a _network_: a graph where _nodes_ represent individuals and _edges_ represent relationships through which information or influence can flow.
 
 We design our simulations to evaluate different intervention strategies based on cognitive factors we deem most important, with social structure that is "good enough" for representing a real-world system.   by vary which agents start with a given behavior or belief, a process often called _seeding_. For example, in a diffusion model, we might seed a behavior with the most connected individuals, a randomly selected group, or individuals located in a particular community. These differences allow us to explore how network structure interacts with initial conditions to shape diffusion outcomes—helping us identify strategies that are more robust, equitable, or efficient.
 
 
-## The general diffusion model
+## Models of social diffusion in terms of transmission constraints
 
-1.  **Cognition**: how agents evaluate new behaviors;
-2.  **Social behavior**: how agents learn from others and adopt behaviors;
-3.  **Network structure**: who interacts with whom.
+1. Unconstrained contagion: "going viral"
+1. Contagion in finite populations: logistic prevalence dynamics
+1. Adaptive social learning: evolutionary constraints
+1. Interaction structure in the form of social networks can promote or inhibit
+   diffusion of adaptations
 
-These components are modular, allowing us to isolate the effects of structure while holding behavior constant.
+### Going viral: unconstrained contagion
+
+- Always new learners to teach
+- Adoption rate $\alpha$, drop rate $\delta$; $R_0 = \alpha / \delta$.
+- Discrete-time diffusion model (difference equation)
+- Continuous-time diffusion model (differential equation)
+- Simulation (agent-based model)
+
+### Bounded virality: finite population size
+
+- Now at most $N$ agents can adopt the sustainable practice, so marginal
+  adoption tapers off over time as more nearly everyone adopts the sustainable
+  practice.
+- One of the best-known approaches to modeling social diffusion is the
+  *contagion* model of transmission, where behaviors are transmitted
+  probabilistically as if they were a disease being transmitted interpersonally.
+  When people interact in this model, one learns from the other. If the learner
+  practes the Exhaust behavior, $E$, and observes or is instructed by a teacher
+  who practices the Sustain behavior, $S$, then there is a probability $\alpha$
+  that the learner adopts (i.e., begins doing) $S$. $\alpha$ is therefore called
+  the *adoption rate*.
+
+### Guided virality: adaptive social learning
+
+- Of the many foundations of humanity is the unrivaled capacity to learn from
+  others, with adaptations that help us decide from whom to learn, such as
+  preferentially from the most apparently fit social network neighbors, or what
+  features of a behavior are most desirable, such as a high prevalence of
+  behavioral adoption. 
+- Because of the non-linear nature of either form of adaptive social learning,
+  attaining *closed-form* solutions to the formal equations is much more
+  difficult and therefore more the domain of matematical biology than
+  computational social science. Still, the basic predictions with some key
+  simplifying, asymptotic assumptions are accessible to understand, with the
+  derivations comprehensible in broad strokes.
+- Because formal methods become increasingly restrictive as social behavior
+  complexity is increased, simulation becomes more important. At this stage,
+  simulation becomes much more accessible to many more social scientists. This
+  becomes even more true as we go beyond the well-mixed assumption necessary for
+  formal calculations in unconstrained or constrained contagion, and into 
+  developing computational models of behavior diffusion where interaction
+  structure is represented by a social network.
+- NEXT: formalize success- and frequency-biased learning
+
+#### Success-biased social learning
+
+#### Frequency-biased social learning
+
+### How social networks constrain diffusion
 
 
-**MODEL SKETCH HERE OF GENERAL DIFFUSION MODEL**
-
-- Behavior choice and learning
-- Group and social structure
-- Outcome measure: simulated success rate
-
-This flexible framework will carry through the rest of the course. In the next section, we extend this model to explore how homophily, asymmetry, and structural inequality affect adaptation outcomes.
-
-## Network structure patterns that shape and constrain adaptation
+#### The good and the bad of social structure and long-range ties
 
 
-### The good and the bad of social structure and long-range ties
-
-
-### Homophily: choice and induced 
+#### Homophily: choice and induced 
 
 **Homophily** is the tendency for similar individuals to associate. We distinguish two forms:
 
@@ -144,157 +312,49 @@ These examples show that homophily can inhibit or support adaptation, depending 
 
 We also discuss experimental results from Centola (2010, 2011), which show that homophilous networks can outperform random ones in spreading health behaviors—especially when reinforcement and social learning are important.
 
-### Asymmetric homophily and diffusion
+#### Asymmetric homophily and diffusion
 
 In some cases, homophily is **asymmetric**. One group (often the minority) is more exposed to the other than vice versa. In the "Minority Incubator, Majority Reservoir" model, this asymmetry allows minority-originating adaptations to diffuse outward more effectively.
 
 This structural asymmetry isn’t necessarily intentional—it can emerge from how connections are formed. Yet it has real implications for diffusion, visibility, and adaptation speed.
 
-### Core-periphery structure
+#### Core-periphery structure
 
 In a **core-periphery** network, a dense core of well-connected individuals is surrounded by a sparsely connected periphery. This structure supports fast diffusion through the core but may limit peripheral influence.
 
 The South Pacific Island case provides an example: core-periphery organization enabled stable adaptation strategies under conditions of uncertainty and risk. These designs may emerge deliberately or organically.
 
-### When ties break: cumulative loss
+#### When ties break: cumulative loss
 
 To illustrate the consequences of broken connections, we turn to Henrich’s study of tool diversity in Oceania. When long-range maritime ties between islands broke down, isolated communities lost complex technologies.
 
 This example highlights how network fragmentation can halt or reverse cumulative cultural evolution—a key dynamic in adaptation and innovation.
 
-### Modeling implications
-
-Using the same agent-based model, we simulate diffusion on homophilous and core-periphery networks. Holding cognition and social behavior constant, we find:
-
--   Some structures accelerate diffusion;
--   Some amplify inequality in who adopts adaptations;
--   Some slow or block spread entirely.
-
-These outcomes underscore the importance of network design in policy, development, and sustainability work.
-
-<!--
-## Computational social science roots
-
-One goal and theme of `socmod` is to avoid unneccesary theoretical commitments to either **epidemiological forcing**-style assumptions (e.g., using SI/SIS/SIR) or to **population genetics** (e.g., Kimura--Crow models) analyses that represent social learning as evolutionary selection. The **agent-based social learning** framework provided by socmod accommodates these or other various social behavior models. In the case of diffusion of adaptations, these formalisms share a common mathematical structure of **birth–death processes**.
-
-We compare these modeling approaches in two ways: first, through their fixation dynamics under weak selection or forcing, and second, through how they each map to a birth–death framework. This is meant to situate users who think in either formalism to how they can map their domain knowledge onto socmod's framework for agent-based models of social behavior.
-
-### Contagion, selection, and social learning
-
-Fixation dynamics arise when a type, trait, or state spreads through a finite population until it completely replaces alternatives. Across epidemiology, population genetics, and social learning, this process can often be formalized using **birth–death models**, where individuals probabilistically transition between types.
-
-The general structure is:
-
-$$
-\frac{dp}{dt} = \text{birth rate} \times (1 - p) - \text{death rate} \times p
-$$
-
-where $p(t)$ is the frequency of the type of interest at time $t$.
-
-- **Birth rate** describes how often new instances of the type arise (e.g., infections, successful adoptions, reproductions).
-- **Death rate** describes how often the type is lost (e.g., recoveries, abandonment, replacement by competitors).
-
-In biological contexts, these are referred to as **birth–death processes**. However, for social learning of adaptive sustainable behaviors, a more accurate description would be **learning–unlearning processes**: individuals can adopt and later abandon behaviors depending on social influences, network structure, and environmental feedback.
-
-Belief dynamics, which govern the spread and change of *internal* mental states rather than *observable* behaviors, differ substantially in mathematical structure. Nonetheless, belief dynamics can also exhibit **asymptotic, closed-form approximations** under appropriate assumptions.
-
-We focus first on behavioral diffusion processes grounded in social learning. Belief dynamics and their distinct formal properties will be introduced and analyzed in the second part of this book.
-
-In this section, we compare how fixation arises under weak selection or weak forcing in three domains: forcing models from epidemiology, population genetics models, and agent-based social learning models.
-
-### Formal Models: Forcing, Genetic Drift, and Success Bias
-
-In epidemiology, the spread of an infectious disease through a population can be captured by systems of ordinary differential equations (ODEs). For a simple SIS (Susceptible–Infected–Susceptible) model, the equations are:
-
-$$
-\frac{dS}{dt} = -\beta S I + \gamma I
-$$
-$$
-\frac{dI}{dt} = \beta S I - \gamma I
-$$
-
-where:
-- $S(t)$ and $I(t)$ are the proportions of susceptible and infected individuals at time $t$,
-- $\beta$ is the transmission rate,
-- $\gamma$ is the recovery rate.
-
-Fixation of the infection (i.e., the infected state reaching $I=1$) occurs when transmission outpaces recovery, roughly when $\beta S > \gamma$. In small populations, stochastic drift also matters, especially when $I$ is small.
-
-In population genetics, the probability of fixation of a new mutant allele can be approximated using Kimura and Crow's theory. In the simplest form under weak selection:
-
-$$
-\text{Fixation probability} \approx p_0 + s(1 - p_0)
-$$
-
-where:
-- $p_0$ is the initial frequency of the mutant allele,
-- $s$ is the selection coefficient (small positive or negative).
-
-In neutral drift ($s=0$), the fixation probability equals $p_0$. When selection is weak but nonzero, the probability is shifted slightly toward the fitter allele.
-
-In social learning models, especially those employing **success-biased learning**, the analogy to selection is direct. Agents are more likely to copy behaviors that have produced higher payoffs or success in the recent past. This introduces a **selection-like bias** in the replication of behaviors:
-
-- **Drift** corresponds to random copying without regard to success.
-- **Selection** corresponds to biased copying favoring higher-payoff behaviors.
-
-Thus, success-biased social learning is mathematically analogous to weak selection in evolutionary models: both introduce a systematic force that, over time, increases the frequency of advantageous types.
 
 
+## Analysis of the various types of social behavior models above
 
-### Comparison of diffusion conceptualizations
+- Unconstrained: vary $\alpha$ and calculate and plot different dynamics
+- Contagion in finite: vary $\alpha$ and $\delta$ and plot dynamics; include SES
+  model with delta p vs. p as in Smaldino Ch. 4.
+- Adaptive social learning: compare success rate curves colored and styled by different
+  adaptive fitness values and frequency-biased with x-axis being the initial
+  prevalence $p_S(t=0)$.
+- Social network structure: (i) success rate over rewiring probability and with
+  preferential attachment; (ii) finish homophily example.
 
-| Concept | Compartmental models (contagion) | Evolutionary models (selection) |
-Social models (socmod) |
-|:--|:--|:--|:--|
-| **Entities** | People with infection states | Alleles at genetic loci | People with knowledge |
-| **Dynamics** | Infection spread | Reproduction with selection | Social learning with drift and weak biases |
-| **Fixation probability** | $\uparrow$ with $\alpha - \delta$ | $\uparrow$ with
-$f_A - f_L$ | Contagion, evolution, other socio-cognitive |
-| **Formalisms** | Stochastic/deterministic ODEs (SIS, SIR) [@anderson_may_1991; @keeling_rohani_2008] | Wright--Fisher, Moran, diffusion approximations [@crow_kimura_1970; @kimura_1962] | Agent-based simulations with probabilistic rules |
+### Unconstrained contagion
 
-- **Forcing models** focus on infection and recovery dynamics.
-- **Population genetics** tracks allele frequency changes via drift and selection.
-- **Social learning** models behavioral adoption via social influence and drift.
+### Contagion in finite populations
 
+### Adaptive social learning
 
-### Birth–Death Process Mapping
+### Social network structure
 
-| Formulation | Birth event | Death event |
-|:--|:--|:--|
-| **Contagion** | Infection (Susceptible $\to$ Infected) | Recovery (Infected $\to$ Susceptible) |
-| **Evolution** | Allele reproduction (fitness-weighted) | Allele loss (death) |
-| **Socmod**    | Social learning or individual discovery | Behavior abandonment |
+#### Small-world and preferential attachment networks
 
+#### Homophily 
 
-All three systems feature:
+## Discussion
 
-- **Birth**: growth of a type or trait.
-- **Death**: loss or replacement.
-- **Drift and bias**: stochastic fluctuations and directional forces.
-
-Key parallels:
-
-There are 
-
-- Strong success bias $\leftrightarrow$ strong selection.
-- Random copying $\leftrightarrow$ neutral drift.
-- Contagion learning $\leftrightarrow$ stochastic infection.
-
-
-#### `socmod`: a framework for many models
-
-**socmod** models, by tuning parameters such as success bias, frequency bias, transmission, and dropout rates, can replicate the core behaviors of both **population genetics** and **epidemiology**.
-
-
-Thus, socmod models offer a flexible platform bridging epidemiology, evolutionary biology, and social dynamics.
-
--->
-
-### Conclusion 
-
-To promote the spread of sustainable behavior we need to understand how behavior
-
-Behaviors diffuse between people through social learning. But social structure,
-the benefit of adaptive behaviors, individual stubbornness, and ingroup preference all
-affect whether adaptive behaviors become prevalent. 
 
