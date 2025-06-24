@@ -16,8 +16,54 @@ potential strategies for reaching more equitable equilibriums.
 
 In the context of sustainability and climate adaptation, behavior change often depends not only on individual decisions but also on the social networks through which information and behaviors spread. This chapter examines how the structure of social networks influences the diffusion of adaptations—behaviors or practices that help people adjust to new risks or environmental conditions.
 
+In this chapter we start building a theory of social diffusion represented 
+by mechanistic models of social transmission and learning. We begin with a
+simple model of a chain of unconstrained social transmission starting from a
+single teacher, with no limit on how many people might learn from teachers of
+teachers of teachers, and so on. We also assume behaviors do not require
+coordination with others, and so the benefit of doing a behavior is independent
+of the number of people doing the behavior. I show how we can use
+discrete-time difference
+equations, continuous-time differential equations, or agent-based simulation 
+to arrive at the same conclusion: prevalence increases exponentially over time
+under these assumptions, akin to the "going viral" stage of an emerging trend,
+or what Roger's might identify as the stage when tight-knit trend followers
+quickly adopt fashionable new practices [@Rogers2003;@Smaldino2023_Ch4Contagion]
 
-## Primer on interventions 
+- The first constraint to social
+transmission: a finite population of *teachers* and *learners*, our general
+purpose names for the person from whom social information originates and to whom
+it goes, respectively.
+
+- The second constraint we consider is when adaptive social learning guides
+  social transmission. Under the first and primary form of adaptive social
+  learning we consider, *success-biased* social learning, teachers are selected
+  at random from an individual's neighbors, weighted by each neighbor's
+  *fitness*, with the learner included as a "neighbor", i.e., potential teacher,
+  so that beneficial behaviors are preferentially maintained under
+  success-biased learning. *Frequency-biased* learning is another adaptive
+  strategy sometimes observed in modern and archeological evidence which we
+  demonstrate, but focus on less throughout the course material, using
+  success-biased learning as the default to induce evolutionary dynamics,
+  explained in more detail below.
+
+- The third and final constraint is on the structure of social interactions,
+  represented by the system's *social network*. We'll consider three types of
+  social network models, each with stylized real-world features: first are regular
+  networks, which are lattices like a two-dimensional spatial grid that can be
+  used to model cooperation in natural resource conservation, for example.
+  Second, we use random networks to represent irregularities in social network
+  structures, which can promote or inhibit the success of educational
+  behavior-change interventions. Third, we consider a more specific class of
+  random network, *asymmetric homophily* networks, in which different groups
+  have different tendencies to interact more frequently with others from within
+  their own group compared to between groups. These can be used to generate
+  *core-periphery* social networks where the *core* group is the most connected both
+  within its own group and between itself and the *peripheral* groups are only
+  loosely connected within themselves and between other groups.
+
+
+## Representing interventions as math and code
 
 
 - Recall that a _sustainability intervention_ is an effort to promote some sustainable behavior or set of behaviors through education, training, or other means.
