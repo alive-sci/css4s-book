@@ -8,11 +8,106 @@ Here we introduce what we dub *the puzzle of diffusion*: why do some effective, 
 
 The focus of this course is developing agent-based models that can help us simplify complex combinations of cognitive and social factors to represent only the most relevant ones, and observe the effect of these on simulated outcomes such as the proportion of people adopting adaptive behaviors, or opinion extremism and polarization.
 
-## Why agent-based models are useful
+## Sustainability as Social Science's (Ethical) "Manhattan Project"
 
-Agent-based models (ABMs) provide a structured way to explore complex systems by simulating interactions between autonomous *agents*, i.e., simulated people. In sustainability contexts, ABMs offer a low-cost testbed for understanding how interventions might impact social dynamics and environmental outcomes. For example, @Airoldi2024 demonstrated through regression analysis across that one method for selecting individuals targeted in a public health education campaign worked better than another. They studied over 20,000 individuals across Honduran villages of about 100 people each to reach their findings. Real-world verification of the efficacy of different intervention strategies is important. However, we can also use agent-based models to represent the diffusion of information in simulated populations where interactions are structured by model social networks. We can initialize thousands or millions of simulated villages in which this information could diffuse with different intervention strategies, and observe the distribution of the adoption of sustainable behaviors for each potential intervention strategy. We can then analyze which performed best *in silico*, which can be helpful if interventions will be taken to different contexts. In other worlds, we can use ABMs to deduce how different learning rules, group identities, and social structures shape sustainability outcomes generally, which can guide our selection of real-world intervention strategies.
+The agent-based modeling approach developed in this course provides a structured way to test the effectiveness of social interventions aimed at promoting sustainable behavior. By formalizing and testing our assumptions about social dynamics, agent-based modeling supports better design and evaluation of policies and programs aimed at driving real-world change. This deductive, experimental approach allows us to explore how cooperation, coordination, identity, homophily, and influence affect the likelihood that beneficial behaviors will spread. In the coming chapters and associated problem sets we will analyze social learning of behaviors and social influence of opinions in various contexts.
 
-A typical ABM simulation cycle includes (@fig-abm-sketch):
+The goal is to build up a repertoire of agent-based modeling techniques for incorporating different assumptions about how social learning or influence work, whether group structure is important to these processes, and for modeling social network structure. This repertoire can then be applied to sustainability contexts of interest to understand how different sustainability intervention strategies, such as who should learn about sustainable adaptations first in an educational intervention or how best to assist stakeholder deliberations to reduce opinion polarization that can derail collective adaptation. To choose model components wisely requires an understanding of elements of sustainability, cognitive and social science, network science, and software engineering.
+
+The [UN Sustainable Development Goals](https://sdgs.un.org/) help us focus and organize our work by providing concrete goals for evaluating progress towards sustainable development for all [@fig-sdg-vibe]. These goals include targets for institutional development that promotes basic conditions for human thriving (justice, equality, education, public health, and no poverty) so as to assemble and enable a critical mass of people to participate bringing about sustainable development. People cannot participate in sustainability if they suffer in poverty, from illness, or subjugation by authoritarians–all but the most zealous environmental defenders will fight on when these basic needs are unmet. Since progress has been slower than necessary.
+
+Sustainability, then, has several different dimensions, all of which contribute
+to climate action and environmental protection. I have organized these goals
+into the VIBE system to guide sustainability promotion where *Vibrant
+Institutions* meet the *Basic* needs, including *Environmental and Ecological*
+protection. The 17 goals and how they each help catch a VIBE are illustrated 
+in [@fig-sdg-vibe]. 
+
+Organizing and connecting our work to has two benefits. First, it helps us
+identify which cognitive and social factors are at work in different
+sustainability foci. Second, it expands the corpus of existing research on which
+we draw to consolidate our social and cognitive theories of behavior change that
+we will apply to sustainability interventions. While many of us in computational
+social science know our work is important as basic science partly because we are
+confident it can apply to real-world problems, it is not clear how. Part of this
+problem seems to stem from the lack of a clear goal for this science beyond
+evaluating alternative theories of social behavior. *Sustainability* serves as a
+sort of never-ending Manhattan Project for social scientists, an ethically
+praiseworthy pursuit that will provide a selection pressure on social science
+frameworks or theories that theory-comparison goals cannot: our social science
+frameworks, theories, and models should be maximally useful to the long-term
+study of sustainability. That means simulations should be designed so the model
+parameters and outcome measures are observable and could reasonably be measured
+in the real-world. It means flexibly adopting different assumptions in different
+cases, possibly sampling from different theories that, in a different context,
+might make contrary predictions. In the next
+
+![The VIBE system helps us identify how sustainability priorities can motivate
+new social science studies.](Figures/intro-sdg-vibe.png){#fig-sdg-vibe fig-align="center" width="950"}
+
+## Computational social science (for sustainability)
+
+Social science is immensely broad and complex comprised of numerous traditional
+academic disciplines in their entirety, such as anthropology and sociology, with
+contributions from several other traditional disciplines, including cognitive
+science, engineering, and physics. We use the problem of promoting sustainable
+practices via *interventions* to structure this work. Sustainability
+interventions are eductaion campaigns to induce the diffusion
+of certain adaptive, sustainable behaviors, such as in public health
+[@Airoldi2024], microfinance to support gender equality at work, home, and
+everywhere [@OConnor2018;@Clydesdale2023], and 
+climate change adaptation via ecosystem protection [@Brooks2018;@McNamara2020]. 
+Following the UN SDGs, we see that
+this is quite a broad range of potential behaviors, which is actually a good
+thing. It means that our conclusions could apply to a broad range of application
+domains.
+
+On reflection, social science for sustainability needs a science of how
+adaptive, sustainable behaviors, opinions, and other socially-transmitted 
+items diffuse from person to person, throughout a population, over time. I don't
+know for sure, but it seems like this may be *the* fundamental problem in social
+science, broadly understood. The puzzle of adaptation frames the 
+overarching question of designing interventions: how best to jump-start a
+self-sustaining process diffusing adaptive sustainable behaviors?
+
+Computational social science is the use of mathematics and computers to
+understand and model the mechanisms underlying social diffusion phenomena, 
+such as the adoption of sustainable practices
+or rising political extremism, and statistically analyze collective 
+behavior data. We start here and for the first chapters of the book developing
+formal and generative models of promoting widespread behavior 
+change. When we come to opinion change, we arrive at a natural transition point
+where theory necessarily meets practice to understand how to properly *measure*
+opinion change in the real world, which *requires* statistical inference since
+opinions are not directly measurable. We apply our techniques to show that 
+
+Computational social science is a cognitive gadget to help us use social science
+theory for reasoning about the effect of different cognitive capacities (e.g.,
+adaptive social learning), social processes (e.g., rising extremism), and social
+and natural environment constraints (e.g., social networks, wildfire risk). 
+Too often in the history of social science, social science theory is not
+presented mathematically, with squishy verbal explanations of theories and their
+consequences instead of concrete, *rigorous* mathematical or computational 
+statements, where rigorous means they are theoretically true under a set of
+explicitly-specified assumptions. This
+means that mechanisms have tended to be only vaguely specified, 
+and changes in assumptions
+cannot be quantitatively, let alone systematically, explored [@Turner2022].
+
+Here we sketch a general theoretical framework that avoids the gridlock of
+deciding which social science theory is best by starting at one level of
+abstraction higher than we typically use for social science. The level we start
+at here sits above theories like complex contagion of behaviors, cultural
+evolution, or opinion dynamics models of opinion change, which can be taken as
+occupying a more *implementation* level of abstraction. Here we begin by
+examining the most general features of social interaction and behavior
+diffusion, filling out details with assumptions drawn from the more
+implementation-level social science theories.
+
+### A model 
+
+A  (@fig-abm-sketch):
+
 
 -   Initializing agent populations and environmental conditions
 -   Iterative steps where agents select partners, interact, and update behaviors based on outcomes and learning rules
@@ -20,6 +115,11 @@ A typical ABM simulation cycle includes (@fig-abm-sketch):
 -   Generating output data for analysis
 
 ![Agent-based modeling simulation cycle.](images/clipboard-2271438655.png){#fig-abm-sketch fig-align="center" width="850"}
+
+
+### Why agent-based models are useful
+
+Agent-based models (ABMs) provide a structured way to explore complex systems by simulating interactions between autonomous *agents*, i.e., simulated people. In sustainability contexts, ABMs offer a low-cost testbed for understanding how interventions might impact social dynamics and environmental outcomes. For example, @Airoldi2024 demonstrated through regression analysis across that one method for selecting individuals targeted in a public health education campaign worked better than another. They studied over 20,000 individuals across Honduran villages of about 100 people each to reach their findings. Real-world verification of the efficacy of different intervention strategies is important. However, we can also use agent-based models to represent the diffusion of information in simulated populations where interactions are structured by model social networks. We can initialize thousands or millions of simulated villages in which this information could diffuse with different intervention strategies, and observe the distribution of the adoption of sustainable behaviors for each potential intervention strategy. We can then analyze which performed best *in silico*, which can be helpful if interventions will be taken to different contexts. In other worlds, we can use ABMs to deduce how different learning rules, group identities, and social structures shape sustainability outcomes generally, which can guide our selection of real-world intervention strategies.
 
 We will analyze and draw on several real-world empirical studies of interventions to develop our agent-based models that we in turn will use to simulate interventions in order to *deduce* which strategies are most effective for *social interventions* to promote sustainability, and why. A *social intervention* (or just *intervention*) for promoting sustainability is any concerted effort where those promoting a sustainable practice introduces information about how to perform that practice to a population. *Deductive* methods complement regression-based inferential or *inductive* strategies. Deductive strategies can explain which strategies are most effective and why in idealized, cost-free settings (cost-free at least compared to the cost of real-world social interventions at scale).
 
@@ -110,14 +210,3 @@ Social structure can significantly impact behavioral diffusion, especially in co
 
 These structural elements can significantly limit the diffusion of sustainable practices from peripheries, like the mangrove management on smaller islands, to central cores. However, as colleagues and I have showed, this core-periphery structure, defined by moderately high majority-group homophily can actually *promote* the diffusion of adaptations, provided the adaptation is practiced by the minority group [@Turner2023], as is the case for mangrove forest management or prescribed burns. Formal definitions of homophily and core-peripheriness will be given in the networks chapter.
 
-## Course outline in the context of sustainable development
-
-The agent-based modeling approach developed in this course provides a structured way to test the effectiveness of social interventions aimed at promoting sustainable behavior. By formalizing and testing our assumptions about social dynamics, agent-based modeling supports better design and evaluation of policies and programs aimed at driving real-world change. This deductive, experimental approach allows us to explore how cooperation, coordination, identity, homophily, and influence affect the likelihood that beneficial behaviors will spread. In the coming chapters and associated problem sets we will analyze social learning of behaviors and social influence of opinions in various contexts.
-
-The goal is to build up a repertoire of agent-based modeling techniques for incorporating different assumptions about how social learning or influence work, whether group structure is important to these processes, and for modeling social network structure. This repertoire can then be applied to sustainability contexts of interest to understand how different sustainability intervention strategies, such as who should learn about sustainable adaptations first in an educational intervention or how best to assist stakeholder deliberations to reduce opinion polarization that can derail collective adaptation. To choose model components wisely requires an understanding of elements of sustainability, cognitive and social science, network science, and software engineering.
-
-The [UN Sustainable Development Goals](https://sdgs.un.org/) help us focus and organize our work by providing concrete goals for evaluating progress towards sustainable development for all [@fig-sdg-vibe]. These goals include targets for institutional development that promotes basic conditions for human thriving (justice, equality, education, public health, and no poverty) so as to assemble and enable a critical mass of people to participate bringing about sustainable development. People cannot participate in sustainability if they suffer in poverty, from illness, or subjugation by authoritarians–all but the most zealous environmental defenders will fight on when these basic needs are unmet. Since progress has been slower than necessary.
-
-Sustainability, then, has several different dimensions, all of which contribute to climate action and environmental protection. I have organized these goals into a coding system called the vIBE system: ***v**ibrant **I**nstitutions* support ***B**asic* human needs of people who protect the ***E**nvironment*. All 17 goals and the organization system are illustrated in [@fig-sdg-vibe]. Organizing and connecting our work to has two benefits. First, it helps us identify which cognitive and social factors are at work in different sustainability foci. Second, it expands the corpus of existing research on which we draw to consolidate our social and cognitive theories of behavior change that we will apply to sustainability interventions.
-
-![The 17 United Nations Sustainable Development Goals (SDGs) can be organized into groups for vibrant Institutions (Group I) that provide Basic needs (Group B) required for people to actively work towards Environmental and Ecological protection (Group E)–we dub this the vIBE coding of the sustainable development goals.](images/clipboard-3767214830.png){#fig-sdg-vibe fig-align="center" width="950"}
