@@ -1,6 +1,5 @@
 # Diffusion
 
-
 From whom and how we learn are essential components in explaining the puzzles of
 diffusion and belief change that underlie the transition to more sustainable
 practices. In this section we will introduce models of social behavior across
@@ -206,11 +205,15 @@ We design our simulations to evaluate different intervention strategies based on
 
 ### Going viral: unconstrained contagion
 
+{{< include Include/unconstrained-contagion.qmd >}}
+
 - Always new learners to teach
 - Adoption rate $\alpha$, drop rate $\delta$; $R_0 = \alpha / \delta$.
 - Discrete-time diffusion model (difference equation)
 - Continuous-time diffusion model (differential equation)
 - Simulation (agent-based model)
+
+
 
 ### Bounded virality: finite population size
 
@@ -324,6 +327,7 @@ This example highlights how network fragmentation can halt or reverse cumulative
   preferential attachment; (ii) finish homophily example.
 
 ### Unconstrained contagion
+
 
 ### Contagion in finite populations
 

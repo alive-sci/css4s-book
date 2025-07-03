@@ -1,0 +1,85 @@
+Our baseline model of social diffusion is the *unconstrained contagion* 
+model. Diffusion is *unconstrained* because we assume that the population size is so large that it's practically
+infinite, i.e., $N \to \infty$. Individuals are equally likely to select one
+another as interaction partners, which is equivalent to interactions being
+structured by a complete network. Since the population is large it is
+computationally slow and wasteful to explicitly specify the social network in
+the agent-based model version we demonstrate last in this section. 
+We also assume that it's impossible to tell individuals apart. 
+This is the *baseline* model because we specify the fewest details of how 
+social interaction and behavior diffusion work. From this baseline we will add 
+further complexity curated from a set of additional useful
+empirically-motivated, though highly simplified, model assumptions.
+
+The *contagion* part of *uncontstrained contagion* signifies the learning model.
+In the contagion model of learning, if one doing the
+Erroneous/Exhaustion/Extinction behavior, $E$, interacts with someone doing the
+Adaptive behavior, $A$, there is a probability $\alpha \in [0, 1]$ that the one
+switches from doing the Exhaustion behavior to doing the Adaptive behavior,
+where $\alpha$ is called the *adoption rate*. We can add regression to $E$ as
+well by specifying the *drop rate*, $\delta$, i.e., the probability that one
+doing $A$ stops, reverting to $E$. Contagion learning could, then, be a suitable
+assumption for fads and trends with little inherent value. Complex contagion is
+a learning model where an agent adopts a behavior after a sufficiently large
+number of exposures, developed largely by sociologists
+[@Centola2007a;@Centola2018] with a notable use recently by a team of cognitive
+and social scientists to explain foraging behavior [@Garg_Padilla-Iglesias2021].
+Adopting contagion learning enables us to adapt results from epidemiological
+modeling for modeling transmission in finite populations. Finite populations
+provide the first constraint on behavior diffusion, and we'll use a formal
+system first developed for epidemiology.
+
+We begin constructing the formal model by writing down how much the prevalence
+of the adaptive behavior changes in a single time step. We'll write $a_t$ or
+$a(t)$ for the adaptive behavior prevalence in the discrete and continuous 
+models, respectively. We will close our development of the Unconstrained
+Contagion model by sketching the agent-based model implementation using
+`socmod`.
+
+#### Discrete change over discrete time
+
+Given the Unconstrained Contagion model assumptions we can write an equation
+that represents how much $a_t$ changes over one time step that has units of
+time. For example, if we are designing a model of ecosystem protection in the
+Masai Mara reserve in Kenya where we have *monthly* satellite data of fence
+construction in the reserve, we'd likely assume our model time steps have units
+of one month as well to harmonize with the target real-world system. If we want
+to study social factors in promoting wetland restoration or electric vehicle
+adoption within a relatively small geographic area, a yearly time step may be
+more appropriate. If there is no data available for your study, do your own
+reasoning to figure out what time step makes sense, either based on the time
+scale of learning about and implementing certain behaviors (i.e., mangrove
+forests grow slowly and restoration takes time, so year-over-year would be
+perhaps the smallest reasonable time step) or based on how frequently
+measurements *could* be made if an appropriate empirical study were designed
+based on the model, so that the model may one day be validated, used practically
+for real-world intervention design, and used for evaluating inconsistent
+hypotheses in theory development [@Deffner2024].
+
+The change in the *prevalence* of an adaptation over one discrete time step is 
+$$
+\Delta a_t = \alpha a_t - \delta a_t
+$$
+which is read "delta a at time t is the product of the adoption rate at that
+time step minus the product of drop rate and prevalence.
+
+Recall an adaptation is a sustainable practice
+that is also preferable in some way compared to alternatives., or 
+
+#### Continuous change over continuous time
+
+$$
+\frac{da}{dt} = \alpha a - \delta a
+$$
+
+Which integrates to
+
+$$
+a(t) = a_0 e^{rt},
+$$
+
+where $r = \alpha - \delta$.
+
+
+#### Agent-based simulation
+
