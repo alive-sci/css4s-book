@@ -197,11 +197,10 @@ We design our simulations to evaluate different intervention strategies based on
 
 ## Models of social diffusion in terms of transmission constraints
 
-1. Unconstrained contagion: "going viral"
-1. Contagion in finite populations: logistic prevalence dynamics
-1. Adaptive social learning: evolutionary constraints
-1. Interaction structure in the form of social networks can promote or inhibit
-   diffusion of adaptations
+1. Going Viral: Unconstrained Contagion
+1. Bounded Virality: Diffusion in Finite Populations
+1. Viral Friends: Social Networks Constrain Diffusion
+1. Guided Virality: Cultural Evolution via Adaptive Social Learning
 
 ### Going viral: unconstrained contagion
 
@@ -228,6 +227,46 @@ We design our simulations to evaluate different intervention strategies based on
   who practices the Sustain behavior, $S$, then there is a probability $\alpha$
   that the learner adopts (i.e., begins doing) $S$. $\alpha$ is therefore called
   the *adoption rate*.
+
+### Viral friends: social network constraints on diffusion 
+
+
+#### The good and the bad of social structure and long-range ties
+
+
+#### Homophily: choice and induced 
+
+**Homophily** is the tendency for similar individuals to associate. We distinguish two forms:
+
+-   **Choice homophily**, where individuals actively prefer similar partners;
+-   **Induced homophily**, where external constraints (e.g., institutions, geography) create segregation even without conscious preference.
+
+Two empirical illustrations:
+
+-   An analysis of remote-work-eligible occupations shows clustering by education, income, and race.
+-   A study of minority students in a mostly white MBA program finds that homophily can foster solidarity and resilience.
+
+These examples show that homophily can inhibit or support adaptation, depending on the context.
+
+We also discuss experimental results from Centola (2010, 2011), which show that homophilous networks can outperform random ones in spreading health behaviors—especially when reinforcement and social learning are important.
+
+#### Asymmetric homophily and diffusion
+
+In some cases, homophily is **asymmetric**. One group (often the minority) is more exposed to the other than vice versa. In the "Minority Incubator, Majority Reservoir" model, this asymmetry allows minority-originating adaptations to diffuse outward more effectively.
+
+This structural asymmetry isn’t necessarily intentional—it can emerge from how connections are formed. Yet it has real implications for diffusion, visibility, and adaptation speed.
+
+#### Core-periphery structure
+
+In a **core-periphery** network, a dense core of well-connected individuals is surrounded by a sparsely connected periphery. This structure supports fast diffusion through the core but may limit peripheral influence.
+
+The South Pacific Island case provides an example: core-periphery organization enabled stable adaptation strategies under conditions of uncertainty and risk. These designs may emerge deliberately or organically.
+
+#### When ties break: cumulative loss
+
+To illustrate the consequences of broken connections, we turn to Henrich’s study of tool diversity in Oceania. When long-range maritime ties between islands broke down, isolated communities lost complex technologies.
+
+This example highlights how network fragmentation can halt or reverse cumulative cultural evolution—a key dynamic in adaptation and innovation.
 
 ### Guided virality: cultural evolution via social learning
 
@@ -273,45 +312,6 @@ We design our simulations to evaluate different intervention strategies based on
 
 #### Frequency-biased social learning
 
-### Viral friends: how 
-
-
-#### The good and the bad of social structure and long-range ties
-
-
-#### Homophily: choice and induced 
-
-**Homophily** is the tendency for similar individuals to associate. We distinguish two forms:
-
--   **Choice homophily**, where individuals actively prefer similar partners;
--   **Induced homophily**, where external constraints (e.g., institutions, geography) create segregation even without conscious preference.
-
-Two empirical illustrations:
-
--   An analysis of remote-work-eligible occupations shows clustering by education, income, and race.
--   A study of minority students in a mostly white MBA program finds that homophily can foster solidarity and resilience.
-
-These examples show that homophily can inhibit or support adaptation, depending on the context.
-
-We also discuss experimental results from Centola (2010, 2011), which show that homophilous networks can outperform random ones in spreading health behaviors—especially when reinforcement and social learning are important.
-
-#### Asymmetric homophily and diffusion
-
-In some cases, homophily is **asymmetric**. One group (often the minority) is more exposed to the other than vice versa. In the "Minority Incubator, Majority Reservoir" model, this asymmetry allows minority-originating adaptations to diffuse outward more effectively.
-
-This structural asymmetry isn’t necessarily intentional—it can emerge from how connections are formed. Yet it has real implications for diffusion, visibility, and adaptation speed.
-
-#### Core-periphery structure
-
-In a **core-periphery** network, a dense core of well-connected individuals is surrounded by a sparsely connected periphery. This structure supports fast diffusion through the core but may limit peripheral influence.
-
-The South Pacific Island case provides an example: core-periphery organization enabled stable adaptation strategies under conditions of uncertainty and risk. These designs may emerge deliberately or organically.
-
-#### When ties break: cumulative loss
-
-To illustrate the consequences of broken connections, we turn to Henrich’s study of tool diversity in Oceania. When long-range maritime ties between islands broke down, isolated communities lost complex technologies.
-
-This example highlights how network fragmentation can halt or reverse cumulative cultural evolution—a key dynamic in adaptation and innovation.
 
 
 

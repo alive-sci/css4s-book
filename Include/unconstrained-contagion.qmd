@@ -56,19 +56,12 @@ based on the model, so that the model may one day be validated, used practically
 for real-world intervention design, and used for evaluating inconsistent
 hypotheses in theory development [@Deffner2024].
 
-On each time step in Unconstrained Contagion, all the $N_A$ individuals doing $A$ will
-collectively teach $\alpha N_A$ others from the population to switch their
-behavior from the non-adaptive behavior $E$ to the adaptive behavior $A$.
-This implies there will always be new individuals doing $E$ to switch to $A$,
-i.e., the population is effectively infinite, and individuals are
-indistinguishable, the large-$N$ approximation. Each member of the 
-population is equally likely to interact with every other, i.e., the population
-is *well-mixed*. This assumption will be relaxed to make room for the
-constraints social networks impose on social transmission.
-
-The change in the *prevalence* of an adaptation over one discrete time step is 
+On each time step in Unconstrained Contagion, each of the $N_t$ individuals 
+doing $A$ will transmit their behavior to one other individual every $\alpha$
+time steps, where we call $\alpha$ the *adoption rate*. .
+The change in the number of individuals doing $A$ on each time step is then 
 $$
-\Delta a_t = \alpha a_t - \delta a_t
+\Delta N_t = \alpha N_t - \delta N_t
 $$
 which is read "delta a at time t is the product of the adoption rate at that
 time step minus the product of drop rate and prevalence". 
