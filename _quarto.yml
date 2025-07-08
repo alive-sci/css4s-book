@@ -5,7 +5,7 @@ book:
   title: "Computational Social Science for Sustainability"
   subtitle: "11th International Conference on Computational Social Science in Norrköping, Sweden"
   author: "Matt Turner"
-  date: "7/9/2025"
+  date: "21 July 2025"
   chapters:
     - index.qmd
     - intro.qmd

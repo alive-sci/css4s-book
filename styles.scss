@@ -170,3 +170,54 @@ h3 {
   font-weight: 600;
   margin-top: 1.5rem;
 }
+
+
+@media (prefers-color-scheme: dark) {
+  h1, h2, h3, h4, h5, h6 {
+    color: #5d94be;
+  }
+}
+
+.title-block-banner .quarto-title-authors,
+.title-block-banner .quarto-title-date {
+  background-color: #4a789b; // same as your banner background
+  color: #f4d3e1;            // soft pink foreground
+  padding: 0.25em 0.75em;
+  margin-top: 0.5em;
+  display: inline-block;
+  border-radius: 0.3em;
+  font-weight: 500;
+}
+
+/* Full title block background and padding */
+.quarto-title-block {
+  background-color: #4f7d9d;
+  padding: 0.8rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  color: #f4d3e1;  // soft pink as default text color
+}
+
+/* Make sure individual elements don’t override this */
+.quarto-title-block .quarto-title-authors,
+.quarto-title-block .quarto-title-date {
+  color: #f4d3e1; // ensure all are pink
+}
+.quarto-title-block .quarto-title-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.quarto-title-block .quarto-title-author {
+  flex: 1 1 auto;
+}
+
+.quarto-title-block .quarto-title-date {
+  flex: 0 0 auto;
+  margin-left: auto;
+  text-align: right;
+}
+
