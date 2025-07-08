@@ -2,17 +2,19 @@ project:
   type: book
 
 book:
-  title: "Agent-based modeling for sustainability"
+  title: "Computational Social Science for Sustainability"
+  subtitle: "11th International Conference on Computational Social Science in Norrköping, Sweden"
   author: "Matt Turner"
-  date: "6/9/2025"
+  date: "7/9/2025"
   chapters:
     - index.qmd
     - intro.qmd
-    - technical-intro.qmd
-    - writing.qmd
+    # - technical-intro.qmd
+    # - writing.qmd
     - diffusion.qmd
     - cooperation.qmd
     - unfairness.qmd
+    - opinion-change.qmd
     - references.qmd
   
 bibliography: 
