@@ -98,3 +98,75 @@
   border-bottom: none !important;
 }
 
+$title-bg: #4f7d9d;
+$title-fg: #fdfaf6;
+$title-fg: #e6a8b1;
+$subtitle-fg: #e6a8b1;
+$subtitle-fg: #fdfaf6;
+
+.quarto-title {
+  background-color: $title-bg;
+  padding: 2rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+
+  h1.title {
+    color: $title-fg;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  p.subtitle {
+    color: $subtitle-fg;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    text-align: left;
+  }
+}
+
+
+// Color palette
+$heading-color: #4f7d9d;
+$title-bg: #4f7d9d;
+$title-fg: #e6a8b1;
+$title-fg: #fdfaf6;
+$title-fg: #fcecef;
+$subtitle-fg: #f8dce1;
+
+// Title block styling
+.quarto-title {
+  background-color: $title-bg;
+  padding: 0.5rem;
+  border-radius: 2px;
+  margin-bottom: 0rem;
+
+  h1.title {
+    color: $title-fg;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  p.subtitle {
+    color: $subtitle-fg;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    text-align: left;
+  }
+}
+
+// Headings (in body content)
+h1, h2, h3 {
+  color: $heading-color;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
